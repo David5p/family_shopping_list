@@ -1,0 +1,27 @@
+{
+  "Greek Chicken": {
+    "Feta": { "quantity": 100, "unit": "g" },
+    "Tomatoes": { "quantity": 1, "unit": "packs" },
+    "Cucumber": { "quantity": 1, "unit": "servings" },
+    "Chicken": { "quantity": 1, "unit": "servings" },
+    "Scallions": { "quantity": 1, "unit": "servings" },
+    "Olives": { "quantity": 1, "unit": "servings" },
+    "Rice": { "quantity": 100, "unit": "g" }
+  },
+  "Fish and wedges": {
+    "Fish": { "quantity": 120, "unit": "g" },
+    "Baked beans": { "quantity": 190, "unit": "g" },
+    "Potatoes": { "quantity": 800, "unit": "g" },
+    "Frozen veg": { "quantity": 80, "unit": "g" }
+  },
+  "Lasagne": {
+    "Hummus": { "quantity": 1, "unit": "packs" },
+    "Mince": { "quantity": 750, "unit": "g" },
+    "Zucchini": { "quantity": 3, "unit": "servings" },
+    "Grated cheese": { "quantity": 200, "unit": "g" },
+    "Pasta Sauce": { "quantity": 1, "unit": "servings" },
+    "Chopped Tomatoes": { "quantity": 1, "unit": "servings" },
+    "Scallions": { "quantity": 100, "unit": "g" },
+    "Lasagne sheets": { "quantity": 100, "unit": "g" }
+  }
+}
