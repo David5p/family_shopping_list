@@ -2,6 +2,7 @@
 # You can delete these comments, but do not change the name of this file
 # Write your code to expect a terminal of 80 characters wide and 24 rows high
 
+import json
 
 def welcome_message():
     """
@@ -40,6 +41,23 @@ def generate_shopping_list():
 def view_stock():
     print("Viewing stock...")
 
+
+def load_stock():
+    """
+    Load stock from the json file so user has access to 
+    what stock is available.
+    """
+    with open("stock.json", "r") as file:
+        stock = json.load(file)
+        return stock
+
+stock_data = load_stock()
+
+for item, info in stock_data.items():
+    print(f"{item}: {info['quantity']} {info['unit']}")
+
+
 # Start program
-welcome_message()
-main_menu()
+load_stock()
+"""welcome_message()
+main_menu()"""
