@@ -57,7 +57,24 @@ for item, info in stock_data.items():
     print(f"{item}: {info['quantity']} {info['unit']}")
 
 
+def load_recipes():
+    """
+    Load recipes from the json file so they are ready to be 
+    compared to the stock list.
+    """
+    with open("recipes.json", "r") as file:
+        stock = json.load(file)
+        return stock
+
+recipes_data = load_recipes()
+
+for recipe_name, ingredients in recipes_data.items():
+    print(f"\nRecipe: {recipe_name}")
+    for item, info in ingredients.items():
+        print(f"  {item}: {info['quantity']} {info['unit']}")
+
 # Start program
 load_stock()
+load_recipes()
 """welcome_message()
 main_menu()"""

@@ -23,5 +23,40 @@
     "Chopped Tomatoes": { "quantity": 1, "unit": "servings" },
     "Scallions": { "quantity": 100, "unit": "g" },
     "Lasagne sheets": { "quantity": 100, "unit": "g" }
+  },
+  "Chicken and avo wraps": {
+    "Chicken": { "quantity": 270, "unit": "g" },
+    "Wraps": { "quantity": 1, "unit": "pack" },
+    "Avocado": { "quantity": 2, "unit": "servings" },
+    "Chicken marinade": { "quantity": 1, "unit": "pack" }
+  },
+  "Halloumi wraps": {
+    "Halloumi": { "quantity": 1, "unit": "packs" },
+    "Wraps": { "quantity": 1, "unit": "packs" },
+    "Tzakiki": { "quantity": 1, "unit": "servings" },
+    "Cucumber": { "quantity": 200, "unit": "g" },
+    "Tomatoes": { "quantity": 200, "unit": "g" }
+  },
+  "Hummus and egg on toast": {
+    "Hummus": { "quantity": 0.25, "unit": "packs" },
+    "Eggs": { "quantity": 3, "unit": "servings" },
+    "Gluten free bread": { "quantity": 3, "unit": "pieces" },
+    "Bread": { "quantity": 2, "unit": "pieces" },
+    "Avocado": { "quantity": 1, "unit": "servings" }
+  },
+  "Chicken and rice tray bake": {
+    "Chicken thighs": { "quantity": 900, "unit": "g" },
+    "Chicken taco spice": { "quantity": 1, "unit": "packs" },
+    "Zucchini": { "quantity": 3, "unit": "servings" },
+    "Rice": { "quantity": 200, "unit": "g" },
+    "chicken stock": { "quantity": 1, "unit": "servings" },
+    "Scallions": { "quantity": 100, "unit": "g" }
+  },
+  "Burgers": {
+    "Mince": { "quantity": 750, "unit": "g" },
+    "Buns": { "quantity": 2, "unit": "packs" },
+    "Egg": { "quantity": 1, "unit": "servings" },
+    "Flour": { "quantity": 90, "unit": "g" },
+    "Scallions": { "quantity": 150, "unit": "g" }
   }
 }
