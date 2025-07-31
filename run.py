@@ -65,7 +65,7 @@ def load_recipes():
     with open("recipes.json", "r") as file:
         recipes = json.load(file)
         return recipes
-
+    
 def generate_shopping_list(meal_plan, recipes_data, stock): 
     shopping_list = {}
 
@@ -82,19 +82,24 @@ def generate_shopping_list(meal_plan, recipes_data, stock):
 
                 if stock_unit == needed_unit:
                     if stock_qty < needed_qty:
-                        # Not enough stock. Calculate how much more is needed.
                         extra_needed = needed_qty - stock_qty
                     else:
-                        continue
-                else: extra_needed = needed_qty
-                
-                    # Units are wrong. Add full amount to shopping list just in case
-                if item in shopping_list:
-                    shopping_list[item]["quantity"] += needed_qty
+                        continue  # Enough stock, no need to add
                 else:
-                    shopping_list[item] = {"quantity": needed_qty, "unit": needed_unit}
-                
+                    # Unit mismatch, play it safe and add full amount
+                    extra_needed = needed_qty
+            else:
+                # Item not in stock at all
+                extra_needed = needed_qty
+
+            # Add to shopping list
+            if item in shopping_list:
+                shopping_list[item]["quantity"] += extra_needed
+            else:
+                shopping_list[item] = {"quantity": extra_needed, "unit": needed_unit}
+
     return shopping_list
+
 
 # Start program
 welcome_message()
