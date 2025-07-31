@@ -39,7 +39,7 @@
   },
   "Hummus and egg on toast": {
     "Hummus": { "quantity": 0.25, "unit": "packs" },
-    "Eggs": { "quantity": 3, "unit": "servings" },
+    "Eggs": { "quantity": 3, "unit": "large" },
     "Gluten free bread": { "quantity": 3, "unit": "pieces" },
     "Bread": { "quantity": 2, "unit": "pieces" },
     "Avocado": { "quantity": 1, "unit": "servings" }
@@ -55,7 +55,7 @@
   "Burgers": {
     "Mince": { "quantity": 750, "unit": "g" },
     "Buns": { "quantity": 2, "unit": "packs" },
-    "Egg": { "quantity": 1, "unit": "servings" },
+    "Eggs": { "quantity": 1, "unit": "large" },
     "Flour": { "quantity": 90, "unit": "g" },
     "Scallions": { "quantity": 150, "unit": "g" }
   }

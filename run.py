@@ -31,7 +31,7 @@ def main_menu():
         choice = input("Enter your choice(1-3):")
 
         if choice == "1":
-            meal_plan = ["Greek Chicken", "Hummus and egg on toast"]
+            meal_plan = ["Greek Chicken", "Hummus and egg on toast", "Lasagne", "Burgers"]
             shopping_list = generate_shopping_list(meal_plan, recipes_data, stock_data)
             print("\nShopping List:")
             for item, info in shopping_list.items():
@@ -84,14 +84,16 @@ def generate_shopping_list(meal_plan, recipes_data, stock):
                     if stock_qty < needed_qty:
                         # Not enough stock. Calculate how much more is needed.
                         extra_needed = needed_qty - stock_qty
-                        shopping_list[item] = {"quantity": extra_needed, "unit": needed_unit}
-                else:
+                    else:
+                        continue
+                else: extra_needed = needed_qty
+                
                     # Units are wrong. Add full amount to shopping list just in case
+                if item in shopping_list:
+                    shopping_list[item]["quantity"] += needed_qty
+                else:
                     shopping_list[item] = {"quantity": needed_qty, "unit": needed_unit}
-            else:
-                # Out of stock. Add full amount
-                shopping_list[item] = {"quantity": needed_qty, "unit": needed_unit}
-    
+                
     return shopping_list
 
 # Start program
