@@ -13,7 +13,10 @@ def welcome_message():
 def main_menu():
     """
     Provide user with options to select how they will use the program
-    """ 
+    """
+    stock_data = load_stock()
+    recipes_data = load_recipes()
+ 
     while True:
         print("\nMain Menu")
         print("1. Generate Shopping List")
@@ -23,7 +26,11 @@ def main_menu():
         choice = input("Enter your choice(1-3):")
 
         if choice == "1":
-            generate_shopping_list()
+            meal_plan = ["Greek Chicken", "Hummus and egg on toast"]
+            shopping_list = generate_shopping_list(meal_plan, recipes_data, stock_data)
+            print("\nShopping List:")
+            for item, info in shopping_list.items():
+                print(f"- {item}: {info['quantity']} {info['unit']}")
             break
         elif choice == "2":
             view_stock()
@@ -33,13 +40,6 @@ def main_menu():
             break
         else:
             print("Invalid input. Please enter 1, 2, or 3.")
-
-# Placeholder functions to make main menu function
-def generate_shopping_list():
-    print("Generating shopping list...")
-
-def view_stock():
-    print("Viewing stock...")
 
 
 def load_stock():
@@ -102,10 +102,11 @@ def generate_shopping_list(meal_plan, recipes_data, stock):
                 shopping_list[item] = {"quantity": needed_qty, "unit": needed_unit}
     
     return shopping_list
-
+shopping_list = generate_shopping_list(meal_plan, recipes_data, stock_data)
+print("Shopping List:")
+for item, info in shopping_list.items():
+    print(f"- {item}: {info['quantity']} {info['unit']}")
 
 # Start program
-load_stock()
-load_recipes()
-"""welcome_message()
-main_menu()"""
+welcome_message()
+main_menu()
