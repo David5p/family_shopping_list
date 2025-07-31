@@ -75,30 +75,33 @@ for recipe_name, ingredients in recipes_data.items():
 
 meal_plan = ["Greek Chicken", "Hummus and egg on toast"]
 
-shopping_list = {}
+def generate_shopping_list(meal_plan, recipes_data, stock): 
+    shopping_list = {}
 
-for recipe_name in meal_plan:
-   ingredients = recipes[recipe_name]
+    for recipe_name in meal_plan:
+        ingredients = recipes_data[recipe_name]
 
-   for item, needed_info in ingredients.items():
-        needed_qty = needed_info["quantity"]
-        needed_unit = needed_info["unit"]
+        for item, needed_info in ingredients.items():
+            needed_qty = needed_info["quantity"]
+            needed_unit = needed_info["unit"]
 
-        if item in stock:
-            stock_qty = stock[item]["quantity"]
-            stock_unit = stock[item]["unit"]
+            if item in stock:
+                stock_qty = stock[item]["quantity"]
+                stock_unit = stock[item]["unit"]
 
-             if stock_unit == needed_unit:
-                if stock_qty < needed_qty:
-                    # Not enough stock. Calculate how much more is needed.
-                    extra_needed = needed_qty - stock_qty
-                    shopping_list[item] = {"quantity": extra_needed, "unit": needed_unit}
+                if stock_unit == needed_unit:
+                    if stock_qty < needed_qty:
+                        # Not enough stock. Calculate how much more is needed.
+                        extra_needed = needed_qty - stock_qty
+                        shopping_list[item] = {"quantity": extra_needed, "unit": needed_unit}
+                else:
+                    # Units are wrong. Add full amount to shopping list just in case
+                    shopping_list[item] = {"quantity": needed_qty, "unit": needed_unit}
             else:
-                # Units are wrong. Add full amount to shopping list just in case
+                # Out of stock. Add full amount
                 shopping_list[item] = {"quantity": needed_qty, "unit": needed_unit}
-        else:
-            # Out of stock. Add full amount
-            shopping_list[item] = {"quantity": needed_qty, "unit": needed_unit}
+    
+    return shopping_list
 
 
 # Start program
