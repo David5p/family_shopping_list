@@ -10,6 +10,11 @@ def welcome_message():
     """
     print("\nWelcome to the Family Shopping List")
 
+def view_stock(stock_data):
+    print("\nCurrent Stock:")
+    for item, info in stock_data.items():
+        print(f"- {item}: {info['quantity']} {info['unit']}")
+
 def main_menu():
     """
     Provide user with options to select how they will use the program
@@ -26,11 +31,7 @@ def main_menu():
         choice = input("Enter your choice(1-3):")
 
         if choice == "1":
-            meal_plan = ["Greek Chicken", "Hummus and egg on toast"]
-            shopping_list = generate_shopping_list(meal_plan, recipes_data, stock_data)
-            print("\nShopping List:")
-            for item, info in shopping_list.items():
-                print(f"- {item}: {info['quantity']} {info['unit']}")
+            generate_shopping_list(meal_plan, recipes_data, stock)
             break
         elif choice == "2":
             view_stock()
@@ -51,11 +52,6 @@ def load_stock():
         stock = json.load(file)
         return stock
 
-stock_data = load_stock()
-
-for item, info in stock_data.items():
-    print(f"{item}: {info['quantity']} {info['unit']}")
-
 
 def load_recipes():
     """
@@ -65,13 +61,6 @@ def load_recipes():
     with open("recipes.json", "r") as file:
         stock = json.load(file)
         return stock
-
-recipes_data = load_recipes()
-
-for recipe_name, ingredients in recipes_data.items():
-    print(f"\nRecipe: {recipe_name}")
-    for item, info in ingredients.items():
-        print(f"  {item}: {info['quantity']} {info['unit']}")
 
 meal_plan = ["Greek Chicken", "Hummus and egg on toast"]
 
