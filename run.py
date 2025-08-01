@@ -36,10 +36,8 @@ def main_menu():
             print("\nShopping List:")
             for item, info in shopping_list.items():
                 print(f"- {item}: {info['quantity']} {info['unit']}")
-            break
         elif choice == "2":
             view_stock(stock_data)
-            break
         elif choice == "3":
             print("Goodbye!")
             break
@@ -86,7 +84,7 @@ def generate_shopping_list(meal_plan, recipes_data, stock):
                     else:
                         continue  # Enough stock, no need to add
                 else:
-                    # Unit mismatch, play it safe and add full amount
+                    # Unit mismatch so add full amount
                     extra_needed = needed_qty
             else:
                 # Item not in stock at all
