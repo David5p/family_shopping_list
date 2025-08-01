@@ -1,8 +1,8 @@
 # Your code goes here.
 # You can delete these comments, but do not change the name of this file
 # Write your code to expect a terminal of 80 characters wide and 24 rows high
-
 import json
+import difflib
 
 def welcome_message():
     """
@@ -11,6 +11,9 @@ def welcome_message():
     print("\nWelcome to the Family Shopping List")
 
 def view_stock(stock_data):
+    """
+    When user wants to see current stock
+    """
     print("\nCurrent Stock:")
     for item, info in stock_data.items():
         print(f"- {item}: {info['quantity']} {info['unit']}")
@@ -34,19 +37,20 @@ def main_menu():
             print("\n Available Recipes")
             for recipe in recipes_data:
                 print(f"- {recipe}")
-            meal_input = input("\n What do you want to eat? \nChoose your meal plan (separate by commas): ")
-            meal_plan = [meal.strip() for meal in meal_input.split(",")]
-            
-            valid_meals = []
-            for meal in meal_plan:
-                if meal in recipes_data:
-                    valid_meals.append(meal)
+            meal_input = input("\n What do you want to eat? \nChoose your meal plan (separate by commas): \n")
+            meal_plan = []
+            for meal in meal_input.split(","):
+                meal = meal.strip()
+                match = get_closest_match(meal, recipes_data.keys())
+                if match:
+                    print(f"Matched '{meal}' to '{match}'")
+                    meal_plan.append(match)
                 else:
-                    print(f" '{meal}' not found in recipes data")
-            if not valid_meals:
-                print("No valid meals found. Returning to main menu.")
-                continue
-            
+                    print(f"'{meal}' not found and was skipped.")
+            if not meal_plan:
+                print("No valid meals entered. Returning to main menu.")
+                continue 
+
             shopping_list = generate_shopping_list(meal_plan, recipes_data, stock_data)
             print("\nShopping List:")
             for item, info in shopping_list.items():
@@ -79,7 +83,19 @@ def load_recipes():
         recipes = json.load(file)
         return recipes
     
+def get_closest_match(user_input, recipe_names, cutoff=0.6):
+    """
+    Allow user to make small mistakes when inputting their meal plan
+    """
+    matches = difflib.get_close_matches(user_input, recipe_names, n = 1, cutoff=0.6)
+
+    return matches[0] if matches else None
+
+    
 def generate_shopping_list(meal_plan, recipes_data, stock): 
+    """
+    Function takes into account already stocked ingredients to formulate a shopping list
+    """
     shopping_list = {}
 
     for recipe_name in meal_plan:
