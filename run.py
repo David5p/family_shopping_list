@@ -31,7 +31,22 @@ def main_menu():
         choice = input("Enter your choice(1-3):")
 
         if choice == "1":
-            meal_plan = ["Greek Chicken", "Hummus and egg on toast", "Lasagne", "Burgers"]
+            print("\n Available Recipes")
+            for recipe in recipes_data:
+                print(f"- {recipe}")
+            meal_input = input("\n What do you want to eat? \nChoose your meal plan (separate by commas): ")
+            meal_plan = [meal.strip() for meal in meal_input.split(",")]
+            
+            valid_meals = []
+            for meal in meal_plan:
+                if meal in recipes_data:
+                    valid_meals.append(meal)
+                else:
+                    print(f" '{meal}' not found in recipes data")
+            if not valid_meals:
+                print("No valid meals found. Returning to main menu.")
+                continue
+            
             shopping_list = generate_shopping_list(meal_plan, recipes_data, stock_data)
             print("\nShopping List:")
             for item, info in shopping_list.items():
