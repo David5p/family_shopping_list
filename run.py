@@ -34,19 +34,7 @@ def main_menu():
         choice = input("Enter your choice(1-3):")
 
         if choice == "1":
-            print("\n Available Recipes")
-            for recipe in recipes_data:
-                print(f"- {recipe}")
-            meal_input = input("\n What do you want to eat? \nChoose your meal plan (separate by commas): \n")
-            meal_plan = []
-            for meal in meal_input.split(","):
-                meal = meal.strip()
-                match = get_closest_match(meal, recipes_data.keys())
-                if match:
-                    print(f"Matched '{meal}' to '{match}'")
-                    meal_plan.append(match)
-                else:
-                    print(f"'{meal}' not found and was skipped.")
+            meal_plan = get_meal_plan_from_user(recipes_data) 
             if not meal_plan:
                 print("No valid meals entered. Returning to main menu.")
                 continue 
@@ -83,7 +71,7 @@ def load_recipes():
         recipes = json.load(file)
         return recipes
     
-def get_closest_match(user_input, recipe_names, cutoff=0.6):
+def get_closest_match(user_input, recipe_names, cutoff=0.5):
     """
     Allow user to make small mistakes when inputting their meal plan
     """
@@ -91,7 +79,24 @@ def get_closest_match(user_input, recipe_names, cutoff=0.6):
 
     return matches[0] if matches else None
 
-    
+def get_meal_plan_from_user(recipes_data):
+     print("\n Available Recipes")
+            for recipe in recipes_data:
+                print(f"- {recipe}")
+
+            meal_input = input("\n What do you want to eat? \nChoose your meal plan (separate by commas): \n")
+           
+            meal_plan = []
+            for meal in meal_input.split(","):
+                meal = meal.strip()
+                match = get_closest_match(meal, recipes_data.keys(), cutoff = 0.5)
+                if match:
+                    print(f"Matched '{meal}' to '{match}'")
+                    meal_plan.append(match)
+                else:
+                    print(f"'{meal}' not found and was skipped.")
+            return meal_plan
+
 def generate_shopping_list(meal_plan, recipes_data, stock): 
     """
     Function takes into account already stocked ingredients to formulate a shopping list
