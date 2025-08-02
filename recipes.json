@@ -58,5 +58,11 @@
     "Eggs": { "quantity": 1, "unit": "large" },
     "Flour": { "quantity": 90, "unit": "g" },
     "Scallions": { "quantity": 150, "unit": "g" }
+  },
+  "Salmon and rice": {
+    "Salmon": { "quantity": 375, "unit": "g" },
+    "Rice": { "quantity": 100, "unit": "g" },
+    "Lime": { "quantity": 1, "unit": "large" },
+    "Feta": { "quantity": 100, "unit": "g" }
   }
 }

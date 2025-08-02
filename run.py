@@ -80,22 +80,22 @@ def get_closest_match(user_input, recipe_names, cutoff=0.5):
     return matches[0] if matches else None
 
 def get_meal_plan_from_user(recipes_data):
-     print("\n Available Recipes")
-            for recipe in recipes_data:
-                print(f"- {recipe}")
+    print("\n Available Recipes")
+    for recipe in recipes_data:
+        print(f"- {recipe}")
 
-            meal_input = input("\n What do you want to eat? \nChoose your meal plan (separate by commas): \n")
+    meal_input = input("\n What do you want to eat? \nChoose your meal plan (separate by commas): \n")
            
-            meal_plan = []
-            for meal in meal_input.split(","):
-                meal = meal.strip()
-                match = get_closest_match(meal, recipes_data.keys(), cutoff = 0.5)
-                if match:
-                    print(f"Matched '{meal}' to '{match}'")
-                    meal_plan.append(match)
-                else:
-                    print(f"'{meal}' not found and was skipped.")
-            return meal_plan
+    meal_plan = []
+    for meal in meal_input.split(","):
+        meal = meal.strip()
+        match = get_closest_match(meal, recipes_data.keys(), cutoff = 0.5)
+        if match:
+            print(f"Matched '{meal}' to '{match}'")
+            meal_plan.append(match)
+        else:
+            print(f"'{meal}' not found and was skipped.")
+    return meal_plan
 
 def generate_shopping_list(meal_plan, recipes_data, stock): 
     """
