@@ -89,5 +89,50 @@
     "Feta": { "quantity": 100, "unit": "g" },
     "Bacon": { "quantity": 1, "unit": "packs" },
     "Tomatoes": { "quantity": 200, "unit": "g" }
+  },
+  "Halloumi and pesto bowl": {
+    "Halloumi": { "quantity": 1, "unit": "packs" },
+    "Zucchini": { "quantity": 3, "unit": "servings" },
+    "Chickpeas": { "quantity": 2, "unit": "packs" },
+    "Paprika": { "quantity": 3, "unit": "servings" },
+    "Pesto": { "quantity": 100, "unit": "g" },
+    "Scallions": { "quantity": 150, "unit": "g" },
+    "Rice": { "quantity": 200, "unit": "g" }
+  },
+  "Sweet Chili Wok": {
+    "Beef": { "quantity": 1, "unit": "kg" },
+    "Wok veg": { "quantity": 2, "unit": "packs" },
+    "Sweet chili sauce": { "quantity": 6, "unit": "tablespoons" },
+    "Soy sauce": { "quantity": 2, "unit": "tablespoons" },
+    "Lime": { "quantity": 2, "unit": "tablespoons" },
+    "Noodles": { "quantity": 180, "unit": "g" },
+    "Coriander": { "quantity": 2, "unit": "teaspoons" }
+  },
+  "Vegetable pasta": {
+    "Pasta": { "quantity": 270, "unit": "g" },
+    "Paprika": { "quantity": 3, "unit": "servings" },
+    "Tomatoes": { "quantity": 200, "unit": "g" },
+    "Feta": { "quantity": 100, "unit": "g" },
+    "Zucchini": { "quantity": 2, "unit": "servings" }
+  },
+  "Mozarella and pesto pasta": {
+    "Pasta": { "quantity": 270, "unit": "g" },
+    "Mozarella": { "quantity": 1, "unit": "packs" },
+    "Tomatoes": { "quantity": 200, "unit": "g" }
+  },
+  "Spaghetti Bolognese": {
+    "Spaghetti": { "quantity": 270, "unit": "g" },
+    "Mince": { "quantity": 750, "unit": "g" },
+    "Chopped tomatoes": { "quantity": 1, "unit": "packs" },
+    "Pasta sauce": { "quantity": 1, "unit": "packs" },
+    "Zucchini": { "quantity": 2, "unit": "servings" },
+    "Scallions": { "quantity": 150, "unit": "g" },
+    "Grated cheese": { "quantity": 50, "unit": "g" }
+  },
+  "Cheese Sandwich": {
+    "Cheese": { "quantity": 170, "unit": "g" },
+    "Gluten free bread": { "quantity": 3, "unit": "pieces" },
+    "Bread": { "quantity": 2, "unit": "pieces" },
+    "Tomatoes": { "quantity": 200, "unit": "g" }
   }
 }
