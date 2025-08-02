@@ -64,5 +64,30 @@
     "Rice": { "quantity": 100, "unit": "g" },
     "Lime": { "quantity": 1, "unit": "large" },
     "Feta": { "quantity": 100, "unit": "g" }
+  },
+  "Chicken and Bacon dish": {
+    "Chicken": { "quantity": 700, "unit": "g" },
+    "Bacon": { "quantity": 2, "unit": "packs" },
+    "Broccoli": { "quantity": 500, "unit": "g" },
+    "Grated cheese": { "quantity": 200, "unit": "g" },
+    "Scallions": { "quantity": 150, "unit": "g" }
+  },
+  "Full English": {
+    "Sausages": { "quantity": 1, "unit": "packs" },
+    "Eggs": { "quantity": 4, "unit": "large" },
+    "Croissant": { "quantity": 0.125, "unit": "packs" },
+    "Cinnamon bun gf": { "quantity": 0.25, "unit": "packs" },
+    "Scallions": { "quantity": 150, "unit": "g" },
+    "Bacon": { "quantity": 1, "unit": "packs" },
+    "Tomatoes": { "quantity": 200, "unit": "g" }
+  },
+  "Baked potato": {
+    "Tuna": { "quantity": 1, "unit": "packs" },
+    "Avocado": { "quantity": 1, "unit": "servings" },
+    "Potatoes": { "quantity": 700, "unit": "g" },
+    "Butter": { "quantity": 0.25, "unit": "packs" },
+    "Feta": { "quantity": 100, "unit": "g" },
+    "Bacon": { "quantity": 1, "unit": "packs" },
+    "Tomatoes": { "quantity": 200, "unit": "g" }
   }
 }
