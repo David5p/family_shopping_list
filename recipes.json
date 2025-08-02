@@ -134,5 +134,17 @@
     "Gluten free bread": { "quantity": 3, "unit": "pieces" },
     "Bread": { "quantity": 2, "unit": "pieces" },
     "Tomatoes": { "quantity": 200, "unit": "g" }
-  }
+  },
+  "Chicken Burgers": {
+    "Chicken": { "quantity": 360, "unit": "g" },
+    "Avocado": { "quantity": 2, "unit": "servings" },
+    "Buns": { "quantity": 2, "unit": "packs" },
+    "Olive oil": { "quantity": 1, "unit": "tablespoons" },
+    "Chili powder": { "quantity": 2, "unit": "teaspoons" },
+    "Garlic powder": { "quantity": 1, "unit": "teaspoons" },
+    "Cumin": { "quantity": 1, "unit": "teaspoons" },
+    "Oregano": { "quantity": 0.5, "unit": "teaspoons" },
+    "Black pepper": { "quantity": 0.5, "unit": "teaspoons" }
+  },
+  "Takeaway": {}
 }
