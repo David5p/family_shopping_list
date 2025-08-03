@@ -1,195 +1,196 @@
-"Breakfast":{
-  "Porridge":{
-    "Gluten free oats": { "quantity": 50, "unit": "g" },
-    "Honey": { "quantity": 10, "unit": "g" },
-    "Milk": { "quantity": 150, "unit": "ml" }
+{
+  "Breakfast": {
+    "Porridge": {
+      "Gluten free oats": { "quantity": 50, "unit": "g" },
+      "Honey": { "quantity": 10, "unit": "g" },
+      "Milk": { "quantity": 150, "unit": "ml" }
+    },
+    "Weetabix": {
+      "Weetabix": { "quantity": 37.5, "unit": "g" },
+      "Honey": { "quantity": 7, "unit": "g" },
+      "Milk": { "quantity": 200, "unit": "ml" }
+    }
   },
-  "Weetabix":{
-    "Weetabix": { "quantity": 37.5, "unit": "g" },
-    "Honey": { "quantity": 7, "unit": "g" },
-    "Milk": { "quantity": 200, "unit": "ml" }
+  "Meals": {
+    "Greek Chicken": {
+      "Feta": { "quantity": 100, "unit": "g" },
+      "Tomatoes": { "quantity": 1, "unit": "packs" },
+      "Cucumber": { "quantity": 1, "unit": "servings" },
+      "Chicken": { "quantity": 1, "unit": "servings" },
+      "Scallions": { "quantity": 1, "unit": "servings" },
+      "Olives": { "quantity": 1, "unit": "servings" },
+      "Rice": { "quantity": 100, "unit": "g" }
+    },
+    "Fish and wedges": {
+      "Fish": { "quantity": 120, "unit": "g" },
+      "Gluten free Fish": { "quantity": 170, "unit": "g" },
+      "Baked beans": { "quantity": 190, "unit": "g" },
+      "Potatoes": { "quantity": 800, "unit": "g" },
+      "Frozen veg": { "quantity": 80, "unit": "g" }
+    },
+    "Lasagne": {
+      "Hummus": { "quantity": 1, "unit": "packs" },
+      "Mince": { "quantity": 750, "unit": "g" },
+      "Zucchini": { "quantity": 3, "unit": "servings" },
+      "Grated cheese": { "quantity": 200, "unit": "g" },
+      "Pasta Sauce": { "quantity": 2, "unit": "packs" },
+      "Chopped Tomatoes": { "quantity": 1, "unit": "servings" },
+      "Scallions": { "quantity": 100, "unit": "g" },
+      "Lasagne sheets": { "quantity": 100, "unit": "g" }
+    },
+    "Chicken and avo wraps": {
+      "Chicken": { "quantity": 270, "unit": "g" },
+      "Wraps": { "quantity": 1, "unit": "packs" },
+      "Avocado": { "quantity": 2, "unit": "servings" },
+      "Chicken marinade": { "quantity": 1, "unit": "packs" }
+    },
+    "Halloumi wraps": {
+      "Halloumi": { "quantity": 1, "unit": "packs" },
+      "Wraps": { "quantity": 1, "unit": "packs" },
+      "Tzakiki": { "quantity": 1, "unit": "servings" },
+      "Cucumber": { "quantity": 200, "unit": "g" },
+      "Tomatoes": { "quantity": 200, "unit": "g" }
+    },
+    "Hummus and egg on toast": {
+      "Hummus": { "quantity": 0.25, "unit": "packs" },
+      "Eggs": { "quantity": 3, "unit": "large" },
+      "Gluten free bread": { "quantity": 3, "unit": "pieces" },
+      "Bread": { "quantity": 2, "unit": "pieces" },
+      "Avocado": { "quantity": 1, "unit": "servings" }
+    },
+    "Chicken and rice tray bake": {
+      "Chicken thighs": { "quantity": 900, "unit": "g" },
+      "Chicken taco spice": { "quantity": 1, "unit": "packs" },
+      "Zucchini": { "quantity": 3, "unit": "servings" },
+      "Rice": { "quantity": 200, "unit": "g" },
+      "Chicken stock": { "quantity": 1, "unit": "servings" },
+      "Scallions": { "quantity": 100, "unit": "g" }
+    },
+    "Burgers": {
+      "Mince": { "quantity": 750, "unit": "g" },
+      "Buns": { "quantity": 2, "unit": "packs" },
+      "Eggs": { "quantity": 1, "unit": "large" },
+      "Flour": { "quantity": 90, "unit": "g" },
+      "Scallions": { "quantity": 150, "unit": "g" }
+    },
+    "Salmon and rice": {
+      "Salmon": { "quantity": 375, "unit": "g" },
+      "Rice": { "quantity": 100, "unit": "g" },
+      "Lime": { "quantity": 1, "unit": "tablespoons" },
+      "Feta": { "quantity": 100, "unit": "g" }
+    },
+    "Chicken and Bacon dish": {
+      "Chicken": { "quantity": 700, "unit": "g" },
+      "Bacon": { "quantity": 2, "unit": "packs" },
+      "Broccoli": { "quantity": 500, "unit": "g" },
+      "Grated cheese": { "quantity": 200, "unit": "g" },
+      "Scallions": { "quantity": 150, "unit": "g" }
+    },
+    "Full English": {
+      "Sausages": { "quantity": 1, "unit": "packs" },
+      "Eggs": { "quantity": 4, "unit": "large" },
+      "Croissant": { "quantity": 0.125, "unit": "packs" },
+      "Cinnamon bun gf": { "quantity": 0.25, "unit": "packs" },
+      "Scallions": { "quantity": 150, "unit": "g" },
+      "Bacon": { "quantity": 1, "unit": "packs" },
+      "Tomatoes": { "quantity": 200, "unit": "g" }
+    },
+    "Baked potato": {
+      "Tuna": { "quantity": 1, "unit": "packs" },
+      "Avocado": { "quantity": 1, "unit": "servings" },
+      "Potatoes": { "quantity": 700, "unit": "g" },
+      "Butter": { "quantity": 0.1, "unit": "packs" },
+      "Feta": { "quantity": 100, "unit": "g" },
+      "Bacon": { "quantity": 1, "unit": "packs" },
+      "Tomatoes": { "quantity": 200, "unit": "g" }
+    },
+    "Halloumi and pesto bowl": {
+      "Halloumi": { "quantity": 1, "unit": "packs" },
+      "Zucchini": { "quantity": 3, "unit": "servings" },
+      "Chickpeas": { "quantity": 2, "unit": "packs" },
+      "Paprika": { "quantity": 3, "unit": "servings" },
+      "Pesto": { "quantity": 100, "unit": "g" },
+      "Scallions": { "quantity": 150, "unit": "g" },
+      "Rice": { "quantity": 200, "unit": "g" }
+    },
+    "Sweet Chili Wok": {
+      "Beef": { "quantity": 1, "unit": "kg" },
+      "Wok veg": { "quantity": 2, "unit": "packs" },
+      "Sweet chili sauce": { "quantity": 6, "unit": "tablespoons" },
+      "Soy sauce": { "quantity": 2, "unit": "tablespoons" },
+      "Lime": { "quantity": 2, "unit": "tablespoons" },
+      "Noodles": { "quantity": 180, "unit": "g" },
+      "Coriander": { "quantity": 2, "unit": "teaspoons" }
+    },
+    "Vegetable pasta": {
+      "Pasta": { "quantity": 270, "unit": "g" },
+      "Paprika": { "quantity": 3, "unit": "servings" },
+      "Tomatoes": { "quantity": 200, "unit": "g" },
+      "Feta": { "quantity": 100, "unit": "g" },
+      "Zucchini": { "quantity": 2, "unit": "servings" }
+    },
+    "Mozarella and pesto pasta": {
+      "Pasta": { "quantity": 270, "unit": "g" },
+      "Mozarella": { "quantity": 1, "unit": "packs" },
+      "Tomatoes": { "quantity": 200, "unit": "g" }
+    },
+    "Spaghetti Bolognese": {
+      "Spaghetti": { "quantity": 270, "unit": "g" },
+      "Mince": { "quantity": 750, "unit": "g" },
+      "Chopped tomatoes": { "quantity": 1, "unit": "packs" },
+      "Pasta sauce": { "quantity": 1, "unit": "packs" },
+      "Zucchini": { "quantity": 2, "unit": "servings" },
+      "Scallions": { "quantity": 150, "unit": "g" },
+      "Grated cheese": { "quantity": 50, "unit": "g" }
+    },
+    "Cheese Sandwich": {
+      "Cheese": { "quantity": 170, "unit": "g" },
+      "Gluten free bread": { "quantity": 3, "unit": "pieces" },
+      "Bread": { "quantity": 2, "unit": "pieces" },
+      "Tomatoes": { "quantity": 200, "unit": "g" }
+    },
+    "Chicken Burgers": {
+      "Chicken": { "quantity": 360, "unit": "g" },
+      "Avocado": { "quantity": 2, "unit": "servings" },
+      "Buns": { "quantity": 2, "unit": "packs" },
+      "Olive oil": { "quantity": 1, "unit": "tablespoons" },
+      "Chili powder": { "quantity": 2, "unit": "teaspoons" },
+      "Garlic powder": { "quantity": 1, "unit": "teaspoons" },
+      "Cumin": { "quantity": 1, "unit": "teaspoons" },
+      "Oregano": { "quantity": 0.5, "unit": "teaspoons" },
+      "Black pepper": { "quantity": 0.5, "unit": "teaspoons" }
+    },
+
+    "Takeaway": {}
+  },
+  "Snacks": {
+    "Peanut butter on toast": {
+      "Peanut butter": { "quantity": 6, "unit": "g" },
+      "Bread": { "quantity": 1, "unit": "pieces" },
+      "Honey": { "quantity": 7, "unit": "g" }
+    },
+    "Yogurt and granola": {
+      "Yogurt": { "quantity": 100, "unit": "g" },
+      "Granola": { "quantity": 50, "unit": "g" },
+      "Blueberries": { "quantity": 70, "unit": "g" }
+    },
+    "Peanut butter smoothie": {
+      "Cow's milk": { "quantity": 350, "unit": "ml" },
+      "Peanut butter": { "quantity": 35, "unit": "g" },
+      "Bananas": { "quantity": 3, "unit": "servings" },
+      "Cashew nuts": { "quantity": 50, "unit": "g" }
+    },
+    "Gluten free biscuits": {
+      "McVitie's Hobnobs": { "quantity": 30, "unit": "g" }
+    },
+    "Calorie Control bar": {
+      "Calorie Control": { "quantity": 1, "unit": "servings" }
+    },
+    "Caramel flapjack": {
+      "Caramel flapjack": { "quantity": 1, "unit": "servings" }
+    },
+    "Apple and raspberry flapjack": {
+      "Apple and raspberry flapjack": { "quantity": 1, "unit": "servings" }
+    }
   }
 }
-"Meals": {
-  "Greek Chicken": {
-    "Feta": { "quantity": 100, "unit": "g" },
-    "Tomatoes": { "quantity": 1, "unit": "packs" },
-    "Cucumber": { "quantity": 1, "unit": "servings" },
-    "Chicken": { "quantity": 1, "unit": "servings" },
-    "Scallions": { "quantity": 1, "unit": "servings" },
-    "Olives": { "quantity": 1, "unit": "servings" },
-    "Rice": { "quantity": 100, "unit": "g" }
-  },
-  "Fish and wedges": {
-    "Fish": { "quantity": 120, "unit": "g" },
-    "Gluten free Fish": { "quantity": 170, "unit": "g" },
-    "Baked beans": { "quantity": 190, "unit": "g" },
-    "Potatoes": { "quantity": 800, "unit": "g" },
-    "Frozen veg": { "quantity": 80, "unit": "g" }
-  },
-  "Lasagne": {
-    "Hummus": { "quantity": 1, "unit": "packs" },
-    "Mince": { "quantity": 750, "unit": "g" },
-    "Zucchini": { "quantity": 3, "unit": "servings" },
-    "Grated cheese": { "quantity": 200, "unit": "g" },
-    "Pasta Sauce": { "quantity": 2, "unit": "packs" },
-    "Chopped Tomatoes": { "quantity": 1, "unit": "servings" },
-    "Scallions": { "quantity": 100, "unit": "g" },
-    "Lasagne sheets": { "quantity": 100, "unit": "g" }
-  },
-  "Chicken and avo wraps": {
-    "Chicken": { "quantity": 270, "unit": "g" },
-    "Wraps": { "quantity": 1, "unit": "packs" },
-    "Avocado": { "quantity": 2, "unit": "servings" },
-    "Chicken marinade": { "quantity": 1, "unit": "packs" }
-  },
-  "Halloumi wraps": {
-    "Halloumi": { "quantity": 1, "unit": "packs" },
-    "Wraps": { "quantity": 1, "unit": "packs" },
-    "Tzakiki": { "quantity": 1, "unit": "servings" },
-    "Cucumber": { "quantity": 200, "unit": "g" },
-    "Tomatoes": { "quantity": 200, "unit": "g" }
-  },
-  "Hummus and egg on toast": {
-    "Hummus": { "quantity": 0.25, "unit": "packs" },
-    "Eggs": { "quantity": 3, "unit": "large" },
-    "Gluten free bread": { "quantity": 3, "unit": "pieces" },
-    "Bread": { "quantity": 2, "unit": "pieces" },
-    "Avocado": { "quantity": 1, "unit": "servings" }
-  },
-  "Chicken and rice tray bake": {
-    "Chicken thighs": { "quantity": 900, "unit": "g" },
-    "Chicken taco spice": { "quantity": 1, "unit": "packs" },
-    "Zucchini": { "quantity": 3, "unit": "servings" },
-    "Rice": { "quantity": 200, "unit": "g" },
-    "Chicken stock": { "quantity": 1, "unit": "servings" },
-    "Scallions": { "quantity": 100, "unit": "g" }
-  },
-  "Burgers": {
-    "Mince": { "quantity": 750, "unit": "g" },
-    "Buns": { "quantity": 2, "unit": "packs" },
-    "Eggs": { "quantity": 1, "unit": "large" },
-    "Flour": { "quantity": 90, "unit": "g" },
-    "Scallions": { "quantity": 150, "unit": "g" }
-  },
-  "Salmon and rice": {
-    "Salmon": { "quantity": 375, "unit": "g" },
-    "Rice": { "quantity": 100, "unit": "g" },
-    "Lime": { "quantity": 1, "unit": "tablespoons" },
-    "Feta": { "quantity": 100, "unit": "g" }
-  },
-  "Chicken and Bacon dish": {
-    "Chicken": { "quantity": 700, "unit": "g" },
-    "Bacon": { "quantity": 2, "unit": "packs" },
-    "Broccoli": { "quantity": 500, "unit": "g" },
-    "Grated cheese": { "quantity": 200, "unit": "g" },
-    "Scallions": { "quantity": 150, "unit": "g" }
-  },
-  "Full English": {
-    "Sausages": { "quantity": 1, "unit": "packs" },
-    "Eggs": { "quantity": 4, "unit": "large" },
-    "Croissant": { "quantity": 0.125, "unit": "packs" },
-    "Cinnamon bun gf": { "quantity": 0.25, "unit": "packs" },
-    "Scallions": { "quantity": 150, "unit": "g" },
-    "Bacon": { "quantity": 1, "unit": "packs" },
-    "Tomatoes": { "quantity": 200, "unit": "g" }
-  },
-  "Baked potato": {
-    "Tuna": { "quantity": 1, "unit": "packs" },
-    "Avocado": { "quantity": 1, "unit": "servings" },
-    "Potatoes": { "quantity": 700, "unit": "g" },
-    "Butter": { "quantity": 0.1, "unit": "packs" },
-    "Feta": { "quantity": 100, "unit": "g" },
-    "Bacon": { "quantity": 1, "unit": "packs" },
-    "Tomatoes": { "quantity": 200, "unit": "g" }
-  },
-  "Halloumi and pesto bowl": {
-    "Halloumi": { "quantity": 1, "unit": "packs" },
-    "Zucchini": { "quantity": 3, "unit": "servings" },
-    "Chickpeas": { "quantity": 2, "unit": "packs" },
-    "Paprika": { "quantity": 3, "unit": "servings" },
-    "Pesto": { "quantity": 100, "unit": "g" },
-    "Scallions": { "quantity": 150, "unit": "g" },
-    "Rice": { "quantity": 200, "unit": "g" }
-  },
-  "Sweet Chili Wok": {
-    "Beef": { "quantity": 1, "unit": "kg" },
-    "Wok veg": { "quantity": 2, "unit": "packs" },
-    "Sweet chili sauce": { "quantity": 6, "unit": "tablespoons" },
-    "Soy sauce": { "quantity": 2, "unit": "tablespoons" },
-    "Lime": { "quantity": 2, "unit": "tablespoons" },
-    "Noodles": { "quantity": 180, "unit": "g" },
-    "Coriander": { "quantity": 2, "unit": "teaspoons" }
-  },
-  "Vegetable pasta": {
-    "Pasta": { "quantity": 270, "unit": "g" },
-    "Paprika": { "quantity": 3, "unit": "servings" },
-    "Tomatoes": { "quantity": 200, "unit": "g" },
-    "Feta": { "quantity": 100, "unit": "g" },
-    "Zucchini": { "quantity": 2, "unit": "servings" }
-  },
-  "Mozarella and pesto pasta": {
-    "Pasta": { "quantity": 270, "unit": "g" },
-    "Mozarella": { "quantity": 1, "unit": "packs" },
-    "Tomatoes": { "quantity": 200, "unit": "g" }
-  },
-  "Spaghetti Bolognese": {
-    "Spaghetti": { "quantity": 270, "unit": "g" },
-    "Mince": { "quantity": 750, "unit": "g" },
-    "Chopped tomatoes": { "quantity": 1, "unit": "packs" },
-    "Pasta sauce": { "quantity": 1, "unit": "packs" },
-    "Zucchini": { "quantity": 2, "unit": "servings" },
-    "Scallions": { "quantity": 150, "unit": "g" },
-    "Grated cheese": { "quantity": 50, "unit": "g" }
-  },
-  "Cheese Sandwich": {
-    "Cheese": { "quantity": 170, "unit": "g" },
-    "Gluten free bread": { "quantity": 3, "unit": "pieces" },
-    "Bread": { "quantity": 2, "unit": "pieces" },
-    "Tomatoes": { "quantity": 200, "unit": "g" }
-  },
-  "Chicken Burgers": {
-    "Chicken": { "quantity": 360, "unit": "g" },
-    "Avocado": { "quantity": 2, "unit": "servings" },
-    "Buns": { "quantity": 2, "unit": "packs" },
-    "Olive oil": { "quantity": 1, "unit": "tablespoons" },
-    "Chili powder": { "quantity": 2, "unit": "teaspoons" },
-    "Garlic powder": { "quantity": 1, "unit": "teaspoons" },
-    "Cumin": { "quantity": 1, "unit": "teaspoons" },
-    "Oregano": { "quantity": 0.5, "unit": "teaspoons" },
-    "Black pepper": { "quantity": 0.5, "unit": "teaspoons" }
-  },
-
-  "Takeaway": {}
-},
-"Snacks": {
-  "Peanut butter on toast": {
-    "Peanut butter": { "quantity": 6, "unit": "g" },
-    "Bread": { "quantity": 1, "unit": "pieces" },
-    "Honey": { "quantity": 7, "unit": "g" },
-
-  },
-  "Yogurt and granola": {
-    "Yogurt": { "quantity": 100, "unit": "g" },
-    "Granola": { "quantity": 50, "unit": "g" },
-    "Blueberries": { "quantity": 70, "unit": "g" },
-  },
-  "Peanut butter smoothie": {
-    "Cow's milk": { "quantity": 350, "unit": "ml" },
-    "Peanut butter": { "quantity": 35, "unit": "g" },
-    "Bananas": { "quantity": 3, "unit": "servings" },
-    "Cashew nuts": { "quantity": 50, "unit": "g" },
-  },
-  "Gluten free biscuits": {
-    "McVitie's Hobnobs": { "quantity": 30, "unit": "g" },
-  },
-   "Calorie Control bar": {
-    "Calorie Control": { "quantity": 1, "unit": "servings" }
-  },
-  "Caramel flapjack": {
-    "Caramel flapjack": { "quantity": 1, "unit": "servings" }
-  },
-  "Apple and raspberry flapjack": {
-    "Apple and raspberry flapjack": { "quantity": 1, "unit": "servings" }
-  }
-  },
