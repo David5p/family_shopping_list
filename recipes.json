@@ -1,4 +1,16 @@
-{
+"Breakfast":{
+  "Porridge":{
+    "Gluten free oats": { "quantity": 50, "unit": "g" },
+    "Honey": { "quantity": 10, "unit": "g" },
+    "Milk": { "quantity": 150, "unit": "ml" }
+  },
+  "Weetabix":{
+    "Weetabix": { "quantity": 37.5, "unit": "g" },
+    "Honey": { "quantity": 7, "unit": "g" },
+    "Milk": { "quantity": 200, "unit": "ml" }
+  }
+}
+"Meals": {
   "Greek Chicken": {
     "Feta": { "quantity": 100, "unit": "g" },
     "Tomatoes": { "quantity": 1, "unit": "packs" },
@@ -147,5 +159,37 @@
     "Oregano": { "quantity": 0.5, "unit": "teaspoons" },
     "Black pepper": { "quantity": 0.5, "unit": "teaspoons" }
   },
+
   "Takeaway": {}
-}
+},
+"Snacks": {
+  "Peanut butter on toast": {
+    "Peanut butter": { "quantity": 6, "unit": "g" },
+    "Bread": { "quantity": 1, "unit": "pieces" },
+    "Honey": { "quantity": 7, "unit": "g" },
+
+  },
+  "Yogurt and granola": {
+    "Yogurt": { "quantity": 100, "unit": "g" },
+    "Granola": { "quantity": 50, "unit": "g" },
+    "Blueberries": { "quantity": 70, "unit": "g" },
+  },
+  "Peanut butter smoothie": {
+    "Cow's milk": { "quantity": 350, "unit": "ml" },
+    "Peanut butter": { "quantity": 35, "unit": "g" },
+    "Bananas": { "quantity": 3, "unit": "servings" },
+    "Cashew nuts": { "quantity": 50, "unit": "g" },
+  },
+  "Gluten free biscuits": {
+    "McVitie's Hobnobs": { "quantity": 30, "unit": "g" },
+  },
+   "Calorie Control bar": {
+    "Calorie Control": { "quantity": 1, "unit": "servings" }
+  },
+  "Caramel flapjack": {
+    "Caramel flapjack": { "quantity": 1, "unit": "servings" }
+  },
+  "Apple and raspberry flapjack": {
+    "Apple and raspberry flapjack": { "quantity": 1, "unit": "servings" }
+  }
+  },

@@ -1,5 +1,5 @@
 {
-  "Cow's milk": { "quantity": 1.5, "unit": "l" },
+  "Cow's milk": { "quantity": 4.5, "unit": "l" },
   "Oat milk": { "quantity": 1.5, "unit": "l" },
   "Apple juice": { "quantity": 6, "unit": "l" },
   "Smoothie": { "quantity": 0.75, "unit": "l" },
@@ -72,5 +72,18 @@
   "Garlic powder": { "quantity": 15, "unit": "teaspoons" },
   "Cumin": { "quantity": 8, "unit": "teaspoons" },
   "Oregano": { "quantity": 8, "unit": "teaspoons" },
-  "Black pepper": { "quantity": 8, "unit": "teaspoons" }
+  "Black pepper": { "quantity": 8, "unit": "teaspoons" },
+  "Peanut butter": { "quantity": 385, "unit": "g" },
+  "Honey": { "quantity": 500, "unit": "g" },
+  "Yogurt": { "quantity": 800, "unit": "g" },
+  "Granola": { "quantity": 750, "unit": "g" },
+  "Blueberries": { "quantity": 0, "unit": "g" },
+  "Bananas": { "quantity": 4, "unit": "servings" },
+  "Cashew nuts": { "quantity": 600, "unit": "g" },
+  "McVitie's Hobnobs": { "quantity": 375, "unit": "g" },
+  "Calorie Control": { "quantity": 12, "unit": "servings" },
+  "Caramel flapjack": { "quantity": 4, "unit": "servings" },
+  "Apple and raspberry flapjack": { "quantity": 7, "unit": "servings" },
+  "Gluten free oats": { "quantity": 50, "unit": "g" },
+  "Weetabix": { "quantity": 37.5, "unit": "g" }
 }
