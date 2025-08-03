@@ -27,9 +27,9 @@
   },
   "Chicken and avo wraps": {
     "Chicken": { "quantity": 270, "unit": "g" },
-    "Wraps": { "quantity": 1, "unit": "pack" },
+    "Wraps": { "quantity": 1, "unit": "packs" },
     "Avocado": { "quantity": 2, "unit": "servings" },
-    "Chicken marinade": { "quantity": 1, "unit": "pack" }
+    "Chicken marinade": { "quantity": 1, "unit": "packs" }
   },
   "Halloumi wraps": {
     "Halloumi": { "quantity": 1, "unit": "packs" },
@@ -50,7 +50,7 @@
     "Chicken taco spice": { "quantity": 1, "unit": "packs" },
     "Zucchini": { "quantity": 3, "unit": "servings" },
     "Rice": { "quantity": 200, "unit": "g" },
-    "chicken stock": { "quantity": 1, "unit": "servings" },
+    "Chicken stock": { "quantity": 1, "unit": "servings" },
     "Scallions": { "quantity": 100, "unit": "g" }
   },
   "Burgers": {
@@ -63,7 +63,7 @@
   "Salmon and rice": {
     "Salmon": { "quantity": 375, "unit": "g" },
     "Rice": { "quantity": 100, "unit": "g" },
-    "Lime": { "quantity": 1, "unit": "large" },
+    "Lime": { "quantity": 1, "unit": "tablespoons" },
     "Feta": { "quantity": 100, "unit": "g" }
   },
   "Chicken and Bacon dish": {
@@ -86,7 +86,7 @@
     "Tuna": { "quantity": 1, "unit": "packs" },
     "Avocado": { "quantity": 1, "unit": "servings" },
     "Potatoes": { "quantity": 700, "unit": "g" },
-    "Butter": { "quantity": 0.25, "unit": "packs" },
+    "Butter": { "quantity": 0.1, "unit": "packs" },
     "Feta": { "quantity": 100, "unit": "g" },
     "Bacon": { "quantity": 1, "unit": "packs" },
     "Tomatoes": { "quantity": 200, "unit": "g" }
