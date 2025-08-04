@@ -24,6 +24,7 @@ def main_menu():
     """
     stock_data = load_stock()
     recipes_data = load_recipes()
+    flat_recipes = flatten_recipes(recipes_data)
  
     while True:
         print("\nMain Menu")
@@ -34,12 +35,12 @@ def main_menu():
         choice = input("Enter your choice(1-3):")
 
         if choice == "1":
-            meal_plan = get_meal_plan_from_user(recipes_data) 
+            meal_plan = get_meal_plan_from_user(flat_recipes) 
             if not meal_plan:
                 print("No valid meals entered. Returning to main menu.")
                 continue 
 
-            shopping_list = generate_shopping_list(meal_plan, recipes_data, stock_data)
+            shopping_list = generate_shopping_list(meal_plan, flat_recipes, stock_data)
             print("\nShopping List:")
             for item, info in shopping_list.items():
                 print(f"- {item}: {info['quantity']} {info['unit']}")
@@ -70,6 +71,15 @@ def load_recipes():
     with open("recipes.json", "r") as file:
         recipes = json.load(file)
         return recipes
+
+def flatten_recipes(recipes_data):
+    """
+    Condense nested recipe categories into a single dictionary.
+    """
+    flat_recipes = {}
+    for category in recipes_data.values():
+        flat_recipes.update(category)
+    return flat_recipes
     
 def get_closest_match(user_input, recipe_names, cutoff=0.5):
     """
@@ -79,9 +89,9 @@ def get_closest_match(user_input, recipe_names, cutoff=0.5):
 
     return matches[0] if matches else None
 
-def get_meal_plan_from_user(recipes_data):
+def get_meal_plan_from_user(flat_recipes):
     print("\n Available Recipes")
-    for recipe in recipes_data:
+    for recipe in flat_recipes:
         print(f"- {recipe}")
 
     meal_input = input("\n What do you want to eat? \nChoose your meal plan (separate by commas): \n")
@@ -89,7 +99,7 @@ def get_meal_plan_from_user(recipes_data):
     meal_plan = []
     for meal in meal_input.split(","):
         meal = meal.strip()
-        match = get_closest_match(meal, recipes_data.keys(), cutoff = 0.5)
+        match = get_closest_match(meal, flat_recipes.keys(), cutoff = 0.5)
         if match:
             print(f"Matched '{meal}' to '{match}'")
             meal_plan.append(match)
@@ -97,14 +107,14 @@ def get_meal_plan_from_user(recipes_data):
             print(f"'{meal}' not found and was skipped.")
     return meal_plan
 
-def generate_shopping_list(meal_plan, recipes_data, stock): 
+def generate_shopping_list(meal_plan, flat_recipes, stock): 
     """
     Function takes into account already stocked ingredients to formulate a shopping list
     """
     shopping_list = {}
 
     for recipe_name in meal_plan:
-        ingredients = recipes_data[recipe_name]
+        ingredients = flat_recipes[recipe_name]
 
         for item, needed_info in ingredients.items():
             needed_qty = needed_info["quantity"]
