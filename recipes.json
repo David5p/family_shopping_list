@@ -33,7 +33,7 @@
       "Mince": { "quantity": 750, "unit": "g" },
       "Zucchini": { "quantity": 3, "unit": "servings" },
       "Grated cheese": { "quantity": 200, "unit": "g" },
-      "Pasta Sauce": { "quantity": 2, "unit": "packs" },
+      "Pasta sauce": { "quantity": 2, "unit": "packs" },
       "Chopped Tomatoes": { "quantity": 1, "unit": "servings" },
       "Scallions": { "quantity": 100, "unit": "g" },
       "Lasagne sheets": { "quantity": 100, "unit": "g" }

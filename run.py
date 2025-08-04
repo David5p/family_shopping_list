@@ -3,6 +3,7 @@
 # Write your code to expect a terminal of 80 characters wide and 24 rows high
 import json
 import difflib
+from collections import Counter
 
 def welcome_message():
     """
@@ -109,40 +110,56 @@ def get_meal_plan_from_user(flat_recipes):
 
 def generate_shopping_list(meal_plan, flat_recipes, stock): 
     """
-    Function takes into account already stocked ingredients to formulate a shopping list
+    Calculates ingredient needs by summing all required quantities first,
+    then comparing to stock to produce an accurate shopping list.
     """
-    shopping_list = {}
+    total_needed = {}
+    recipe_counts = Counter(meal_plan)  # Count how many times each meal is selected
 
-    for recipe_name in meal_plan:
+    # Step 1: Aggregate total needed quantities
+    for recipe_name, count in recipe_counts.items():
         ingredients = flat_recipes[recipe_name]
-
         for item, needed_info in ingredients.items():
-            needed_qty = needed_info["quantity"]
+            needed_qty = needed_info["quantity"] * count
             needed_unit = needed_info["unit"]
 
-            if item in stock:
-                stock_qty = stock[item]["quantity"]
-                stock_unit = stock[item]["unit"]
-
-                if stock_unit == needed_unit:
-                    if stock_qty < needed_qty:
-                        extra_needed = needed_qty - stock_qty
-                    else:
-                        continue  # Enough stock, no need to add
-                else:
-                    # Unit mismatch so add full amount
-                    extra_needed = needed_qty
+            if item in total_needed:
+                total_needed[item]["quantity"] += needed_qty
             else:
-                # Item not in stock at all
-                extra_needed = needed_qty
+                total_needed[item] = {"quantity": needed_qty, "unit": needed_unit}
 
-            # Add to shopping list
-            if item in shopping_list:
-                shopping_list[item]["quantity"] += extra_needed
+    # Step 2: Compare with stock
+    shopping_list = {}
+    for item, need_info in total_needed.items():
+        needed_qty = need_info["quantity"]
+        needed_unit = need_info["unit"]
+
+        if item in stock:
+            stock_qty = stock[item]["quantity"]
+            stock_unit = stock[item]["unit"]
+
+            if stock_unit == needed_unit:
+                if stock_qty < needed_qty:
+                    shopping_list[item] = {
+                        "quantity": round(needed_qty - stock_qty, 2),
+                        "unit": needed_unit
+                    }
+                # else: enough stock, do nothing
             else:
-                shopping_list[item] = {"quantity": extra_needed, "unit": needed_unit}
+                # Unit mismatch – assume we need to buy all
+                shopping_list[item] = {
+                    "quantity": round(needed_qty, 2),
+                    "unit": needed_unit
+                }
+        else:
+            # Not in stock at all
+            shopping_list[item] = {
+                "quantity": round(needed_qty, 2),
+                "unit": needed_unit
+            }
 
     return shopping_list
+
 
 
 # Start program
