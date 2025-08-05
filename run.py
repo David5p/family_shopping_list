@@ -55,8 +55,20 @@ def main_menu():
             print("\nShopping List:")
             for item, info in shopping_list.items():
                 print(f"- {item}: {info['quantity']} {info['unit']}")
+
         elif choice == "2":
             view_stock(stock_data)
+
+            while True:
+                print("\nWould you like to edit the stock list?")
+                yes_no_input = input("Enter your choice(y or n): ").strip().lower()
+                if yes_no_input in ["y", "n"]:
+                    break  # valid input, so break out of the loop
+                else:
+                    print("Invalid input. Please enter y or n.")
+            if yes_no_input == "y":
+                edit_stock(stock_data)
+
         elif choice == "3":
             print("Goodbye!")
             break
@@ -82,6 +94,31 @@ def load_recipes():
     with open("recipes.json", "r") as file:
         recipes = json.load(file)
         return recipes
+
+def edit_stock(stock_data):
+    """
+    Allow the user to update or add items in the stock list, then save the changes.
+    """
+    while True:
+        item = input("Enter the name of the item to update (or type 'done' to finish): ").strip().lower()
+        if item == "done":
+            break
+
+        try:
+            quantity = float(input(f"Enter the quantity for '{item}': "))
+            unit = input(f"Enter the unit for '{item}' (e.g., grams, packs, servings or pieces): ").strip().lower()
+            stock_data[item] = {"quantity": quantity, "unit": unit}
+            print(f"Updated '{item}' in stock.")
+        except ValueError:
+            print("Invalid quantity. Please enter a number.")
+
+    # Save the updated stock data
+    with open("stock.json", "w") as file:
+        json.dump(stock_data, file, indent=4)
+
+    print("Stock list updated and saved.")
+
+
 
 def flatten_recipes(recipes_data):
     """
