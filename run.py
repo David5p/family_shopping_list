@@ -100,15 +100,23 @@ def edit_stock(stock_data):
     Allow the user to update or add items in the stock list, then save the changes.
     """
     while True:
-        item = input("Enter the name of the item to update (or type 'done' to finish): ").strip().lower()
-        if item == "done":
+        item_name = input("Enter the name of the item to update (or type 'done' to finish): ").strip().lower()
+        existing_item = get_existing_item_key(item_name, stock_data)
+
+        if existing_item:
+            item_name = existing_item
+            print(f"{item_name} found in stock. Updating...")
+        else:
+            print(f"{item_name} not found. Adding as a new item.")
+
+        if item_name == "done":
             break
 
         try:
-            quantity = float(input(f"Enter the quantity for '{item}': "))
-            unit = input(f"Enter the unit for '{item}' (e.g., grams, packs, servings or pieces): ").strip().lower()
-            stock_data[item] = {"quantity": quantity, "unit": unit}
-            print(f"Updated '{item}' in stock.")
+            quantity = float(input(f"Enter the quantity for '{item_name}': "))
+            unit = input(f"Enter the unit for '{item_name}' (e.g., grams, packs, servings or pieces): ").strip().lower()
+            stock_data[item_name] = {"quantity": quantity, "unit": unit}
+            print(f"Updated '{item_name}' in stock.")
         except ValueError:
             print("Invalid quantity. Please enter a number.")
 
@@ -118,6 +126,11 @@ def edit_stock(stock_data):
 
     print("Stock list updated and saved.")
 
+def get_existing_item_key(user_input, stock_data):
+    for item in stock_data:
+        if item.lower() == user_input.lower():
+            return item
+    return None
 
 
 def flatten_recipes(recipes_data):

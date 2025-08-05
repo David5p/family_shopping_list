@@ -157,7 +157,7 @@
   },
   "Wraps": {
     "quantity": 3,
-    "unit": "packw"
+    "unit": "packs"
   },
   "Avocado": {
     "quantity": 3,
@@ -296,12 +296,8 @@
     "unit": "g"
   },
   "Granola": {
-    "quantity": 750,
+    "quantity": 750.0,
     "unit": "g"
-  },
-  "granola": {
-    "quantity": 250.0,
-    "unit": "grams"
   },
   "Bananas": {
     "quantity": 4,
