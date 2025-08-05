@@ -150,7 +150,69 @@ def view_recipes(flat_recipes):
     print("\nAvailable Recipes:")
     for recipe_name in flat_recipes:
         print(f"- {recipe_name}")
-    
+
+def edit_recipes(recipes_data):
+    """
+    Allow the user to update or add items to the recipes, then save the changes.
+    """
+    while True:
+        recipe_name = input("Enter the name of the recipe to add, edit or remove (or type 'done' to finish): ").strip().title()
+        
+        if recipe_name == "Done":
+            break
+
+        found_category = None
+        for category, recipes in recipes_data.items():
+            if recipe_name in recipes:
+                found_category = category
+                break
+
+    if found_category:
+        print(f"{recipe_name} found in '{found_category}' category.")
+        action = input("Type 'edit' to update it or 'delete' to remove it: ").strip().title()
+    if action == "Delete":
+        del recipes_data[found_category][recipe_name]
+        print(f"'{recipe_name}' has been deleted.")
+        continue
+    elif action == "Edit":
+        print(f"Editing recipe: {recipe_name}")
+        should_edit = True
+    else:
+        print("Invalid action. Please type 'edit' or 'delete'.")
+        continue
+else:
+    print(f"{recipe_name} not found. Adding as new.")
+    found_category = input("Enter the category for this recipe (e.g., Breakfast, Meal, Snack): ").strip().title()
+    if found_category not in recipes_data:
+        recipes_data[found_category] = {}
+    should_edit = True  # We're adding a new recipe
+
+if should_edit:
+    new_ingredients = {}
+    while True: 
+        ingredient = input("Enter ingredient name (or type 'done' to finish): ").strip().lower()
+        if ingredient == "done":
+            break
+        try:
+            quantity = float(input(f"Enter the quantity for '{ingredient}': "))
+            unit = input(f"Enter the unit for '{ingredient}' (e.g., grams, packs, servings or pieces): ").strip().lower()
+            new_ingredients[ingredient] = {"quantity": quantity, "unit": unit}
+        except ValueError:
+            print("Invalid quantity. Please enter a number.")
+
+    recipes_data[found_category][recipe_name] = new_ingredients
+    print(f"Recipe '{recipe_name}' has been updated.")
+
+
+        
+
+    # Save the updated recipes data
+    with open("recipes.json", "w") as file:
+        json.dump(recipes_data, file, indent=4)
+
+    print("Recipes list updated and saved.")
+
+
 def get_closest_match(user_input, recipe_names, cutoff=0.5):
     """
     Allow user to make small mistakes when inputting their meal plan
