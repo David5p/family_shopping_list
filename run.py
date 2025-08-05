@@ -115,8 +115,8 @@ def edit_stock(stock_data):
         try:
             quantity = float(input(f"Enter the quantity for '{item_name}': "))
             unit = input(f"Enter the unit for '{item_name}' (e.g., grams, packs, servings or pieces): ").strip().lower()
-            stock_data[item_name] = {"quantity": quantity, "unit": unit}
-            print(f"Updated '{item_name}' in stock.")
+            stock_data[item_name.title()] = {"quantity": quantity, "unit": unit}
+            print(f"Updated '{item_name.title()}' in stock.")
         except ValueError:
             print("Invalid quantity. Please enter a number.")
 
