@@ -36,7 +36,17 @@ def main_menu():
         choice = input("Enter your choice(1-3):")
 
         if choice == "1":
-            meal_plan = get_meal_plan_from_user(flat_recipes) 
+            while True:
+                print("Would you like to plan meals for the weekend(2 days) or a full week (7 days)?")
+                days_input = input("Enter your choice (2 or 7): ").strip()
+                
+                if days_input in ["2", "7"]:
+                    number_of_days = int(days_input)
+                    break  # valid input, so break out of the loop
+                else:
+                    print("Invalid input. Please enter 2 or 7.")
+
+            meal_plan = get_meal_plan_from_user(flat_recipes)
             if not meal_plan:
                 print("No valid meals entered. Returning to main menu.")
                 continue 
