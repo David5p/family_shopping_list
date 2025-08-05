@@ -29,13 +29,21 @@ def main_menu():
  
     while True:
         print("\nMain Menu")
-        print("1. Generate Shopping List")
-        print("2. View Stock")
-        print("3. Exit")
+        print("1. View Recipes")
+        print("2. Edit Recipes")
+        print("3. Generate Shopping List")
+        print("4. View Stock")
+        print("5. Edit Stock")
+        print("6. Exit")
 
-        choice = input("Enter your choice(1-3):")
-
+        choice = input("Enter your choice(1-6):")
         if choice == "1":
+            view_recipes(flat_recipes)
+        
+        elif choice == "2":
+            print("Edit Recipes not implemented yet.")
+
+        elif choice == "3":
             while True:
                 print("Would you like to plan meals for the weekend(2 days) or a full week (7 days)?")
                 days_input = input("Enter your choice (2 or 7): ").strip()
@@ -56,24 +64,18 @@ def main_menu():
             for item, info in shopping_list.items():
                 print(f"- {item}: {info['quantity']} {info['unit']}")
 
-        elif choice == "2":
+        elif choice == "4":
             view_stock(stock_data)
 
+        elif choice == "5":
             while True:
-                print("\nWould you like to edit the stock list?")
-                yes_no_input = input("Enter your choice(y or n): ").strip().lower()
-                if yes_no_input in ["y", "n"]:
-                    break  # valid input, so break out of the loop
-                else:
-                    print("Invalid input. Please enter y or n.")
-            if yes_no_input == "y":
                 edit_stock(stock_data)
 
-        elif choice == "3":
+        elif choice == "6":
             print("Goodbye!")
             break
         else:
-            print("Invalid input. Please enter 1, 2, or 3.")
+            print("Invalid input. Please enter 1, 2, 3, 4, 5 or 6.")
 
 
 def load_stock():
@@ -101,6 +103,10 @@ def edit_stock(stock_data):
     """
     while True:
         item_name = input("Enter the name of the item to update (or type 'done' to finish): ").strip().lower()
+        
+        if item_name == "done":
+            break
+
         existing_item = get_existing_item_key(item_name, stock_data)
 
         if existing_item:
@@ -109,8 +115,6 @@ def edit_stock(stock_data):
         else:
             print(f"{item_name} not found. Adding as a new item.")
 
-        if item_name == "done":
-            break
 
         try:
             quantity = float(input(f"Enter the quantity for '{item_name}': "))
@@ -141,6 +145,11 @@ def flatten_recipes(recipes_data):
     for category in recipes_data.values():
         flat_recipes.update(category)
     return flat_recipes
+
+def view_recipes(flat_recipes):
+    print("\nAvailable Recipes:")
+    for recipe_name in flat_recipes:
+        print(f"- {recipe_name}")
     
 def get_closest_match(user_input, recipe_names, cutoff=0.5):
     """
