@@ -155,10 +155,11 @@ def edit_recipes(recipes_data):
     """
     Allow the user to update or add items to the recipes, then save the changes.
     """
+    categories = ["Breakfast", "Meals", "Snacks"] 
     while True:
         recipe_name = input("Enter the name of the recipe to add, edit or remove (or type 'done' to finish): ").strip().title()
         
-        if recipe_name == "Done":
+        if recipe_name.lower() == "done":
             break
 
         should_edit = False        
@@ -169,7 +170,7 @@ def edit_recipes(recipes_data):
                 break
 
         if found_category:
-            print(f"{recipe_name} found in '{found_category}' category.")
+            print(f"\n{recipe_name} found in '{found_category}' category.")
             action = input("Type 'edit' to update it or 'delete' to remove it: ").strip().lower()
             if action == "delete":
                 del recipes_data[found_category][recipe_name]
@@ -182,8 +183,22 @@ def edit_recipes(recipes_data):
                 print("Invalid action. Please type 'edit' or 'delete'.")
                 continue
         else:
-            print(f"{recipe_name} not found. Adding as new.")
-            found_category = input("Enter the category for this recipe (e.g., Breakfast, Meal, Snack): ").strip().title()
+            print(f"\n{recipe_name} not found. Adding as new.")
+        
+            while True:
+                print("\nSelect a category:")
+
+                for index, category in enumerate(categories, start=1):
+                    print(f"{index}. {category}")
+                choice = input("Enter your choice (1-3): ").strip()
+
+                if choice.isdigit() and 1 <= int(choice) <= len(categories):
+                    found_category = categories[int(choice) - 1]
+                    break
+
+                else:
+                    print("Invalid input. Please choose a valid number from the list.")
+            
             if found_category not in recipes_data:
                 recipes_data[found_category] = {}
             should_edit = True  # We're adding a new recipe
@@ -202,7 +217,7 @@ def edit_recipes(recipes_data):
                     print("Invalid quantity. Please enter a number.")
 
             recipes_data[found_category][recipe_name] = new_ingredients
-            print(f"Recipe '{recipe_name}' has been updated.")
+            print(f"\nRecipe '{recipe_name}' has been added/updated in category '{found_category}'.")
 
 
         
