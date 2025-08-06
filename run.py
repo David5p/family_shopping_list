@@ -41,7 +41,7 @@ def main_menu():
             view_recipes(flat_recipes)
         
         elif choice == "2":
-            print("Edit Recipes not implemented yet.")
+            edit_recipes(recipes_data)
 
         elif choice == "3":
             while True:
@@ -161,47 +161,48 @@ def edit_recipes(recipes_data):
         if recipe_name == "Done":
             break
 
+        should_edit = False        
         found_category = None
         for category, recipes in recipes_data.items():
             if recipe_name in recipes:
                 found_category = category
                 break
 
-    if found_category:
-        print(f"{recipe_name} found in '{found_category}' category.")
-        action = input("Type 'edit' to update it or 'delete' to remove it: ").strip().title()
-    if action == "Delete":
-        del recipes_data[found_category][recipe_name]
-        print(f"'{recipe_name}' has been deleted.")
-        continue
-    elif action == "Edit":
-        print(f"Editing recipe: {recipe_name}")
-        should_edit = True
-    else:
-        print("Invalid action. Please type 'edit' or 'delete'.")
-        continue
-else:
-    print(f"{recipe_name} not found. Adding as new.")
-    found_category = input("Enter the category for this recipe (e.g., Breakfast, Meal, Snack): ").strip().title()
-    if found_category not in recipes_data:
-        recipes_data[found_category] = {}
-    should_edit = True  # We're adding a new recipe
+        if found_category:
+            print(f"{recipe_name} found in '{found_category}' category.")
+            action = input("Type 'edit' to update it or 'delete' to remove it: ").strip().lower()
+            if action == "delete":
+                del recipes_data[found_category][recipe_name]
+                print(f"'{recipe_name}' has been deleted.")
+                continue
+            elif action == "edit":
+                print(f"Editing recipe: {recipe_name}")
+                should_edit = True
+            else:
+                print("Invalid action. Please type 'edit' or 'delete'.")
+                continue
+        else:
+            print(f"{recipe_name} not found. Adding as new.")
+            found_category = input("Enter the category for this recipe (e.g., Breakfast, Meal, Snack): ").strip().title()
+            if found_category not in recipes_data:
+                recipes_data[found_category] = {}
+            should_edit = True  # We're adding a new recipe
 
-if should_edit:
-    new_ingredients = {}
-    while True: 
-        ingredient = input("Enter ingredient name (or type 'done' to finish): ").strip().lower()
-        if ingredient == "done":
-            break
-        try:
-            quantity = float(input(f"Enter the quantity for '{ingredient}': "))
-            unit = input(f"Enter the unit for '{ingredient}' (e.g., grams, packs, servings or pieces): ").strip().lower()
-            new_ingredients[ingredient] = {"quantity": quantity, "unit": unit}
-        except ValueError:
-            print("Invalid quantity. Please enter a number.")
+        if should_edit:
+            new_ingredients = {}
+            while True: 
+                ingredient = input("Enter ingredient name (or type 'done' to finish): ").strip().lower()
+                if ingredient == "done":
+                    break
+                try:
+                    quantity = float(input(f"Enter the quantity for '{ingredient}': "))
+                    unit = input(f"Enter the unit for '{ingredient}' (e.g., grams, packs, servings or pieces): ").strip().lower()
+                    new_ingredients[ingredient] = {"quantity": quantity, "unit": unit}
+                except ValueError:
+                    print("Invalid quantity. Please enter a number.")
 
-    recipes_data[found_category][recipe_name] = new_ingredients
-    print(f"Recipe '{recipe_name}' has been updated.")
+            recipes_data[found_category][recipe_name] = new_ingredients
+            print(f"Recipe '{recipe_name}' has been updated.")
 
 
         
