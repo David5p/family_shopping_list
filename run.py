@@ -68,8 +68,7 @@ def main_menu():
             view_stock(stock_data)
 
         elif choice == "5":
-            while True:
-                edit_stock(stock_data)
+            edit_stock(stock_data)
 
         elif choice == "6":
             print("Goodbye!")
@@ -190,6 +189,7 @@ def edit_recipes(recipes_data):
 
                 for index, category in enumerate(categories, start=1):
                     print(f"{index}. {category}")
+               
                 choice = input("Enter your choice (1-3): ").strip()
 
                 if choice.isdigit() and 1 <= int(choice) <= len(categories):
