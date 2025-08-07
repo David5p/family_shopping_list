@@ -41,6 +41,7 @@ def main_menu():
             view_recipes(flat_recipes)
         
         elif choice == "2":
+            view_recipes(flat_recipes)
             edit_recipes(recipes_data)
 
         elif choice == "3":
@@ -148,8 +149,8 @@ def flatten_recipes(recipes_data):
 
 def view_recipes(flat_recipes):
     print("\nAvailable Recipes:")
-    for recipe_name in flat_recipes:
-        print(f"- {recipe_name}")
+    for index, recipe_name in enumerate(flat_recipes, 1):
+        print(f"{index}. {recipe_name}")
 
 def category_choices(category):
     while True:
@@ -187,7 +188,7 @@ def edit_recipes(recipes_data):
     """
     categories = ["Breakfast", "Meals", "Snacks"] 
     while True:
-        recipe_name = input("Enter the name of the recipe to add, edit or remove (or type 'done' to finish): ").strip().title()
+        recipe_name = input("Enter the number of the recipe to add, edit or remove (or type 'done' to finish): ").strip().title()
         
         if recipe_name.lower() == "done":
             break
@@ -250,21 +251,27 @@ def get_closest_match(user_input, recipe_names, cutoff=0.5):
     return matches[0] if matches else None
 
 def get_meal_plan_from_user(flat_recipes):
-    print("\n Available Recipes")
-    for recipe in flat_recipes:
-        print(f"- {recipe}")
+    recipe_list = list(flat_recipes.keys())
+    print("\nAvailable Recipes:")
+    for index, recipe in enumerate(flat_recipes, 1):
+        print(f"{index}. {recipe}")
 
-    meal_input = input("\n What do you want to eat? \nChoose your meal plan (separate by commas): \n")
+    meal_input = input("\nEnter the recipe numbers for your meal plan (comma-separated):\n")
            
     meal_plan = []
-    for meal in meal_input.split(","):
-        meal = meal.strip()
-        match = get_closest_match(meal, flat_recipes.keys(), cutoff = 0.5)
-        if match:
-            print(f"Matched '{meal}' to '{match}'")
-            meal_plan.append(match)
+    for value in meal_input.split(","):
+        value = value.strip()
+        if value.isdigit():
+            index = int(value) - 1
+            if 0 <= index < len(recipe_list):
+                selected_recipe = recipe_list[index]
+                meal_plan.append(selected_recipe)
+                print(f"Added: {selected_recipe}")
+            else:
+                print(f"Invalid number: {value}. Skipped.")
+
         else:
-            print(f"'{meal}' not found and was skipped.")
+            print(f"'{value}' is not a valid number. Skipped.")
     return meal_plan
 
 def generate_shopping_list(meal_plan, flat_recipes, stock): 
