@@ -5,11 +5,6 @@ import json
 import difflib
 from collections import Counter
 
-def welcome_message():
-    """
-    Introduce user to the project
-    """
-    print("\nWelcome to the Family Shopping List")
 
 def view_stock(stock_data):
     """
@@ -21,8 +16,11 @@ def view_stock(stock_data):
 
 def main_menu():
     """
-    Provide user with options to select how they will use the program
+    Introduce user to the project and provide 
+    user with options to select how they will 
+    use the program
     """
+    print("\nWelcome to the Family Shopping List")
     stock_data = load_stock()
     recipes_data = load_recipes()
     flat_recipes = flatten_recipes(recipes_data)
@@ -322,5 +320,4 @@ def generate_shopping_list(meal_plan, flat_recipes, stock):
 
 # Start program
 if __name__ == "__main__":
-    welcome_message()
     main_menu()
