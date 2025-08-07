@@ -68,6 +68,7 @@ def main_menu():
             view_stock(stock_data)
 
         elif choice == "5":
+            view_stock(stock_data)
             edit_stock(stock_data)
 
         elif choice == "6":
