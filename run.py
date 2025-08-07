@@ -321,5 +321,6 @@ def generate_shopping_list(meal_plan, flat_recipes, stock):
 
 
 # Start program
-welcome_message()
-main_menu()
+if __name__ == "__main__":
+    welcome_message()
+    main_menu()
