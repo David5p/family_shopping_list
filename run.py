@@ -152,16 +152,16 @@ def view_recipes(flat_recipes):
     for index, recipe_name in enumerate(flat_recipes, 1):
         print(f"{index}. {recipe_name}")
 
-def category_choices(category):
+def category_choices():
+    categories = ["Breakfast", "Meals", "Snacks"]
     while True:
         print("\nSelect a category:")
         for index, category in enumerate(categories, start=1):
             print(f"{index}. {category}")
-            choice = input("Enter your choice (1-3): ").strip()
+        choice = input("Enter your choice (1-3): ").strip()
 
         if choice.isdigit() and 1 <= int(choice) <= len(categories):
-            found_category = categories[int(choice) - 1]
-            break
+            return categories[int(choice) - 1]
         else:
             print("Invalid input. Please choose a valid number from the list.")
 
@@ -225,7 +225,7 @@ def edit_recipes(recipes_data):
                 continue
         else:
             print(f"\n'{recipe_name}' not found. Adding as new.")
-            selected_category = category_choices(category)
+            selected_category = category_choices()
             if selected_category not in recipes_data:
                 recipes_data[selected_category] = {}
             new_ingredients = input_ingredients()
