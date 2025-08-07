@@ -11,8 +11,10 @@ def view_stock(stock_data):
     When user wants to see current stock
     """
     print("\nCurrent Stock:")
+    print(f'{"Item":<28} | {"Quantity":<10} | {"Unit":<15}')
+    print('-' * 53)
     for item, info in stock_data.items():
-        print(f"- {item}: {info['quantity']} {info['unit']}")
+        print(f'{item:<28} | {info["quantity"]:<10} | {info["unit"]:<15}')
 
 def main_menu():
     """
