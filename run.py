@@ -179,6 +179,18 @@ def input_ingredients():
             print("Invalid quantity. Please enter a number.")
     return ingredients
 
+def display_ingredients(ingredients):
+    """
+    Display all current ingredients with quantities and units.
+    """
+def edit_existing_ingredient(ingredients, index):
+    """
+    Allow the user to edit or remove an existing ingredient.
+    """
+
+def add_new_ingredient(ingredients):
+    """Add a new ingredient to the list."""
+    
 def edit_ingredients(ingredients):
     """
     Allow the user to edit ingredients of a recipe one by one.
