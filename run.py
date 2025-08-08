@@ -179,7 +179,72 @@ def input_ingredients():
             print("Invalid quantity. Please enter a number.")
     return ingredients
 
+def edit_ingredients(ingredients):
+    """
+    Allow the user to edit ingredients of a recipe one by one.
+    """
+    while True:
+        # Display current ingredients with numbering
+        print("\nCurrent ingredients:")
+        for i, (ingredient, details) in enumerate(ingredients.items(), 1):
+            print(f"{i}. {ingredient}: {details['quantity']} {details['unit']}")
+        
+        # Display options to add new ingredient or finish editing
+        print(f"{len(ingredients) + 1}. Add new ingredient")
+        print(f"{len(ingredients) + 2}. Finish editing")
 
+        # Prompt user to select an ingredient to edit/remove, add new, or finish
+        choice = input("Select an ingredient number to edit/remove, or choose to add/finish: ").strip()
+
+        if choice.isdigit():
+            choice_num = int(choice)
+            if 1 <= choice_num <= len(ingredients):
+                # User selected an existing ingredient to edit or remove
+                ingd_name = list(ingredients.keys())[choice_num - 1]
+                print(f"Editing '{ingd_name}'")
+                
+                # Ask user what they want to do with this ingredient
+                sub_action = input("Type 'edit' to change quantity/unit, 'remove' to delete ingredient, or 'cancel' to go back: ").strip().lower()
+
+                if sub_action == 'edit':
+                    # Get new quantity and unit, if provided, update ingredient details
+                    new_qty = input(f"Enter new quantity for '{ingd_name}' (current: {ingredients[ingd_name]['quantity']}): ").strip()
+                    new_unit = input(f"Enter new unit for '{ingd_name}' (current: {ingredients[ingd_name]['unit']}): ").strip()
+                    if new_qty:
+                        ingredients[ingd_name]['quantity'] = new_qty
+                    if new_unit:
+                        ingredients[ingd_name]['unit'] = new_unit
+                    print(f"Updated '{ingd_name}'")
+                elif sub_action == 'remove':
+                    # Remove the ingredient from the recipe
+                    del ingredients[ingd_name]
+                    print(f"Removed '{ingd_name}' from the recipe.")
+                elif sub_action == 'cancel':
+                    # Cancel and go back to the ingredient list
+                    continue
+                else:
+                    print("Invalid action.")
+
+            elif choice_num == len(ingredients) + 1:
+                # User chose to add a new ingredient
+                new_ingd = input("Enter new ingredient name: ").strip()
+                new_qty = input("Enter quantity: ").strip()
+                new_unit = input("Enter unit: ").strip()
+                if new_ingd:
+                    ingredients[new_ingd] = {"quantity": new_qty, "unit": new_unit}
+                    print(f"Added '{new_ingd}'.")
+                else:
+                    print("Ingredient name cannot be empty.")
+            elif choice_num == len(ingredients) + 2:
+                # User finished editing ingredients, exit loop
+                print("Finished editing ingredients.")
+                break
+            else:
+                # User input a number outside valid options
+                print("Invalid selection.")
+        else:
+            # User input something that's not a number
+            print("Please enter a valid number.")
             
 
 def edit_recipes(recipes_data):
@@ -242,18 +307,7 @@ def edit_recipes(recipes_data):
             print(f"'{recipe_name}' has been deleted.")
             continue
         elif action == "edit":
-            print(f"\nCurrent ingredients for '{recipe_name}':")
-            for ingredient, details in recipes_data[found_category][recipe_name].items():
-                print(f"  - {ingredient}: {details['quantity']} {details['unit']}")
-
-            overwrite = input("Do you want to overwrite the ingredients? (yes/no): ").strip().lower()
-
-            if overwrite == "yes":
-                new_ingredients = input_ingredients()
-                recipes_data[found_category][recipe_name] = new_ingredients
-            else:
-               print("Skipping overwrite. No changes made.")
-
+            edit_ingredients(recipes_data[found_category][recipe_name])
         else:
             print("Invalid action. Please type 'edit' or 'delete'.")
             continue
