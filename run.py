@@ -183,57 +183,81 @@ def input_ingredients():
             
 
 def edit_recipes(recipes_data):
+
     """
     Allow the user to update or add items to the recipes, then save the changes.
     """
     categories = ["Breakfast", "Meals", "Snacks"] 
-    while True:
-        recipe_name = input("Enter the number of the recipe to add, edit or remove (or type 'done' to finish): ").strip().title()
-        
-        if recipe_name.lower() == "done":
-            break
 
-        should_edit = False        
+    while True:
+    # Refresh the recipe list each time in case it changes
+        flat_recipes = flatten_recipes(recipes_data)
+        recipe_list = list(flat_recipes.keys())
+        print("\nAvailable Recipes:")
+
+        for index, recipe in enumerate(recipe_list, 1):
+            print(f"{index}. {recipe}")
+        # Ask for user input when listing all recipes
+        selection = input("\nEnter the number of the recipe to edit/delete or type 'new' to add a recipe, or 'done' to finish: ").strip().lower()
+        if selection == "done":
+            break
+        elif selection == "new":
+            recipe_name = input("Enter new recipe name: ").strip().title()
+            selected_category = category_choices()
+
+            new_ingredients = input_ingredients()
+            if selected_category not in recipes_data:
+                recipes_data[selected_category] = {}
+    
+            recipes_data[selected_category][recipe_name] = new_ingredients
+            print(f"Added '{recipe_name}' to category '{selected_category}'.")
+            continue
+
+        elif selection.isdigit():
+            index = int(selection) - 1
+            if 0 <= index < len(recipe_list):
+                recipe_name = recipe_list[index]
+            else:
+                print("Invalid number. Skipping.")
+                continue
+        else:
+            print("Invalid input. Please enter a valid number, 'new', or 'done'.")
+            continue
+
+        # Find the category of the selected recipe
         found_category = None
         for category, recipes in recipes_data.items():
             if recipe_name in recipes:
                 found_category = category
                 break
 
-        if found_category:
-            print(f"\n{recipe_name} found in '{found_category}' category.")
-            action = input("Type 'edit' to update it or 'delete' to remove it: ").strip().lower()
-            if action == "delete":
-                del recipes_data[found_category][recipe_name]
-                print(f"'{recipe_name}' has been deleted.")
-                continue
-            elif action == "edit":
-                print(f"\nCurrent ingredients for '{recipe_name}':")
+        if not found_category:
+            print(f"\nCould not find the category for {recipe_name}. Skipping.")
+            continue
 
-                for ingredient, details in recipes_data[found_category][recipe_name].items():
-                    print(f"  - {ingredient}: {details['quantity']} {details['unit']}")
-                overwrite = input("Do you want to overwrite the ingredients? (yes/no): ").strip().lower()
+        print(f"\n'{recipe_name}' found in category '{found_category}'.")
+        action = input("Type 'edit' to update it or 'delete' to remove it: ").strip().lower()
+        if action == "delete":
+            del recipes_data[found_category][recipe_name]
+            print(f"'{recipe_name}' has been deleted.")
+            continue
+        elif action == "edit":
+            print(f"\nCurrent ingredients for '{recipe_name}':")
+            for ingredient, details in recipes_data[found_category][recipe_name].items():
+                print(f"  - {ingredient}: {details['quantity']} {details['unit']}")
 
-                if overwrite == "yes":
-                    new_ingredients = input_ingredients()
-                    recipes_data[found_category][recipe_name] = new_ingredients
-                else:
-                   print("Skipping overwrite. No changes made.")
+            overwrite = input("Do you want to overwrite the ingredients? (yes/no): ").strip().lower()
 
+            if overwrite == "yes":
+                new_ingredients = input_ingredients()
+                recipes_data[found_category][recipe_name] = new_ingredients
             else:
-                print("Invalid action. Please type 'edit' or 'delete'.")
-                continue
+               print("Skipping overwrite. No changes made.")
+
         else:
-            print(f"\n'{recipe_name}' not found. Adding as new.")
-            selected_category = category_choices()
-            if selected_category not in recipes_data:
-                recipes_data[selected_category] = {}
-            new_ingredients = input_ingredients()
-            recipes_data[selected_category][recipe_name] = new_ingredients
-            print(f"\nRecipe '{recipe_name}' has been added to category '{selected_category}'.")
-
-
-        
+            print("Invalid action. Please type 'edit' or 'delete'.")
+            continue
+    
 
     # Save the updated recipes data
     with open("recipes.json", "w") as file:
