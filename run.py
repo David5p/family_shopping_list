@@ -245,7 +245,74 @@ def edit_ingredients(ingredients):
         else:
             # User input something that's not a number
             print("Please enter a valid number.")
-            
+
+def list_recipes(flat_recipes):         
+    """ 
+    Refresh the recipe list each time in case it changes
+    """
+    recipe_list = list(flat_recipes.keys())
+    print("\nAvailable Recipes:")
+    for index, recipe in enumerate(recipe_list, 1):
+        print(f"{index}. {recipe}")
+    return recipe_list
+
+def handle_new_recipe(recipes_data):
+    """
+    Prompts the user to create a new recipe by entering its name, category, and ingredients.
+    Adds the new recipe to the recipes_data dictionary under the selected category.
+    """
+    recipe_name = input("Enter new recipe name: ").strip().title()
+    selected_category = category_choices()
+    new_ingredients = input_ingredients()
+    
+    if selected_category not in recipes_data:
+        recipes_data[selected_category] = {}
+    
+    recipes_data[selected_category][recipe_name] = new_ingredients
+    print(f"Added '{recipe_name}' to category '{selected_category}'.")
+
+def get_recipe_selection(recipe_list):
+    """
+    Prompts the user to select an existing recipe by number, add a new recipe, or finish editing.
+    """
+    selection = input("\nEnter the number of the recipe to edit/delete or type 'new' to add a recipe, or 'done' to finish: ").strip().lower()
+    if selection == "done":
+        return "done", None
+    elif selection == "new":
+        return "new", None
+
+    elif selection.isdigit():
+        index = int(selection) - 1
+        if 0 <= index < len(recipe_list):
+            return "existing", recipe_list[index]
+    
+    print("Invalid selection.")
+    return "invalid", None
+
+def get_recipe_category(recipes_data, recipe_name):
+    """
+    Finds and returns the category to which a given recipe belongs.
+    """
+    for category, recipes in recipes_data.items():
+        if recipe_name in recipes:
+            return category
+    return None
+
+def handle_existing_recipe_action(recipes_data, category, recipe_name):
+    """
+    Allows the user to either edit or delete an existing recipe.
+    """
+
+    print(f"\n'{recipe_name}' found in category '{category}'.")
+    action = input("Type 'edit' to update or 'delete' to remove it: ").strip().lower()
+
+    if action == "delete":
+        del recipes_data[category][recipe_name]
+        print(f"'{recipe_name}' has been deleted.")
+    elif action == "edit":
+        edit_ingredients(recipes_data[category][recipe_name])
+    else:
+        print("Invalid action. Please type 'edit' or 'delete'.")
 
 def edit_recipes(recipes_data):
 
@@ -255,63 +322,27 @@ def edit_recipes(recipes_data):
     categories = ["Breakfast", "Meals", "Snacks"] 
 
     while True:
-    # Refresh the recipe list each time in case it changes
         flat_recipes = flatten_recipes(recipes_data)
-        recipe_list = list(flat_recipes.keys())
-        print("\nAvailable Recipes:")
-
-        for index, recipe in enumerate(recipe_list, 1):
-            print(f"{index}. {recipe}")
-        # Ask for user input when listing all recipes
-        selection = input("\nEnter the number of the recipe to edit/delete or type 'new' to add a recipe, or 'done' to finish: ").strip().lower()
-        if selection == "done":
-            break
-        elif selection == "new":
-            recipe_name = input("Enter new recipe name: ").strip().title()
-            selected_category = category_choices()
-
-            new_ingredients = input_ingredients()
-            if selected_category not in recipes_data:
-                recipes_data[selected_category] = {}
+        recipe_list = list_recipes(flat_recipes)
     
-            recipes_data[selected_category][recipe_name] = new_ingredients
-            print(f"Added '{recipe_name}' to category '{selected_category}'.")
-            continue
+        selection_type, recipe_name = get_recipe_selection(recipe_list)
 
-        elif selection.isdigit():
-            index = int(selection) - 1
-            if 0 <= index < len(recipe_list):
-                recipe_name = recipe_list[index]
-            else:
-                print("Invalid number. Skipping.")
-                continue
-        else:
-            print("Invalid input. Please enter a valid number, 'new', or 'done'.")
+        if selection_type == "done":
+            break
+        elif selection_type == "new":
+            handle_new_recipe(recipes_data)
             continue
+        elif selection_type == "existing":
+            category = get_recipe_category(recipes_data, recipe_name)
 
         # Find the category of the selected recipe
-        found_category = None
-        for category, recipes in recipes_data.items():
-            if recipe_name in recipes:
-                found_category = category
-                break
-
-        if not found_category:
-            print(f"\nCould not find the category for {recipe_name}. Skipping.")
-            continue
-
-        print(f"\n'{recipe_name}' found in category '{found_category}'.")
-        action = input("Type 'edit' to update it or 'delete' to remove it: ").strip().lower()
-        if action == "delete":
-            del recipes_data[found_category][recipe_name]
-            print(f"'{recipe_name}' has been deleted.")
-            continue
-        elif action == "edit":
-            edit_ingredients(recipes_data[found_category][recipe_name])
+            if not category:
+                print(f"\nCould not find the category for {recipe_name}. Skipping.")
+                continue
+            handle_existing_recipe_action(recipes_data, category, recipe_name)
         else:
-            print("Invalid action. Please type 'edit' or 'delete'.")
             continue
-    
+
 
     # Save the updated recipes data
     with open("recipes.json", "w") as file:
