@@ -193,7 +193,7 @@ def edit_existing_ingredient(ingredients, index):
     """
     Allow the user to edit or remove an existing ingredient.
     """
-    ingd_name = list(ingredients.keys())[choice_num - 1]
+    ingd_name = list(ingredients.keys())[index]
     print(f"Editing '{ingd_name}'")
                 
     # Ask user what they want to do with this ingredient
@@ -235,11 +235,10 @@ def edit_ingredients(ingredients):
     while True:
         display_ingredients(ingredients)
         choice = input("Select an ingredient number to edit/remove, or choose to add/finish: ").strip()
-
+        choice_num = int(choice)
         if not choice.isdigit():
             print("Please enter a valid number")
             continue
-        choice_num = int(choice) 
         if 1 <= choice_num <= len(ingredients):
             edit_existing_ingredient(ingredients, choice_num - 1)
         elif choice_num == len(ingredients) + 1:

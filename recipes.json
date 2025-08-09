@@ -294,12 +294,12 @@
                 "quantity": 100,
                 "unit": "g"
             },
-            "Bacon": {
-                "quantity": 1,
-                "unit": "packs"
-            },
             "Tomatoes": {
                 "quantity": 200,
+                "unit": "g"
+            },
+            "Baked beans": {
+                "quantity": "190",
                 "unit": "g"
             }
         },
