@@ -110,12 +110,17 @@ def edit_stock(stock_data):
 
         existing_item = get_existing_item_key(item_name, stock_data)
 
+        if not existing_item:
+            match = get_closest_match(item_name.title(), list(stock_data.keys()))
+            if match:
+                confirm = input(f"Did you mean'{match}'? (y/n): ").strip().lower()
+                if confirm == "y":
+                    existing_item = match
         if existing_item:
             item_name = existing_item
             print(f"{item_name} found in stock. Updating...")
         else:
             print(f"{item_name} not found. Adding as a new item.")
-
 
         try:
             quantity = float(input(f"Enter the quantity for '{item_name}': "))
