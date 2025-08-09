@@ -183,27 +183,48 @@ def display_ingredients(ingredients):
     """
     Display all current ingredients with quantities and units.
     """
+    print("\nCurrent ingredients:")
+    for i, (ingredient, details) in enumerate(ingredients.items(), 1):
+        print(f"{i}. {ingredient}: {details['quantity']} {details['unit']}")
+    print(f"{len(ingredients) + 1}. Add new ingredient")
+    print(f"{len(ingredients) + 2}. Finish editing")
+
 def edit_existing_ingredient(ingredients, index):
     """
     Allow the user to edit or remove an existing ingredient.
     """
+    ingd_name = list(ingredients.keys())[choice_num - 1]
+    print(f"Editing '{ingd_name}'")
+                
+    # Ask user what they want to do with this ingredient
+    sub_action = input("Type 'edit' to change quantity/unit, 'remove' to delete ingredient, or 'cancel' to go back: ").strip().lower()
+    if sub_action == 'edit':
+        # Get new quantity and unit, if provided, update ingredient details            new_qty = input(f"Enter new quantity for '{ingd_name}' (current: {ingredients[ingd_name]['quantity']}): ").strip()
+        new_unit = input(f"Enter new unit for '{ingd_name}' (current: {ingredients[ingd_name]['unit']}): ").strip()
+        if new_qty:
+            ingredients[ingd_name]['quantity'] = new_qty
+        if new_unit:
+            ingredients[ingd_name]['unit'] = new_unit
+            print(f"Updated '{ingd_name}'")
+    elif sub_action == 'remove':
+        # Remove the ingredient from the recipe
+        del ingredients[ingd_name]
+        print(f"Removed '{ingd_name}' from the recipe.")
+    elif sub_action == 'cancel':
+        print("Cancelled editing")
+    else:
+        print("Invalid action.")
 
 def add_new_ingredient(ingredients):
     """Add a new ingredient to the list."""
-    
+
 def edit_ingredients(ingredients):
     """
     Allow the user to edit ingredients of a recipe one by one.
     """
     while True:
-        # Display current ingredients with numbering
-        print("\nCurrent ingredients:")
-        for i, (ingredient, details) in enumerate(ingredients.items(), 1):
-            print(f"{i}. {ingredient}: {details['quantity']} {details['unit']}")
+       
         
-        # Display options to add new ingredient or finish editing
-        print(f"{len(ingredients) + 1}. Add new ingredient")
-        print(f"{len(ingredients) + 2}. Finish editing")
 
         # Prompt user to select an ingredient to edit/remove, add new, or finish
         choice = input("Select an ingredient number to edit/remove, or choose to add/finish: ").strip()
@@ -212,30 +233,7 @@ def edit_ingredients(ingredients):
             choice_num = int(choice)
             if 1 <= choice_num <= len(ingredients):
                 # User selected an existing ingredient to edit or remove
-                ingd_name = list(ingredients.keys())[choice_num - 1]
-                print(f"Editing '{ingd_name}'")
                 
-                # Ask user what they want to do with this ingredient
-                sub_action = input("Type 'edit' to change quantity/unit, 'remove' to delete ingredient, or 'cancel' to go back: ").strip().lower()
-
-                if sub_action == 'edit':
-                    # Get new quantity and unit, if provided, update ingredient details
-                    new_qty = input(f"Enter new quantity for '{ingd_name}' (current: {ingredients[ingd_name]['quantity']}): ").strip()
-                    new_unit = input(f"Enter new unit for '{ingd_name}' (current: {ingredients[ingd_name]['unit']}): ").strip()
-                    if new_qty:
-                        ingredients[ingd_name]['quantity'] = new_qty
-                    if new_unit:
-                        ingredients[ingd_name]['unit'] = new_unit
-                    print(f"Updated '{ingd_name}'")
-                elif sub_action == 'remove':
-                    # Remove the ingredient from the recipe
-                    del ingredients[ingd_name]
-                    print(f"Removed '{ingd_name}' from the recipe.")
-                elif sub_action == 'cancel':
-                    # Cancel and go back to the ingredient list
-                    continue
-                else:
-                    print("Invalid action.")
 
             elif choice_num == len(ingredients) + 1:
                 # User chose to add a new ingredient
