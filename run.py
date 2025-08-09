@@ -216,45 +216,39 @@ def edit_existing_ingredient(ingredients, index):
         print("Invalid action.")
 
 def add_new_ingredient(ingredients):
-    """Add a new ingredient to the list."""
+    """
+    Add a new ingredient to the list.
+    """
+    new_ingd = input("Enter new ingredient name: ").strip()
+    new_qty = input("Enter quantity: ").strip()
+    new_unit = input("Enter unit: ").strip()
+    if new_ingd:
+        ingredients[new_ingd] = {"quantity": new_qty, "unit": new_unit}
+        print(f"Added '{new_ingd}'.")
+    else:
+        print("Ingredient name cannot be empty.")
 
 def edit_ingredients(ingredients):
     """
-    Allow the user to edit ingredients of a recipe one by one.
+    Orchestrates editing of recipe ingredients by calling helper functions.
     """
     while True:
-       
-        
-
-        # Prompt user to select an ingredient to edit/remove, add new, or finish
+        display_ingredients(ingredients)
         choice = input("Select an ingredient number to edit/remove, or choose to add/finish: ").strip()
 
-        if choice.isdigit():
-            choice_num = int(choice)
-            if 1 <= choice_num <= len(ingredients):
-                # User selected an existing ingredient to edit or remove
-                
-
-            elif choice_num == len(ingredients) + 1:
-                # User chose to add a new ingredient
-                new_ingd = input("Enter new ingredient name: ").strip()
-                new_qty = input("Enter quantity: ").strip()
-                new_unit = input("Enter unit: ").strip()
-                if new_ingd:
-                    ingredients[new_ingd] = {"quantity": new_qty, "unit": new_unit}
-                    print(f"Added '{new_ingd}'.")
-                else:
-                    print("Ingredient name cannot be empty.")
-            elif choice_num == len(ingredients) + 2:
-                # User finished editing ingredients, exit loop
-                print("Finished editing ingredients.")
-                break
-            else:
-                # User input a number outside valid options
-                print("Invalid selection.")
+        if not choice.isdigit():
+            print("Please enter a valid number")
+            continue
+        choice_num = int(choice) 
+        if 1 <= choice_num <= len(ingredients):
+            edit_existing_ingredient(ingredients, choice_num - 1)
+        elif choice_num == len(ingredients) + 1:
+            add_new_ingredient(ingredients)
+        elif choice_num == len(ingredients) + 2:
+            print("Finished editing ingredients.")
+            break
         else:
-            # User input something that's not a number
-            print("Please enter a valid number.")
+            print("Invalid selection.")
 
 def list_recipes(flat_recipes):         
     """ 
