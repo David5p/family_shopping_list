@@ -16,17 +16,18 @@ def view_stock(stock_data):
     for item, info in stock_data.items():
         print(f'{item:<28} | {info["quantity"]:<10} | {info["unit"]:<15}')
 
+
 def main_menu():
     """
-    Introduce user to the project and provide 
-    user with options to select how they will 
+    Introduce user to the project and provide
+    user with options to select how they will
     use the program
     """
     print("\nWelcome to the Family Shopping List")
     stock_data = load_stock()
     recipes_data = load_recipes()
     flat_recipes = flatten_recipes(recipes_data)
- 
+
     while True:
         print("\nMain Menu")
         print("1. View Recipes")
@@ -39,16 +40,17 @@ def main_menu():
         choice = input("Enter your choice(1-6):")
         if choice == "1":
             view_recipes(flat_recipes)
-        
+
         elif choice == "2":
             view_recipes(flat_recipes)
             edit_recipes(recipes_data)
 
         elif choice == "3":
             while True:
-                print("Would you like to plan meals for the weekend(2 days) or a full week (7 days)?")
+                print("Would you like to plan meals for"
+                      " the weekend(2 days) or a full week (7 days)?")
                 days_input = input("Enter your choice (2 or 7): ").strip()
-                
+
                 if days_input in ["2", "7"]:
                     number_of_days = int(days_input)
                     break  # valid input, so break out of the loop
@@ -58,9 +60,10 @@ def main_menu():
             meal_plan = get_meal_plan_from_user(flat_recipes)
             if not meal_plan:
                 print("No valid meals entered. Returning to main menu.")
-                continue 
+                continue
 
-            shopping_list = generate_shopping_list(meal_plan, flat_recipes, stock_data)
+            shopping_list = generate_shopping_list(
+                meal_plan, flat_recipes, stock_data)
             print("\nShopping List:")
             for item, info in shopping_list.items():
                 print(f"- {item}: {info['quantity']} {info['unit']}")
@@ -81,7 +84,7 @@ def main_menu():
 
 def load_stock():
     """
-    Load stock from the json file so user has access to 
+    Load stock from the json file so user has access to
     what stock is available.
     """
     with open("stock.json", "r") as file:
@@ -91,29 +94,38 @@ def load_stock():
 
 def load_recipes():
     """
-    Load recipes from the json file so they are ready to be 
+    Load recipes from the json file so they are ready to be
     compared to the stock list.
     """
     with open("recipes.json", "r") as file:
         recipes = json.load(file)
         return recipes
 
+
 def edit_stock(stock_data):
     """
-    Allow the user to update or add items in the stock list, then save the changes.
+    Allow the user to update or add items in the stock list,
+    then save the changes.
     """
     while True:
-        item_name = input("Enter the name of the item to update (or type 'done' to finish): ").strip().lower()
-        
+        item_name = input(
+            "Enter the name of the item to update "
+            "(or type 'done' to finish): "
+            ).strip().lower()
+
         if item_name == "done":
             break
 
         existing_item = get_existing_item_key(item_name, stock_data)
 
         if not existing_item:
-            match = get_closest_match(item_name.title(), list(stock_data.keys()))
+            match = get_closest_match(
+                item_name.title(),
+                list(stock_data.keys()))
             if match:
-                confirm = input(f"Did you mean'{match}'? (y/n): ").strip().lower()
+                confirm = input(
+                    f"Did you mean'{match}'? (y/n): "
+                    ).strip().lower()
                 if confirm == "y":
                     existing_item = match
         if existing_item:
@@ -124,9 +136,17 @@ def edit_stock(stock_data):
 
         try:
             quantity = float(input(f"Enter the quantity for '{item_name}': "))
-            unit = input(f"Enter the unit for '{item_name}' (e.g., grams, packs, servings or pieces): ").strip().lower()
-            stock_data[item_name.title()] = {"quantity": quantity, "unit": unit}
+            unit = input(
+                f"Enter the unit for '{item_name}' "
+                "(e.g., grams, packs, servings or pieces): "
+            ).strip().lower()
+
+            stock_data[item_name.title()] = {
+                "quantity": quantity,
+                "unit": unit
+            }
             print(f"Updated '{item_name.title()}' in stock.")
+
         except ValueError:
             print("Invalid quantity. Please enter a number.")
 
@@ -135,6 +155,7 @@ def edit_stock(stock_data):
         json.dump(stock_data, file, indent=4)
 
     print("Stock list updated and saved.")
+
 
 def get_existing_item_key(user_input, stock_data):
     for item in stock_data:
@@ -152,10 +173,12 @@ def flatten_recipes(recipes_data):
         flat_recipes.update(category)
     return flat_recipes
 
+
 def view_recipes(flat_recipes):
     print("\nAvailable Recipes:")
     for index, recipe_name in enumerate(flat_recipes, 1):
         print(f"{index}. {recipe_name}")
+
 
 def category_choices():
     categories = ["Breakfast", "Meals", "Snacks"]
@@ -170,19 +193,27 @@ def category_choices():
         else:
             print("Invalid input. Please choose a valid number from the list.")
 
+
 def input_ingredients():
     ingredients = {}
-    while True: 
-        ingredient = input("Enter ingredient name (or type 'done' to finish): ").strip().lower()
+    while True:
+        ingredient = input(
+            "Enter ingredient name (or type 'done' to finish): "
+            ).strip().lower()
         if ingredient == "done":
             break
         try:
-            quantity = float(input(f"Enter the quantity for '{ingredient}': "))
-            unit = input(f"Enter the unit for '{ingredient}' (e.g., grams, packs, servings or pieces): ").strip().lower()
+            quantity = float(input(
+                f"Enter the quantity for '{ingredient}': "))
+            unit = input(
+                f"Enter the unit for '{ingredient}' "
+                "(e.g., grams, packs, servings or pieces): "
+                ).strip().lower()
             ingredients[ingredient] = {"quantity": quantity, "unit": unit}
         except ValueError:
             print("Invalid quantity. Please enter a number.")
     return ingredients
+
 
 def display_ingredients(ingredients):
     """
@@ -194,18 +225,25 @@ def display_ingredients(ingredients):
     print(f"{len(ingredients) + 1}. Add new ingredient")
     print(f"{len(ingredients) + 2}. Finish editing")
 
+
 def edit_existing_ingredient(ingredients, index):
     """
     Allow the user to edit or remove an existing ingredient.
     """
     ingd_name = list(ingredients.keys())[index]
     print(f"Editing '{ingd_name}'")
-                
+
     # Ask user what they want to do with this ingredient
-    sub_action = input("Type 'edit' to change quantity/unit, 'remove' to delete ingredient, or 'cancel' to go back: ").strip().lower()
+    sub_action = input(
+        "Type 'edit' to change quantity/unit, "
+        "'remove' to delete ingredient, or 'cancel' to go back: "
+        ).strip().lower()
     if sub_action == 'edit':
-        # Get new quantity and unit, if provided, update ingredient details            new_qty = input(f"Enter new quantity for '{ingd_name}' (current: {ingredients[ingd_name]['quantity']}): ").strip()
-        new_unit = input(f"Enter new unit for '{ingd_name}' (current: {ingredients[ingd_name]['unit']}): ").strip()
+        # Get new quantity and unit, if provided, update ingredient details
+        new_unit = input(
+            f"Enter new unit for '{ingd_name}' "
+            "(current: {ingredients[ingd_name]['unit']}): "
+            ).strip()
         if new_qty:
             ingredients[ingd_name]['quantity'] = new_qty
         if new_unit:
@@ -220,6 +258,7 @@ def edit_existing_ingredient(ingredients, index):
     else:
         print("Invalid action.")
 
+
 def add_new_ingredient(ingredients):
     """
     Add a new ingredient to the list.
@@ -233,13 +272,17 @@ def add_new_ingredient(ingredients):
     else:
         print("Ingredient name cannot be empty.")
 
+
 def edit_ingredients(ingredients):
     """
     Orchestrates editing of recipe ingredients by calling helper functions.
     """
     while True:
         display_ingredients(ingredients)
-        choice = input("Select an ingredient number to edit/remove, or choose to add/finish: ").strip()
+        choice = input(
+            "Select an ingredient number to edit/remove, "
+            "or choose to add/finish: "
+            ).strip()
         choice_num = int(choice)
         if not choice.isdigit():
             print("Please enter a valid number")
@@ -254,8 +297,9 @@ def edit_ingredients(ingredients):
         else:
             print("Invalid selection.")
 
-def list_recipes(flat_recipes):         
-    """ 
+
+def list_recipes(flat_recipes):
+    """
     Refresh the recipe list each time in case it changes
     """
     recipe_list = list(flat_recipes.keys())
@@ -264,26 +308,34 @@ def list_recipes(flat_recipes):
         print(f"{index}. {recipe}")
     return recipe_list
 
+
 def handle_new_recipe(recipes_data):
     """
-    Prompts the user to create a new recipe by entering its name, category, and ingredients.
-    Adds the new recipe to the recipes_data dictionary under the selected category.
+    Prompts the user to create a new recipe by entering
+    its name, category, and ingredients.
+    Adds the new recipe to the recipes_data dictionary
+    under the selected category.
     """
     recipe_name = input("Enter new recipe name: ").strip().title()
     selected_category = category_choices()
     new_ingredients = input_ingredients()
-    
+
     if selected_category not in recipes_data:
         recipes_data[selected_category] = {}
-    
+
     recipes_data[selected_category][recipe_name] = new_ingredients
     print(f"Added '{recipe_name}' to category '{selected_category}'.")
 
+
 def get_recipe_selection(recipe_list):
     """
-    Prompts the user to select an existing recipe by number, add a new recipe, or finish editing.
+    Prompts the user to select an existing recipe by number,
+    add a new recipe, or finish editing.
     """
-    selection = input("\nEnter the number of the recipe to edit/delete or type 'new' to add a recipe, or 'done' to finish: ").strip().lower()
+    selection = input(
+        "\nEnter the number of the recipe to edit/delete "
+        "or type 'new' to add a recipe, or 'done' to finish: "
+        ).strip().lower()
     if selection == "done":
         return "done", None
     elif selection == "new":
@@ -293,9 +345,10 @@ def get_recipe_selection(recipe_list):
         index = int(selection) - 1
         if 0 <= index < len(recipe_list):
             return "existing", recipe_list[index]
-    
+
     print("Invalid selection.")
     return "invalid", None
+
 
 def get_recipe_category(recipes_data, recipe_name):
     """
@@ -306,13 +359,16 @@ def get_recipe_category(recipes_data, recipe_name):
             return category
     return None
 
+
 def handle_existing_recipe_action(recipes_data, category, recipe_name):
     """
     Allows the user to either edit or delete an existing recipe.
     """
 
     print(f"\n'{recipe_name}' found in category '{category}'.")
-    action = input("Type 'edit' to update or 'delete' to remove it: ").strip().lower()
+    action = input(
+        "Type 'edit' to update or 'delete' to remove it: "
+        ).strip().lower()
 
     if action == "delete":
         del recipes_data[category][recipe_name]
@@ -322,17 +378,18 @@ def handle_existing_recipe_action(recipes_data, category, recipe_name):
     else:
         print("Invalid action. Please type 'edit' or 'delete'.")
 
+
 def edit_recipes(recipes_data):
 
     """
-    Allow the user to update or add items to the recipes, then save the changes.
+    Allow the user to update or add items to the recipes,
+    then save the changes.
     """
-    categories = ["Breakfast", "Meals", "Snacks"] 
-
+    categories = ["Breakfast", "Meals", "Snacks"]
     while True:
         flat_recipes = flatten_recipes(recipes_data)
         recipe_list = list_recipes(flat_recipes)
-    
+
         selection_type, recipe_name = get_recipe_selection(recipe_list)
 
         if selection_type == "done":
@@ -341,16 +398,18 @@ def edit_recipes(recipes_data):
             handle_new_recipe(recipes_data)
             continue
         elif selection_type == "existing":
-            category = get_recipe_category(recipes_data, recipe_name)
+            category = get_recipe_category(
+                recipes_data, recipe_name)
 
         # Find the category of the selected recipe
             if not category:
-                print(f"\nCould not find the category for {recipe_name}. Skipping.")
+                print(
+                    f"\nCould not find the category for "
+                    f"{recipe_name}. Skipping.")
                 continue
             handle_existing_recipe_action(recipes_data, category, recipe_name)
         else:
             continue
-
 
     # Save the updated recipes data
     with open("recipes.json", "w") as file:
