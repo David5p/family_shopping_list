@@ -52,7 +52,6 @@ def main_menu():
                 days_input = input("Enter your choice (2 or 7): ").strip()
 
                 if days_input in ["2", "7"]:
-                    number_of_days = int(days_input)
                     break  # valid input, so break out of the loop
                 else:
                     print("Invalid input. Please enter 2 or 7.")
@@ -244,8 +243,11 @@ def edit_existing_ingredient(ingredients, index):
             f"Enter new unit for '{ingd_name}' "
             "(current: {ingredients[ingd_name]['unit']}): "
             ).strip()
+        new_qty = input(
+            f"Enter new quantity for '{ingd_name}' "
+            f"(current: {ingredients[ingd_name]['quantity']}): ").strip()
         if new_qty:
-            ingredients[ingd_name]['quantity'] = new_qty
+            ingredients[ingd_name]['quantity'] = float(new_qty)
         if new_unit:
             ingredients[ingd_name]['unit'] = new_unit
             print(f"Updated '{ingd_name}'")
@@ -385,7 +387,6 @@ def edit_recipes(recipes_data):
     Allow the user to update or add items to the recipes,
     then save the changes.
     """
-    categories = ["Breakfast", "Meals", "Snacks"]
     while True:
         flat_recipes = flatten_recipes(recipes_data)
         recipe_list = list_recipes(flat_recipes)
@@ -422,9 +423,11 @@ def get_closest_match(user_input, recipe_names, cutoff=0.5):
     """
     Allow user to make small mistakes when inputting their meal plan
     """
-    matches = difflib.get_close_matches(user_input, recipe_names, n = 1, cutoff=0.6)
+    matches = difflib.get_close_matches(
+        user_input, recipe_names, n=1, cutoff=0.6)
 
     return matches[0] if matches else None
+
 
 def get_meal_plan_from_user(flat_recipes):
     recipe_list = list(flat_recipes.keys())
@@ -432,8 +435,10 @@ def get_meal_plan_from_user(flat_recipes):
     for index, recipe in enumerate(flat_recipes, 1):
         print(f"{index}. {recipe}")
 
-    meal_input = input("\nEnter the recipe numbers for your meal plan (comma-separated):\n")
-           
+    meal_input = input(
+        "\nEnter the recipe numbers for your meal plan "
+        "(comma-separated):\n")
+
     meal_plan = []
     for value in meal_input.split(","):
         value = value.strip()
@@ -450,13 +455,15 @@ def get_meal_plan_from_user(flat_recipes):
             print(f"'{value}' is not a valid number. Skipped.")
     return meal_plan
 
-def generate_shopping_list(meal_plan, flat_recipes, stock): 
+
+def generate_shopping_list(meal_plan, flat_recipes, stock):
     """
     Calculates ingredient needs by summing all required quantities first,
     then comparing to stock to produce an accurate shopping list.
     """
     total_needed = {}
-    recipe_counts = Counter(meal_plan)  # Count how many times each meal is selected
+    # Count how many times each meal is selected
+    recipe_counts = Counter(meal_plan)
 
     # Step 1: Aggregate total needed quantities
     for recipe_name, count in recipe_counts.items():
@@ -468,7 +475,8 @@ def generate_shopping_list(meal_plan, flat_recipes, stock):
             if item in total_needed:
                 total_needed[item]["quantity"] += needed_qty
             else:
-                total_needed[item] = {"quantity": needed_qty, "unit": needed_unit}
+                total_needed[item] = {
+                    "quantity": needed_qty, "unit": needed_unit}
 
     # Step 2: Compare with stock
     shopping_list = {}
@@ -501,7 +509,6 @@ def generate_shopping_list(meal_plan, flat_recipes, stock):
             }
 
     return shopping_list
-
 
 
 # Start program
