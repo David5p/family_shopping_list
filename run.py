@@ -164,12 +164,20 @@ def get_existing_item_key(user_input, stock_data):
 
 
 def flatten_recipes(recipes_data):
-    """
-    Condense nested recipe categories into a single dictionary.
-    """
     flat_recipes = {}
     for category in recipes_data.values():
-        flat_recipes.update(category)
+        for recipe_name, ingredients in category.items():
+            fixed_ingredients = {}
+            for ing, info in ingredients.items():
+                try:
+                    qty = float(info["quantity"])
+                except ValueError:
+                    qty = 0  # Or handle error appropriately
+                fixed_ingredients[ing] = {
+                    "quantity": qty,
+                    "unit": info["unit"]
+                }
+            flat_recipes[recipe_name] = fixed_ingredients
     return flat_recipes
 
 
