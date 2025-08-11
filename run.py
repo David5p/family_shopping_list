@@ -4,10 +4,9 @@
 import json
 import difflib
 from collections import Counter
-from colorama import init, Fore, Style
+from colorama import init, Fore
 
 init(autoreset=True)  # Automatically reset colors after each print
-
 
 
 def view_stock(stock_data):
@@ -53,7 +52,9 @@ def main_menu():
             while True:
                 print(Fore.CYAN + "Would you like to plan meals for"
                       " the weekend(2 days) or a full week (7 days)?")
-                days_input = input(Fore.YELLOW + "Enter your choice (2 or 7): ").strip()
+                days_input = input(
+                    Fore.YELLOW +
+                    "Enter your choice (2 or 7): ").strip()
 
                 if days_input in ["2", "7"]:
                     break  # valid input, so break out of the loop
@@ -62,7 +63,9 @@ def main_menu():
 
             meal_plan = get_meal_plan_from_user(flat_recipes)
             if not meal_plan:
-                print(Fore.RED + "No valid meals entered. Returning to main menu.")
+                print(
+                    Fore.RED +
+                    "No valid meals entered. Returning to main menu.")
                 continue
 
             shopping_list = generate_shopping_list(
@@ -111,9 +114,10 @@ def edit_stock(stock_data):
     then save the changes.
     """
     while True:
-        item_name = input(Fore.YELLOW +
-        "Enter the name of the item to update "
-        "(or type 'done' to finish): "
+        item_name = input(
+            Fore.YELLOW +
+            "Enter the name of the item to update"
+            "(or type 'done' to finish): "
             ).strip().lower()
 
         if item_name == "done":
@@ -126,7 +130,8 @@ def edit_stock(stock_data):
                 item_name.title(),
                 list(stock_data.keys()))
             if match:
-                confirm = input(Fore.LIGHTYELLOW_EX +
+                confirm = input(
+                    Fore.LIGHTYELLOW_EX +
                     f"Did you mean'{match}'? (y/n): "
                     ).strip().lower()
                 if confirm == "y":
@@ -138,7 +143,9 @@ def edit_stock(stock_data):
             print(Fore.GREEN + f"{item_name} not found. Adding as a new item.")
 
         try:
-            quantity = float(input(Fore.YELLOW + f"Enter the quantity for '{item_name}': "))
+            quantity = float(input(
+                Fore.YELLOW +
+                f"Enter the quantity for '{item_name}': "))
             unit = input(
                 Fore.YELLOW + f"Enter the unit for '{item_name}' "
                 "(e.g., grams, packs, servings or pieces): "
@@ -202,14 +209,17 @@ def category_choices():
         if choice.isdigit() and 1 <= int(choice) <= len(categories):
             return categories[int(choice) - 1]
         else:
-            print(Fore.RED + "Invalid input. Please choose a valid number from the list.")
+            print(
+                Fore.RED +
+                "Invalid input. Please choose a valid number from the list.")
 
 
 def input_ingredients():
     ingredients = {}
     while True:
         ingredient = input(
-            Fore.YELLOW +"Enter ingredient name (or type 'done' to finish): "
+            Fore.YELLOW +
+            "Enter ingredient name (or type 'done' to finish): "
             ).strip().lower()
         if ingredient == "done":
             break
@@ -232,7 +242,7 @@ def display_ingredients(ingredients):
     """
     print("\nCurrent ingredients:")
     for i, (ingredient, details) in enumerate(ingredients.items(), 1):
-        print( f"{i}. {ingredient}: {details['quantity']} {details['unit']}")
+        print(f"{i}. {ingredient}: {details['quantity']} {details['unit']}")
     print(f"{len(ingredients) + 1}. Add new ingredient")
     print(f"{len(ingredients) + 2}. Finish editing")
 
@@ -245,28 +255,33 @@ def edit_existing_ingredient(ingredients, index):
     print(Fore.LIGHTYELLOW_EX + f"Editing '{ingd_name}'")
 
     # Ask user what they want to do with this ingredient
-    sub_action = input(Fore.YELLOW +
+    sub_action = input(
+        Fore.YELLOW +
         "Type 'edit' to change quantity/unit, "
         "'remove' to delete ingredient, or 'cancel' to go back: "
         ).strip().lower()
     if sub_action == 'edit':
         # Get new quantity and unit, if provided, update ingredient details
         while True:
-            new_unit = input(Fore.YELLOW +
-            f"Enter new unit for '{ingd_name}' "
-            f"(current: {ingredients[ingd_name]['unit']}): "
-            ).strip()
+            new_unit = input(
+                Fore.YELLOW +
+                f"Enter new unit for '{ingd_name}' "
+                f"(current: {ingredients[ingd_name]['unit']}): "
+                ).strip()
 
             # Check if it's a number (not allowed)
             if new_unit.replace('.', '', 1).isdigit():
-                print(Fore.RED + "Unit cannot be a number."
-                "Please enter a valid unit (e.g., grams, packs).")
+                print(
+                    Fore.RED +
+                    "Unit cannot be a number."
+                    "Please enter a valid unit (e.g., grams, packs).")
             elif not new_unit:
                 print(Fore.RED + "Unit cannot be empty.")
             else:
                 break
 
-        new_qty = input(Fore.YELLOW + 
+        new_qty = input(
+            Fore.YELLOW +
             f"Enter new quantity for '{ingd_name}' "
             f"(current: {ingredients[ingd_name]['quantity']}): ").strip()
         if new_qty:
@@ -277,33 +292,44 @@ def edit_existing_ingredient(ingredients, index):
     elif sub_action == 'remove':
         # Remove the ingredient from the recipe
         del ingredients[ingd_name]
-        print(Fore.GREEN +
-        f"Removed '{ingd_name}' from the recipe.")
+        print(
+            Fore.GREEN +
+            f"Removed '{ingd_name}' from the recipe.")
     elif sub_action == 'cancel':
-        print(Fore.GREEN +
-        "Cancelled editing")
+        print(
+            Fore.GREEN +
+            "Cancelled editing")
     else:
-        print(Fore.RED +
-        "Invalid action.")
+        print(
+            Fore.RED +
+            "Invalid action.")
 
 
 def add_new_ingredient(ingredients):
     """
     Add a new ingredient to the list.
     """
-    new_ingd = input(Fore.YELLOW +
-    "Enter new ingredient name: ").strip()
-    new_qty = input(Fore.YELLOW +
-    "Enter quantity: ").strip()
-    new_unit = input( Fore.YELLOW +
-    "Enter unit: ").strip()
+    new_ingd = input(
+        Fore.YELLOW +
+        "Enter new ingredient name: "
+        ).strip()
+    new_qty = input(
+        Fore.YELLOW +
+        "Enter quantity: "
+        ).strip()
+    new_unit = input(
+        Fore.YELLOW +
+        "Enter unit: "
+        ).strip()
     if new_ingd:
         ingredients[new_ingd] = {"quantity": new_qty, "unit": new_unit}
-        print(Fore.GREEN +
-        f"Added '{new_ingd}'.")
+        print(
+            Fore.GREEN +
+            f"Added '{new_ingd}'.")
     else:
-        print(Fore.RED +
-        "Ingredient name cannot be empty.")
+        print(
+            Fore.RED +
+            "Ingredient name cannot be empty.")
 
 
 def edit_ingredients(ingredients):
@@ -312,13 +338,15 @@ def edit_ingredients(ingredients):
     """
     while True:
         display_ingredients(ingredients)
-        choice = input(Fore.YELLOW +
+        choice = input(
+            Fore.YELLOW +
             "Select an ingredient number to edit/remove, "
             "or choose to add/finish: "
             ).strip()
         if not choice.isdigit():
-            print(Fore.RED +
-            "Please enter a valid number")
+            print(
+                Fore.RED +
+                "Please enter a valid number")
             continue
 
         choice_num = int(choice)
@@ -327,12 +355,14 @@ def edit_ingredients(ingredients):
         elif choice_num == len(ingredients) + 1:
             add_new_ingredient(ingredients)
         elif choice_num == len(ingredients) + 2:
-            print(Fore.GREEN +
-            "Finished editing ingredients.")
+            print(
+                Fore.GREEN +
+                "Finished editing ingredients.")
             break
         else:
-            print(Fore.RED +
-            "Invalid selection.")
+            print(
+                Fore.RED +
+                "Invalid selection.")
 
 
 def list_recipes(flat_recipes):
@@ -353,8 +383,10 @@ def handle_new_recipe(recipes_data):
     Adds the new recipe to the recipes_data dictionary
     under the selected category.
     """
-    recipe_name = input(Fore.YELLOW +
-    "Enter new recipe name: ").strip().title()
+    recipe_name = input(
+        Fore.YELLOW +
+        "Enter new recipe name: "
+        ).strip().title()
     selected_category = category_choices()
     new_ingredients = input_ingredients()
 
@@ -362,8 +394,9 @@ def handle_new_recipe(recipes_data):
         recipes_data[selected_category] = {}
 
     recipes_data[selected_category][recipe_name] = new_ingredients
-    print(Fore.GREEN +
-    f"Added '{recipe_name}' to category '{selected_category}'.")
+    print(
+        Fore.GREEN +
+        f"Added '{recipe_name}' to category '{selected_category}'.")
 
 
 def get_recipe_selection(recipe_list):
@@ -371,7 +404,8 @@ def get_recipe_selection(recipe_list):
     Prompts the user to select an existing recipe by number,
     add a new recipe, or finish editing.
     """
-    selection = input(Fore.YELLOW +
+    selection = input(
+        Fore.YELLOW +
         "\nEnter the number of the recipe to edit/delete "
         "or type 'new' to add a recipe, or 'done' to finish: "
         ).strip().lower()
@@ -385,8 +419,9 @@ def get_recipe_selection(recipe_list):
         if 0 <= index < len(recipe_list):
             return "existing", recipe_list[index]
 
-    print(Fore.RED +
-    "Invalid selection.")
+    print(
+        Fore.RED +
+        "Invalid selection.")
     return "invalid", None
 
 
@@ -405,21 +440,25 @@ def handle_existing_recipe_action(recipes_data, category, recipe_name):
     Allows the user to either edit or delete an existing recipe.
     """
 
-    print(Fore.GREEN +
-    f"\n'{recipe_name}' found in category '{category}'.")
-    action = input(Fore.YELLOW +
+    print(
+        Fore.GREEN +
+        f"\n'{recipe_name}' found in category '{category}'.")
+    action = input(
+        Fore.YELLOW +
         "Type 'edit' to update or 'delete' to remove it: "
         ).strip().lower()
 
     if action == "delete":
         del recipes_data[category][recipe_name]
-        print(Fore.GREEN +
-        f"'{recipe_name}' has been deleted.")
+        print(
+            Fore.GREEN +
+            f"'{recipe_name}' has been deleted.")
     elif action == "edit":
         edit_ingredients(recipes_data[category][recipe_name])
     else:
-        print(Fore.RED +
-        "Invalid action. Please type 'edit' or 'delete'.")
+        print(
+            Fore.RED +
+            "Invalid action. Please type 'edit' or 'delete'.")
 
 
 def edit_recipes(recipes_data):
@@ -445,7 +484,8 @@ def edit_recipes(recipes_data):
 
         # Find the category of the selected recipe
             if not category:
-                print(Fore.RED +
+                print(
+                    Fore.RED +
                     f"\nCould not find the category for "
                     f"{recipe_name}. Skipping.")
                 continue
@@ -457,8 +497,9 @@ def edit_recipes(recipes_data):
     with open("recipes.json", "w") as file:
         json.dump(recipes_data, file, indent=4)
 
-    print(Fore.GREEN +
-    "Recipes list updated and saved.")
+    print(
+        Fore.GREEN +
+        "Recipes list updated and saved.")
 
 
 def get_closest_match(user_input, recipe_names, cutoff=0.5):
@@ -477,7 +518,8 @@ def get_meal_plan_from_user(flat_recipes):
     for index, recipe in enumerate(flat_recipes, 1):
         print(f"{index}. {recipe}")
 
-    meal_input = input(Fore.YELLOW +
+    meal_input = input(
+        Fore.YELLOW +
         "\nEnter the recipe numbers for your meal plan "
         "(comma-separated):\n")
 
@@ -489,15 +531,18 @@ def get_meal_plan_from_user(flat_recipes):
             if 0 <= index < len(recipe_list):
                 selected_recipe = recipe_list[index]
                 meal_plan.append(selected_recipe)
-                print(Fore.GREEN +
-                f"Added: {selected_recipe}")
+                print(
+                    Fore.GREEN +
+                    f"Added: {selected_recipe}")
             else:
-                print(Fore.RED +
-                f"Invalid number: {value}. Skipped.")
+                print(
+                    Fore.RED +
+                    f"Invalid number: {value}. Skipped.")
 
         else:
-            print(Fore.RED +
-            f"'{value}' is not a valid number. Skipped.")
+            print(
+                Fore.RED +
+                f"'{value}' is not a valid number. Skipped.")
     return meal_plan
 
 
