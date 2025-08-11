@@ -252,16 +252,19 @@ def edit_existing_ingredient(ingredients, index):
     if sub_action == 'edit':
         # Get new quantity and unit, if provided, update ingredient details
         while True:
-    new_unit = input(Fore.YELLOW +
-        f"Enter new unit for '{ingd_name}' "
-        f"(current: {ingredients[ingd_name]['unit']}): "
-    ).strip()
+            new_unit = input(Fore.YELLOW +
+            f"Enter new unit for '{ingd_name}' "
+            f"(current: {ingredients[ingd_name]['unit']}): "
+            ).strip()
 
-    # Check if it's a number (not allowed)
-    if new_unit.replace('.', '', 1).isdigit():
-        print(Fore.RED + "Unit cannot be a number. Please enter a valid unit (e.g., grams, packs).")
-    else:
-        break
+            # Check if it's a number (not allowed)
+            if new_unit.replace('.', '', 1).isdigit():
+                print(Fore.RED + "Unit cannot be a number."
+                "Please enter a valid unit (e.g., grams, packs).")
+            elif not new_unit:
+                print(Fore.RED + "Unit cannot be empty.")
+            else:
+                break
 
         new_qty = input(Fore.YELLOW + 
             f"Enter new quantity for '{ingd_name}' "
