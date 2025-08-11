@@ -2,7 +2,7 @@
     "Breakfast": {
         "Porridge": {
             "Gluten free oats": {
-                "quantity": 50,
+                "quantity": 50.0,
                 "unit": "g"
             },
             "Honey": {

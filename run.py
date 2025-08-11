@@ -253,7 +253,7 @@ def edit_existing_ingredient(ingredients, index):
         # Get new quantity and unit, if provided, update ingredient details
         new_unit = input(Fore.YELLOW +
             f"Enter new unit for '{ingd_name}' "
-            "(current: {ingredients[ingd_name]['unit']}): "
+            f"(current: {ingredients[ingd_name]['unit']}): "
             ).strip()
         new_qty = input(Fore.YELLOW + 
             f"Enter new quantity for '{ingd_name}' "
