@@ -248,7 +248,7 @@
                 "unit": "packs"
             },
             "Eggs": {
-                "quantity": 4,
+                "quantity": 4.0,
                 "unit": "large"
             },
             "Croissant": {
@@ -282,7 +282,7 @@
                 "unit": "servings"
             },
             "Potatoes": {
-                "quantity": 700,
+                "quantity": 700.0,
                 "unit": "g"
             },
             "Butter": {
