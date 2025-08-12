@@ -37,7 +37,7 @@
            <summary>Visual Design</summary>
            <ul>
              <li><a href="#project-board">Project Board</a></li>
-             <li><a href="#fonts">Fonts</a></li>
+             <li><a href="#Flowcharts">Flowcharts</a></li>
              <li><a href="#colors">Colors</a></li>
            </ul>
          </details>
@@ -173,6 +173,23 @@ The Business Goals of The Capitals and Countries Quiz are:
 - For example, I was able to focus on allowing the user to view recipes and stock lists and generate the shopping list before taking the development of the program further.
 - It is also a useful tool to see how I could develop my program in the future or without time constraints.
 
+### Flowcharts
+
+<p align="center">
+  <img src="assets/images/outline.png" alt="Outline of the project">
+</p>
+
+- I used LucidChart to help me plan my project and outline the logic for some of the bigger functions.
+- As you can see in the picture above, my initial outline for the project links to my project board by including my must-haves of viewing and loading the stock and recipes before the option to generate a shopping list.
+- I found LucidChart a useful avenue to help me plan my project and provide a focus and a reference of the direction of the project.
+
+<p align="center">
+  <img src="assets/images/edit_recipes.png" alt="Outline of the project">
+</p>
+- The logic for some of my functions was more difficult and contained function calls within them. 
+- Using LucidChart helped simplify the more difficult functions such as the edit recipes function. The flowchart helped me understand there was a lot in here and Initially created this as one function before refactoring it later in my project.
+- The flowchart was also useful for error handling as from the flowchart I knew the options I wanted to display to the user and what the next step should be after they make their choice.
+
 ### Colors
 
 <p align="center">
@@ -182,3 +199,21 @@ The Business Goals of The Capitals and Countries Quiz are:
 - I chose to use the colorama librart for the text colors to display in the terminal. This helped to provide uniformity and create a differential for the different choices and responses the user recieves.
 - Originally, I used only Fore.Color but found this alone resulted in the appearance of a dark text. The addition of Style.BRIGHT made the text colors contrast well with the black terminal background.
 - I chose the color red to display error messages, green for success messages, yellow for when the user is asked for an input, white for menu information and for the stock and recipe list. Finally, I chose magenta for the Main Menu. These color choices remain consistent throughout the program and provide a better user experience than all text displayed in white as seen below.
+
+# Features
+
+## Page Elements
+
+#### View Recipes
+
+- When the user comes to the terminal interface Main Menu they can choose View Recipes by selecting number 1.
+- This option allows the user to view the recipes before deciding which meals they want to plan for to create the shopping list.
+
+#### Edit Recipes
+
+- Option 2 gives the user greater control over the recipe list. They can edit, add or delete recipes by following the clear instructions in the terminal.
+- This option is very useful and gives the user the opportunity to engage with the recipes and make the program individualised to them.
+
+<p align="center">
+  <img src="assets/images/edit_ingredient_option.png" alt="Edit ingredients option" />
+</p>
