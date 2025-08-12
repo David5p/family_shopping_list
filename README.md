@@ -163,3 +163,41 @@ The Business Goals of The Capitals and Countries Quiz are:
 6. As a user, I want to assign meals to specific days, so I can plan the week more precisely.
 
 7. As a user, I want to save my weekly meal plans, so I can reuse or review them later.
+
+## Visual Design
+
+### Project Board
+
+- I used the projects board to help me plan my program. I have found it a useful check guide since it was introduced and have decided to continue using it on my projects.
+- The plan allowed me to focus on achieving what was most important to achieve in my program first before attempting to achieve other features.
+- For example, I was able to focus on allowing the user to view recipes and stock lists and generate the shopping list before taking the development of the program further.
+- It is also a useful tool to see how I could develop my program in the future or without time constraints.
+
+### Colors
+
+<p align="center">
+  <img src="assets/images/read_me/color_palette.png" alt="color choices">
+</p>
+
+- I picked the colors (image above is a screenshot taken from <a href="https://coolors.co/">Coolors</a>) of the website from the hero image using an <a href="https://imagecolorpicker.com/">image color picker</a> tool to help me with my choices.
+
+<p align="center">
+  <img src="assets/images/read_me/main_image_colors.png" alt="color choices chosen from main image">
+</p>
+
+- I varied some of the shades recommended by the image color picker so my website had sufficient contrast.
+- Colors were tested to ensure WCAG AA-level contrast compliance using WebAIM's checker.
+
+<p align="center">
+  <img src="assets/images/read_me/color_checker.png" alt="background color against question container background">
+</p>
+- The midnight green was quite a dark background choice and the color picker from image resulted in lighter shade recommendation. However, It was neither a dark nor light background and it proved problematic to match other colors with it whilst maintaining a good contrast level.
+- This resulted in my other color choices needing to be sufficiently bright to give a good contrast level.
+
+<p align="center">
+  <img src="assets/images/read_me/color_checker1.png" alt="background color against answer buttons background">
+</p>
+- The midnight green background provides a great backdrop for the lighter colors of ash grey and khaki.
+- Text for the question and answer options are black and bold against their lighter background choices.
+- When the user answers the question, the question and answer options seemlessly change background color depending on the user's answer and the text color changes to white to reflect the changed darker backgrounds.
+- White was chosen for the main-headings as it stands out against the midnight green background color

@@ -50,21 +50,26 @@ def main_menu():
 
         elif choice == "3":
             while True:
-                print(Fore.CYAN + "Would you like to plan meals for"
-                      " the weekend(2 days) or a full week (7 days)?")
+                print(
+                    Style.BRIGHT + Fore.CYAN +
+                    "Would you like to plan meals for"
+                    " the weekend(2 days) or a full week (7 days)?")
                 days_input = input(
-                    Fore.YELLOW +
-                    "Enter your choice (2 or 7): ").strip()
+                    Style.BRIGHT Fore.YELLOW +
+                    "Enter your choice (2 or 7): "
+                    ).strip()
 
                 if days_input in ["2", "7"]:
                     break  # valid input, so break out of the loop
                 else:
-                    print(Fore.RED + "Invalid input. Please enter 2 or 7.")
+                    print(
+                        Style.BRIGHT + Fore.RED +
+                        "Invalid input. Please enter 2 or 7.")
 
             meal_plan = get_meal_plan_from_user(flat_recipes)
             if not meal_plan:
                 print(
-                    Fore.RED +
+                    Style.BRIGHT + Fore.RED +
                     "No valid meals entered. Returning to main menu.")
                 continue
 
@@ -82,10 +87,13 @@ def main_menu():
             edit_stock(stock_data)
 
         elif choice == "6":
-            print(Fore.CYAN + "Goodbye!")
+            print(
+                Style.BRIGHT + Fore.CYAN + "Goodbye!")
             break
         else:
-            print(Fore.RED + "Invalid input. Please enter 1, 2, 3, 4, 5 or 6.")
+            print(
+                Style.BRIGHT + Fore.RED +
+                "Invalid input. Please enter 1, 2, 3, 4, 5 or 6.")
 
 
 def load_stock():
@@ -115,7 +123,7 @@ def edit_stock(stock_data):
     """
     while True:
         item_name = input(
-            Fore.YELLOW +
+            Style.BRIGHT + Fore.YELLOW +
             "Enter the name of the item to update"
             "(or type 'done' to finish): "
             ).strip().lower()
@@ -138,16 +146,21 @@ def edit_stock(stock_data):
                     existing_item = match
         if existing_item:
             item_name = existing_item
-            print(Fore.GREEN + f"{item_name} found in stock. Updating...")
+            print(
+                Style.BRIGHT + Fore.GREEN + 
+                f"{item_name} found in stock. Updating...")
         else:
-            print(Fore.GREEN + f"{item_name} not found. Adding as a new item.")
+            print(
+                Style.BRIGHT + Fore.GREEN +
+                f"{item_name} not found. Adding as a new item.")
 
         try:
             quantity = float(input(
-                Fore.YELLOW +
+                Style.BRIGHT + Fore.YELLOW +
                 f"Enter the quantity for '{item_name}': "))
             unit = input(
-                Fore.YELLOW + f"Enter the unit for '{item_name}' "
+                Style.BRIGHT + Fore.YELLOW +
+                f"Enter the unit for '{item_name}' "
                 "(e.g., grams, packs, servings or pieces): "
             ).strip().lower()
 
@@ -155,16 +168,22 @@ def edit_stock(stock_data):
                 "quantity": quantity,
                 "unit": unit
             }
-            print(Fore.GREEN + f"Updated '{item_name.title()}' in stock.")
+            print(
+                Style.BRIGHT + Fore.GREEN +
+                f"Updated '{item_name.title()}' in stock.")
 
         except ValueError:
-            print(Fore.RED + "Invalid quantity. Please enter a number.")
+            print(
+                Style.BRIGHT + Fore.RED +
+                "Invalid quantity. Please enter a number.")
 
     # Save the updated stock data
     with open("stock.json", "w") as file:
         json.dump(stock_data, file, indent=4)
 
-    print(Fore.GREEN + "Stock list updated and saved.")
+    print(
+        Style.BRIGHT + Fore.GREEN +
+        "Stock list updated and saved.")
 
 
 def get_existing_item_key(user_input, stock_data):
@@ -201,16 +220,20 @@ def view_recipes(flat_recipes):
 def category_choices():
     categories = ["Breakfast", "Meals", "Snacks"]
     while True:
-        print(Fore.YELLOW + "\nSelect a category:")
+        print(
+            Style.BRIGHT + Fore.YELLOW +
+            "\nSelect a category:")
         for index, category in enumerate(categories, start=1):
             print(f"{index}. {category}")
-        choice = input(Fore.YELLOW + "Enter your choice (1-3): ").strip()
+        choice = input(
+            Style.BRIGHT + Fore.YELLOW + "Enter your choice (1-3): "
+            ).strip()
 
         if choice.isdigit() and 1 <= int(choice) <= len(categories):
             return categories[int(choice) - 1]
         else:
             print(
-                Fore.RED +
+                Style.BRIGHT + Fore.RED +
                 "Invalid input. Please choose a valid number from the list.")
 
 
@@ -218,21 +241,25 @@ def input_ingredients():
     ingredients = {}
     while True:
         ingredient = input(
-            Fore.YELLOW +
+            Style.BRIGHT + Fore.YELLOW +
             "Enter ingredient name (or type 'done' to finish): "
             ).strip().lower()
         if ingredient == "done":
             break
         try:
             quantity = float(input(
-                Fore.YELLOW + f"Enter the quantity for '{ingredient}': "))
+                Style.BRIGHT + Fore.YELLOW +
+                f"Enter the quantity for '{ingredient}': "))
             unit = input(
-                Fore.YELLOW + f"Enter the unit for '{ingredient}' "
+                Style.BRIGHT + Fore.YELLOW +
+                f"Enter the unit for '{ingredient}' "
                 "(e.g., grams, packs, servings or pieces): "
                 ).strip().lower()
             ingredients[ingredient] = {"quantity": quantity, "unit": unit}
         except ValueError:
-            print(Fore.RED + "Invalid quantity. Please enter a number.")
+            print(
+                Style.BRIGHT + Fore.RED +
+                "Invalid quantity. Please enter a number.")
     return ingredients
 
 
@@ -252,11 +279,12 @@ def edit_existing_ingredient(ingredients, index):
     Allow the user to edit or remove an existing ingredient.
     """
     ingd_name = list(ingredients.keys())[index]
-    print(Fore.LIGHTYELLOW_EX + f"Editing '{ingd_name}'")
+    print(
+        Fore.LIGHTYELLOW_EX + f"Editing '{ingd_name}'")
 
     # Ask user what they want to do with this ingredient
     sub_action = input(
-        Fore.YELLOW +
+        Style.BRIGHT + Fore.YELLOW +
         "Type 'edit' to change quantity/unit, "
         "'remove' to delete ingredient, or 'cancel' to go back: "
         ).strip().lower()
@@ -264,7 +292,7 @@ def edit_existing_ingredient(ingredients, index):
         # Get new quantity and unit, if provided, update ingredient details
         while True:
             new_unit = input(
-                Fore.YELLOW +
+                Style.BRIGHT + Fore.YELLOW +
                 f"Enter new unit for '{ingd_name}' "
                 f"(current: {ingredients[ingd_name]['unit']}): "
                 ).strip()
@@ -272,18 +300,20 @@ def edit_existing_ingredient(ingredients, index):
             # Check if it's a number (not allowed)
             if new_unit.replace('.', '', 1).isdigit():
                 print(
-                    Fore.RED +
+                    Style.BRIGHT + Fore.RED +
                     "Unit cannot be a number."
                     "Please enter a valid unit (e.g., grams, packs).")
             elif not new_unit:
-                print(Fore.RED + "Unit cannot be empty.")
+                print(
+                    Style.BRIGHT + Fore.RED + "Unit cannot be empty.")
             else:
                 break
 
         new_qty = input(
-            Fore.YELLOW +
+            Style.BRIGHT + Fore.YELLOW +
             f"Enter new quantity for '{ingd_name}' "
-            f"(current: {ingredients[ingd_name]['quantity']}): ").strip()
+            f"(current: {ingredients[ingd_name]['quantity']}): "
+            ).strip()
         if new_qty:
             ingredients[ingd_name]['quantity'] = float(new_qty)
         if new_unit:
@@ -293,15 +323,15 @@ def edit_existing_ingredient(ingredients, index):
         # Remove the ingredient from the recipe
         del ingredients[ingd_name]
         print(
-            Fore.GREEN +
+            Style.BRIGHT + Fore.GREEN +
             f"Removed '{ingd_name}' from the recipe.")
     elif sub_action == 'cancel':
         print(
-            Fore.GREEN +
+            Style.BRIGHT + Fore.GREEN +
             "Cancelled editing")
     else:
         print(
-            Fore.RED +
+            Style.BRIGHT + Fore.RED +
             "Invalid action.")
 
 
@@ -310,25 +340,25 @@ def add_new_ingredient(ingredients):
     Add a new ingredient to the list.
     """
     new_ingd = input(
-        Fore.YELLOW +
+        Style.BRIGHT + Fore.YELLOW +
         "Enter new ingredient name: "
         ).strip()
     new_qty = input(
-        Fore.YELLOW +
+        Style.BRIGHT + Fore.YELLOW +
         "Enter quantity: "
         ).strip()
     new_unit = input(
-        Fore.YELLOW +
+        Style.BRIGHT + Fore.YELLOW +
         "Enter unit: "
         ).strip()
     if new_ingd:
         ingredients[new_ingd] = {"quantity": new_qty, "unit": new_unit}
         print(
-            Fore.GREEN +
+            Style.BRIGHT + Fore.GREEN +
             f"Added '{new_ingd}'.")
     else:
         print(
-            Fore.RED +
+            Style.BRIGHT + Fore.RED +
             "Ingredient name cannot be empty.")
 
 
@@ -339,13 +369,13 @@ def edit_ingredients(ingredients):
     while True:
         display_ingredients(ingredients)
         choice = input(
-            Fore.YELLOW +
+            Style.BRIGHT + Fore.YELLOW +
             "Select an ingredient number to edit/remove, "
             "or choose to add/finish: "
             ).strip()
         if not choice.isdigit():
             print(
-                Fore.RED +
+                Style.BRIGHT + Fore.RED +
                 "Please enter a valid number")
             continue
 
@@ -356,12 +386,12 @@ def edit_ingredients(ingredients):
             add_new_ingredient(ingredients)
         elif choice_num == len(ingredients) + 2:
             print(
-                Fore.GREEN +
+                Style.BRIGHT + Fore.GREEN +
                 "Finished editing ingredients.")
             break
         else:
             print(
-                Fore.RED +
+                Style.BRIGHT + Fore.RED +
                 "Invalid selection.")
 
 
@@ -384,7 +414,7 @@ def handle_new_recipe(recipes_data):
     under the selected category.
     """
     recipe_name = input(
-        Fore.YELLOW +
+        Style.BRIGHT + Fore.YELLOW +
         "Enter new recipe name: "
         ).strip().title()
     selected_category = category_choices()
@@ -395,7 +425,7 @@ def handle_new_recipe(recipes_data):
 
     recipes_data[selected_category][recipe_name] = new_ingredients
     print(
-        Fore.GREEN +
+        Style.BRIGHT + Fore.GREEN +
         f"Added '{recipe_name}' to category '{selected_category}'.")
 
 
@@ -405,7 +435,7 @@ def get_recipe_selection(recipe_list):
     add a new recipe, or finish editing.
     """
     selection = input(
-        Fore.YELLOW +
+        Style.BRIGHT + Fore.YELLOW +
         "\nEnter the number of the recipe to edit/delete "
         "or type 'new' to add a recipe, or 'done' to finish: "
         ).strip().lower()
