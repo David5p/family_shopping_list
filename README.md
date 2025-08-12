@@ -181,25 +181,4 @@ The Business Goals of The Capitals and Countries Quiz are:
 
 - I chose to use the colorama librart for the text colors to display in the terminal. This helped to provide uniformity and create a differential for the different choices and responses the user recieves.
 - Originally, I used only Fore.Color but found this alone resulted in the appearance of a dark text. The addition of Style.BRIGHT made the text colors contrast well with the black terminal background.
-- I chose the color red to display error messages, green for success messages, yellow for when the user is asked for an input, white for menu information and for the stock and recipe list. Finally, I chose magenta for the Main Menu. These color choices remain consistent throughout the program and provide a better user experience than all text displayed in white as seen below
-
-<p align="center">
-  <img src="assets/images/read_me/main_image_colors.png" alt="color choices chosen from main image">
-</p>
-
-- I varied some of the shades recommended by the image color picker so my website had sufficient contrast.
-- Colors were tested to ensure WCAG AA-level contrast compliance using WebAIM's checker.
-
-<p align="center">
-  <img src="assets/images/read_me/color_checker.png" alt="background color against question container background">
-</p>
-- The midnight green was quite a dark background choice and the color picker from image resulted in lighter shade recommendation. However, It was neither a dark nor light background and it proved problematic to match other colors with it whilst maintaining a good contrast level.
-- This resulted in my other color choices needing to be sufficiently bright to give a good contrast level.
-
-<p align="center">
-  <img src="assets/images/read_me/color_checker1.png" alt="background color against answer buttons background">
-</p>
-- The midnight green background provides a great backdrop for the lighter colors of ash grey and khaki.
-- Text for the question and answer options are black and bold against their lighter background choices.
-- When the user answers the question, the question and answer options seemlessly change background color depending on the user's answer and the text color changes to white to reflect the changed darker backgrounds.
-- White was chosen for the main-headings as it stands out against the midnight green background color
+- I chose the color red to display error messages, green for success messages, yellow for when the user is asked for an input, white for menu information and for the stock and recipe list. Finally, I chose magenta for the Main Menu. These color choices remain consistent throughout the program and provide a better user experience than all text displayed in white as seen below.

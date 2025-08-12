@@ -32,7 +32,7 @@ def main_menu():
     flat_recipes = flatten_recipes(recipes_data)
 
     while True:
-        print("\nMain Menu")
+        print(Style.BRIGHT + Fore.MAGENTA + "\nMain Menu")
         print("1. View Recipes")
         print("2. Edit Recipes")
         print("3. Generate Shopping List")
@@ -40,7 +40,7 @@ def main_menu():
         print("5. Edit Stock")
         print("6. Exit")
 
-        choice = input("Enter your choice(1-6):")
+        choice = input(Style.BRIGHT + Fore.YELLOW + "Enter your choice(1-6):")
         if choice == "1":
             view_recipes(flat_recipes)
 
@@ -51,9 +51,11 @@ def main_menu():
         elif choice == "3":
             while True:
                 print(
+                    Style.BRIGHT + Fore.CYAN +
                     "Would you like to plan meals for"
                     " the weekend(2 days) or a full week (7 days)?")
                 days_input = input(
+                    Style.BRIGHT + Fore.YELLOW +
                     "Enter your choice (2 or 7): "
                     ).strip()
 
@@ -61,6 +63,7 @@ def main_menu():
                     break  # valid input, so break out of the loop
                 else:
                     print(
+                        Style.BRIGHT + Fore.RED +
                         "Invalid input. Please enter 2 or 7.")
 
             meal_plan = get_meal_plan_from_user(flat_recipes)
