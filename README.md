@@ -176,10 +176,12 @@ The Business Goals of The Capitals and Countries Quiz are:
 ### Colors
 
 <p align="center">
-  <img src="assets/images/read_me/color_palette.png" alt="color choices">
+  <img src="assets/images/text_color.png" alt="Text color choices">
 </p>
 
-- I picked the colors (image above is a screenshot taken from <a href="https://coolors.co/">Coolors</a>) of the website from the hero image using an <a href="https://imagecolorpicker.com/">image color picker</a> tool to help me with my choices.
+- I chose to use the colorama librart for the text colors to display in the terminal. This helped to provide uniformity and create a differential for the different choices and responses the user recieves.
+- Originally, I used only Fore.Color but found this alone resulted in the appearance of a dark text. The addition of Style.BRIGHT made the text colors contrast well with the black terminal background.
+- I chose the color red to display error messages, green for success messages, yellow for when the user is asked for an input, white for menu information and for the stock and recipe list. Finally, I chose magenta for the Main Menu. These color choices remain consistent throughout the program and provide a better user experience than all text displayed in white as seen below
 
 <p align="center">
   <img src="assets/images/read_me/main_image_colors.png" alt="color choices chosen from main image">
