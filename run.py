@@ -4,7 +4,7 @@
 import json
 import difflib
 from collections import Counter
-from colorama import init, Fore
+from colorama import init, Fore, Style
 
 init(autoreset=True)  # Automatically reset colors after each print
 
@@ -32,7 +32,7 @@ def main_menu():
     flat_recipes = flatten_recipes(recipes_data)
 
     while True:
-        print(Fore.MAGENTA + "\nMain Menu")
+        print(Style.BRIGHT + Fore.MAGENTA + "\nMain Menu")
         print("1. View Recipes")
         print("2. Edit Recipes")
         print("3. Generate Shopping List")
