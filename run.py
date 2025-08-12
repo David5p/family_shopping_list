@@ -26,7 +26,7 @@ def main_menu():
     user with options to select how they will
     use the program
     """
-    print(Fore.CYAN + "\nWelcome to the Family Shopping List")
+    print(Style.BRIGHT + Fore.CYAN + "\nWelcome to the Family Shopping List")
     stock_data = load_stock()
     recipes_data = load_recipes()
     flat_recipes = flatten_recipes(recipes_data)
@@ -40,7 +40,7 @@ def main_menu():
         print("5. Edit Stock")
         print("6. Exit")
 
-        choice = input(Fore.YELLOW + "Enter your choice(1-6):")
+        choice = input(Style.BRIGHT + Fore.YELLOW + "Enter your choice(1-6):")
         if choice == "1":
             view_recipes(flat_recipes)
 
