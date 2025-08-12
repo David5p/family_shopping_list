@@ -450,7 +450,7 @@ def get_recipe_selection(recipe_list):
             return "existing", recipe_list[index]
 
     print(
-        Fore.RED +
+        Style.BRIGHT + Fore.RED +
         "Invalid selection.")
     return "invalid", None
 
@@ -471,23 +471,23 @@ def handle_existing_recipe_action(recipes_data, category, recipe_name):
     """
 
     print(
-        Fore.GREEN +
+        Style.BRIGHT + Fore.GREEN +
         f"\n'{recipe_name}' found in category '{category}'.")
     action = input(
-        Fore.YELLOW +
+        Style.BRIGHT + Fore.YELLOW +
         "Type 'edit' to update or 'delete' to remove it: "
         ).strip().lower()
 
     if action == "delete":
         del recipes_data[category][recipe_name]
         print(
-            Fore.GREEN +
+            Style.BRIGHT + Fore.GREEN +
             f"'{recipe_name}' has been deleted.")
     elif action == "edit":
         edit_ingredients(recipes_data[category][recipe_name])
     else:
         print(
-            Fore.RED +
+            Style.BRIGHT + Fore.RED +
             "Invalid action. Please type 'edit' or 'delete'.")
 
 
@@ -515,7 +515,7 @@ def edit_recipes(recipes_data):
         # Find the category of the selected recipe
             if not category:
                 print(
-                    Fore.RED +
+                    Style.BRIGHT + Fore.RED +
                     f"\nCould not find the category for "
                     f"{recipe_name}. Skipping.")
                 continue
@@ -528,7 +528,7 @@ def edit_recipes(recipes_data):
         json.dump(recipes_data, file, indent=4)
 
     print(
-        Fore.GREEN +
+        Style.BRIGHT + Fore.GREEN +
         "Recipes list updated and saved.")
 
 
@@ -549,7 +549,7 @@ def get_meal_plan_from_user(flat_recipes):
         print(f"{index}. {recipe}")
 
     meal_input = input(
-        Fore.YELLOW +
+        Style.BRIGHT + Fore.YELLOW +
         "\nEnter the recipe numbers for your meal plan "
         "(comma-separated):\n")
 
@@ -562,16 +562,16 @@ def get_meal_plan_from_user(flat_recipes):
                 selected_recipe = recipe_list[index]
                 meal_plan.append(selected_recipe)
                 print(
-                    Fore.GREEN +
+                    Style.BRIGHT + Fore.GREEN +
                     f"Added: {selected_recipe}")
             else:
                 print(
-                    Fore.RED +
+                    Style.BRIGHT + Fore.RED +
                     f"Invalid number: {value}. Skipped.")
 
         else:
             print(
-                Fore.RED +
+                Style.BRIGHT + Fore.RED +
                 f"'{value}' is not a valid number. Skipped.")
     return meal_plan
 
