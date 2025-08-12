@@ -55,7 +55,7 @@ def main_menu():
                     "Would you like to plan meals for"
                     " the weekend(2 days) or a full week (7 days)?")
                 days_input = input(
-                    Style.BRIGHT Fore.YELLOW +
+                    Style.BRIGHT + Fore.YELLOW +
                     "Enter your choice (2 or 7): "
                     ).strip()
 
