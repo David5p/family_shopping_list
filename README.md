@@ -244,8 +244,24 @@ The Business Goals of The Capitals and Countries Quiz are:
 #### View Stock
 
 <p align="center">
-  <img src="assets/images/edit_ingredient_option.png" alt="Edit ingredients option" />
+  <img src="assets/images/stock_table2.png"alt="Current stock list" />
 </p>
 
 - When the user comes to the terminal interface Main Menu they can choose View Stock by selecting number 4.
-- This option allows the user to view the stock.
+- This option allows the user to check what existing items they have and make informed decisions when editing stock or generating a shopping list.
+
+#### Edit Stock
+
+- This option provides engagement with the user where they can update the stock list through the terminal.
+
+- The user can choose to edit an existing item, remove an item or add a new item.
+
+<p align="center">
+  <img src="assets/images/stock_no_table.png"alt=" Stock list as a list" />
+</p>
+
+- I created the stock as a stand alone list but I recognise that the table format is user friendly. It allows the user to clearly see the item name, quantity and units of each product in stock.
+
+#### Exit
+
+- The last option lets the user exit the program when they are finished.
