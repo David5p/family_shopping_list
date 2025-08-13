@@ -294,3 +294,9 @@ The Business Goals of The Capitals and Countries Quiz are:
 
 - [LucidChart](https://www.lucidchart.com/)  
   Used to plan out the program and the bigger functions.
+
+# Testing
+
+## Methods
+
+### Validation
