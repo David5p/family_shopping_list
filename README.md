@@ -265,3 +265,32 @@ The Business Goals of The Capitals and Countries Quiz are:
 #### Exit
 
 - The last option lets the user exit the program when they are finished.
+
+# Technologies Used
+
+## Languages
+
+- **Python**  
+  Backend Development.
+
+## Libraries
+
+- [Colorama](https://pypi.org/project/colorama/)  
+  Text color.
+- [Difflib](https://docs.python.org/3/library/difflib.html)  
+   To handle fuzzy matching for the user's input -[Collections] (https://docs.python.org/3/library/collections.html)
+  To allow recipes to be counted
+
+## Platforms
+
+- [GitHub](https://github.com/)  
+  Storing code remotely.
+- [Visual Studio Code](https://code.visualstudio.com/)  
+  IDE for project development.
+- [Heroku](https://www.heroku.com/)
+  For deployment of site
+
+## Other Tools
+
+- [LucidChart](https://www.lucidchart.com/)  
+  Used to plan out the program and the bigger functions.
