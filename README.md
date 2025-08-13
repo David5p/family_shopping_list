@@ -300,3 +300,35 @@ The Business Goals of The Capitals and Countries Quiz are:
 ## Methods
 
 ### Validation
+
+<p align="center">
+  <img src="assets/images/flake8_errors.png"alt="Flake8 errors" />
+</p>
+
+- I used Flake8 to check my code. As you can see from the above image, I had many errors of a similar type. Flake8 helped me realise indentatation errors and trailing white space on lines.
+
+- The errors about lines being too long were discussed at my second mentor meeting and I recieved guidance on how separate into 2 lines through either additional quotation marks or starting a new line when I opened brackets.
+
+<p align="center">
+  <img src="assets/images/flake8_errors1.png"alt="Flake8 variable errors" />
+</p>
+
+- I also had some errors with trailing variables. I created a number_of_days variable for my meal plan but this was rendered obselete by using a counter so I never used this variable and deleted it. Similarly, I had a categories variable trailing in my edit_recipes function. I had declared the categories variable in my new refactored function category_choices but had neglected to remove it from my edit_recipes function
+
+- The new_qty variable error was creating an issue because I was trying to use the variable without having declared. I went into my code and declared it to fix the problem. After solving all of these issues when I run Flake8 in the terminal I have no errors.
+
+<p align="center">
+  <img src="assets/images/flake8_clear.png"alt="Flake8 all clear" />
+</p>
+
+- I used pip install mypy to validate the types used in my python code.
+
+<p align="center">
+  <img src="assets/images/mypy_error.png"alt="Mypy error" />
+</p>
+
+-It threw 1 error related to Colorama which does not include type hints. I found a [GitHub](https://github.com/pantsbuild/pants/issues/20259) comments section which raised a similar issue. The problem was resolved by installing colorama types. I have no erros in mypy now.
+
+<p align="center">
+  <img src="assets/images/mypy_clear.png"alt="Mypy all clear" />
+</p>

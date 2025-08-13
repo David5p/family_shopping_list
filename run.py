@@ -147,7 +147,7 @@ def edit_stock(stock_data):
         if existing_item:
             item_name = existing_item
             print(
-                Style.BRIGHT + Fore.GREEN + 
+                Style.BRIGHT + Fore.GREEN +
                 f"{item_name} found in stock. Updating...")
         else:
             print(
