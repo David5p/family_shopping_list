@@ -235,3 +235,17 @@ The Business Goals of The Capitals and Countries Quiz are:
 <p align="center">
   <img src="assets/images/edit_ingredient_option.png" alt="Edit ingredients option" />
 </p>
+
+#### Generate Shopping List
+
+- The Generate Shopping List option is the primary purpose of the program.
+- I encountered a number of issues creating this function which I will detail fully in the testing section but changing the function to allow the user to select numbers next to each recipe rather than typing out each recipe made the program user friendly.
+
+#### View Stock
+
+<p align="center">
+  <img src="assets/images/edit_ingredient_option.png" alt="Edit ingredients option" />
+</p>
+
+- When the user comes to the terminal interface Main Menu they can choose View Stock by selecting number 4.
+- This option allows the user to view the stock.
