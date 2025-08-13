@@ -184,11 +184,29 @@ The Business Goals of The Capitals and Countries Quiz are:
 - I found LucidChart a useful avenue to help me plan my project and provide a focus and a reference of the direction of the project.
 
 <p align="center">
-  <img src="assets/images/edit_recipes.png" alt="Outline of the project">
+  <img src="assets/images/edit_recipes.png" alt="Edit recipes flowchart">
 </p>
-- The logic for some of my functions was more difficult and contained function calls within them. 
-- Using LucidChart helped simplify the more difficult functions such as the edit recipes function. The flowchart helped me understand there was a lot in here and Initially created this as one function before refactoring it later in my project.
+
+- The logic for some of my functions was more difficult and contained function calls within them.
+- Using LucidChart helped simplify the more difficult functions such as the edit recipes function. The flowchart helped me understand this was a complex task and initially I created this as one function before refactoring it later in my project.
+- This flowchart helped me understand the steps which needed to be taken to edit recipes and the options the user needed to be taken to based on their choices.
 - The flowchart was also useful for error handling as from the flowchart I knew the options I wanted to display to the user and what the next step should be after they make their choice.
+
+<p align="center">
+  <img src="assets/images/edit_stock.png" alt="Edit stock flowchart">
+</p>
+
+- The edit stock function was another function which required steps to understand the logic flow.
+- The use of LucidChart assisted me understanding the flow of this option for the user and ensuring the user experience is cohesive.
+- This flowchart also helped me understand that I wanted the user to remain in the loop until they choose to exit. This means if the user decides to they can edit multiple items in the stock list.
+
+<p align="center">
+  <img src="assets/images/generate_shopping_list.png" alt="Generate shopping list flowchart">
+</p>
+
+- The generate shopping list function is fundamental to the terminal oreintated program.
+- The flowchart helped me understand the logic behind the need to take in the recipes from the user, assess this against existing stock and create a shopping list.
+- This visualization also supports debugging, and helps identify potential improvements or errors in the function. Overall, this flowchart is a valuable tool for documenting the function’s purpose and flow, making future updates or need to refactoring easier and more efficient.
 
 ### Colors
 
