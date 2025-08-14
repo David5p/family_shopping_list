@@ -194,7 +194,10 @@ def edit_stock(stock_data):
                 f"Enter number for unit of '{item_name.title()}': "
             ).strip()
 
-            if unit_choice.isdigit() and 1 <= int(unit_choice) <= len(units_list):
+            if (
+                unit_choice.isdigit() and
+                1 <= int(unit_choice) <= len(units_list)
+            ):
                 unit = units_list[int(unit_choice) - 1]
                 break
             else:
@@ -221,7 +224,6 @@ def edit_stock(stock_data):
         Style.BRIGHT + Fore.GREEN +
         "Stock list updated and saved."
     )
-
 
 
 def get_existing_item_key(user_input, stock_data):
@@ -363,7 +365,8 @@ def edit_existing_ingredient(ingredients, index):
         while True:
             unit_choice = input(
                 Style.BRIGHT + Fore.YELLOW +
-                f"Enter number for new unit (current: {ingredients[ingd_name]['unit']}): "
+                f"Enter number for new unit "
+                f"(current: {ingredients[ingd_name]['unit']}): "
             ).strip()
 
             if not unit_choice:
@@ -372,7 +375,10 @@ def edit_existing_ingredient(ingredients, index):
                     f"Unit remains as '{ingredients[ingd_name]['unit']}'.")
                 break  # Skip updating unit
 
-            if unit_choice.isdigit() and 1 <= int(unit_choice) <= len(units_list):
+            if (
+                unit_choice.isdigit() and
+                1 <= int(unit_choice) <= len(units_list)
+            ):
                 selected_unit = units_list[int(unit_choice) - 1]
                 ingredients[ingd_name]['unit'] = selected_unit
                 break
