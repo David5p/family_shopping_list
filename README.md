@@ -86,7 +86,6 @@
              <li><a href="#validation">Validation</a></li>
              <li><a href="#general-testing">General Testing</a></li>
              <li><a href="#Refactoring">Refactoring</a></li>
-             <li><a href="#Project journey">Project Journey</a></li>
              <li><a href="#User Story reflection">User Story Reflection</a></li>
            </ul>
          </details>
@@ -378,10 +377,24 @@ The Business Goals of The Capitals and Countries Quiz are:
   <img src="assets/images/lasagne.png"alt="lasagne error" />
 </p>
 
-- This issue was fixed using fuzzy matching. However my mentor pointed out if a user has to write 14 recipes for a weekly plan it makes the program quite cumbersome which is why I switched to numbers for the recipes.
+- This issue was fixed using fuzzy matching. However my mentor pointed out if a user has to write 14 recipes for a weekly shopping list it makes the program quite cumbersome which is why I switched to numbers for the recipes.
 
 - I then transferred the fuzzy matching to be called in my edit_stock function as it is a more appropriate match with the user editing one item at a time.
 
 <p align="center">
   <img src="assets/images/spaghetti.png"alt="Fuzzy matching example of spaghetti" />
 </p>
+
+### User Story Reflection
+
+- During the testing process and I looked back at my user stories to see if I achieved all of my Must-haves.
+
+- The command line navigation works well and I have not got the program to fail in testing.
+
+- The user can generate a shopping list by inputting their meal choices and it will measure this against the current items in stock.
+
+- The user can view stock and view recipes easily by selecting the respective option from the main menu.
+
+- The user can edit both the existing stock and recipes and each one will be updated.
+
+- For future development, the user would be able to select meals for each day and could save their weekly meal plan so that it can be reused. Other ideas mentioned previously include a complete family shopping list including items such as toiletries.
