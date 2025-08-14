@@ -85,7 +85,9 @@
            <ul>
              <li><a href="#validation">Validation</a></li>
              <li><a href="#general-testing">General Testing</a></li>
-             <li><a href="#Flake8">Flake8</a></li>
+             <li><a href="#Refactoring">Refactoring</a></li>
+             <li><a href="#Project journey">Project Journey</a></li>
+             <li><a href="#User Story reflection">User Story Reflection</a></li>
            </ul>
          </details>
        </li>
@@ -337,12 +339,49 @@ The Business Goals of The Capitals and Countries Quiz are:
 
 - The website was tested across Google Chrome, Safari, Mozilla Firefox and the mobile test was done on an Asus Zenfone 9 and no issues were found.
 
+<p align="center">
+  <img src="assets/images/mobile_app.jpg"alt="Application on mobile device" />
+</p>
+
 - Each time new features and behaviors were added the preview and the deployed site were checked for functionality.
 
 - The terminal interface was tested by friends on both mobile and desktop devices. I and my friends recognise the the program functions better on desktop screens.
+
+<p align="center">
+  <img src="assets/images/invalid_input.png"alt="Invalid entry" />
+</p>
 
 - I tried to input different things to get the program to break such as spaces, question mark, empty input but found my program either remained in the loop or recognised the error and asked the user to try again.
 
 - The user stories provided a noteworthy reference point and I was allowed to ensure and test that all of the must haves were achieved for the website.
 
 - I recognise that if I were to develop this project, I would add more functionality. I would add in an option of what can I make from my current stock if I do not intend to go to the shop. I would also like to add more categories to the stock section such as toiletries, drinks and baby/toddler food to make it a complete family shopping list and not just limited to food.
+
+### Refactoring and User input
+
+- My code was not following best practice of the single responsibility function. My edit_recipes function contained functions within functions and the code needed to be refactored.
+
+<p align="center">
+  <img src="assets/images/refactor_edit_recipes_function.png"alt="Code before refactoring" />
+</p>
+
+- My edit_recipes function was overloaded so from the image above, I created functions which I then called in the edit_recipes function. Namely I created a Category and a handle_new_recipe function. These two helper functions helped my code adhere to best practice.
+
+<p align="center">
+  <img src="assets/images/refactor_edit_recipes_function1.png"alt="Code before refactoring" />
+</p>
+
+- In my first draft of the project the user was required to input each recipe they wanted to make rather than the number selection in this finished version.
+- The user inputting each recipe this was a problem if they made spelling mistakes or didn't use capital letters. For instance, when the user typed lasagne it didn't come up because the user did not use a capital L.
+
+<p align="center">
+  <img src="assets/images/lasagne.png"alt="lasagne error" />
+</p>
+
+- This issue was fixed using fuzzy matching. However my mentor pointed out if a user has to write 14 recipes for a weekly plan it makes the program quite cumbersome which is why I switched to numbers for the recipes.
+
+- I then transferred the fuzzy matching to be called in my edit_stock function as it is a more appropriate match with the user editing one item at a time.
+
+<p align="center">
+  <img src="assets/images/spaghetti.png"alt="Fuzzy matching example of spaghetti" />
+</p>
