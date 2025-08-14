@@ -332,3 +332,17 @@ The Business Goals of The Capitals and Countries Quiz are:
 <p align="center">
   <img src="assets/images/mypy_clear.png"alt="Mypy all clear" />
 </p>
+
+### General Testing
+
+- The website was tested across Google Chrome, Safari, Mozilla Firefox and the mobile test was done on an Asus Zenfone 9 and no issues were found.
+
+- Each time new features and behaviors were added the preview and the deployed site were checked for functionality.
+
+- The terminal interface was tested by friends on both mobile and desktop devices. I and my friends recognise the the program functions better on desktop screens.
+
+- I tried to input different things to get the program to break such as spaces, question mark, empty input but found my program either remained in the loop or recognised the error and asked the user to try again.
+
+- The user stories provided a noteworthy reference point and I was allowed to ensure and test that all of the must haves were achieved for the website.
+
+- I recognise that if I were to develop this project, I would add more functionality. I would add in an option of what can I make from my current stock if I do not intend to go to the shop. I would also like to add more categories to the stock section such as toiletries, drinks and baby/toddler food to make it a complete family shopping list and not just limited to food.
