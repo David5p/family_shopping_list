@@ -465,3 +465,14 @@ The steps below detail how I deployed my live site:
   - Press **Enter**, and your local clone will be created.
 
 The live link to the website can be found here: [Family Shopping List](https://family-shopping-list1-3e187ea09412.herokuapp.com/)
+
+## Credit
+
+### Content
+
+- I referred to the Love Sandwiches project for creating my initial structure and what functions I would require.
+- The idea of a stock based program was inspired by the Love Sandwiches project
+- I used Python Docs a number of times including when I was attempting to solve my aggregating recipes for the shopping list.
+  from <a href="https://docs.python.org/3/library/collections.html"> The use of the counter collection was very helpful.</a>
+- The Python Docs also helped me understand and use <a href="https://docs.python.org/3/library/stdtypes.html"> .strip to remove any leading or trailing white space.</a>
+- My mentor also suggested that I put my stock in a table and showed me an example of how to do this with a different data set.
