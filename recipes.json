@@ -493,7 +493,7 @@
     "Snacks": {
         "Peanut butter on toast": {
             "Peanut butter": {
-                "quantity": 6,
+                "quantity": 6.0,
                 "unit": "g"
             },
             "Bread": {
@@ -501,7 +501,7 @@
                 "unit": "pieces"
             },
             "Honey": {
-                "quantity": 7,
+                "quantity": 7.0,
                 "unit": "g"
             }
         },

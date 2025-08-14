@@ -283,6 +283,10 @@ def edit_existing_ingredient(ingredients, index):
     """
     Allow the user to edit or remove an existing ingredient.
     """
+    units_list = [
+        'g', 'kg', 'servings', 'packs', 'teaspoons',
+        'tablespoons', 'pieces', 'large', 'ml'
+        ]
     ingd_name = list(ingredients.keys())[index]
     print(Fore.LIGHTYELLOW_EX + f"Editing '{ingd_name}'")
 
@@ -294,25 +298,6 @@ def edit_existing_ingredient(ingredients, index):
     ).strip().lower()
 
     if sub_action == 'edit':
-        # Get new unit
-        while True:
-            new_unit = input(
-                Style.BRIGHT + Fore.YELLOW +
-                f"Enter new unit for '{ingd_name}' "
-                f"(current: {ingredients[ingd_name]['unit']}): "
-            ).strip()
-
-            if new_unit.replace('.', '', 1).isdigit():
-                print(
-                    Style.BRIGHT + Fore.RED +
-                    "Unit cannot be a number. "
-                    "Please enter a valid unit (e.g., grams, packs).")
-            elif not new_unit:
-                print(Style.BRIGHT + Fore.RED + "Unit cannot be empty.")
-            else:
-                ingredients[ingd_name]['unit'] = new_unit
-                break
-
         # Get new quantity
         while True:
             new_qty = input(
@@ -332,6 +317,37 @@ def edit_existing_ingredient(ingredients, index):
                     Style.BRIGHT + Fore.RED +
                     "Invalid quantity. Please enter a number."
                 )
+                # Display unit options
+        print(Style.BRIGHT + Fore.YELLOW + "\nSelect a unit:")
+        for idx, unit in enumerate(units_list, start=1):
+            print(f"{idx}. {unit}")
+        print(
+            Style.BRIGHT + Fore.MAGENTA +
+            f"Press 'Enter' to keep the current unit "
+            f"({ingredients[ingd_name]['unit']}).")
+
+        # Get new unit from selection
+        while True:
+            unit_choice = input(
+                Style.BRIGHT + Fore.YELLOW +
+                f"Enter number for new unit (current: {ingredients[ingd_name]['unit']}): "
+            ).strip()
+
+            if not unit_choice:
+                print(
+                    Style.BRIGHT + Fore.CYAN +
+                    f"Unit remains as '{ingredients[ingd_name]['unit']}'.")
+                break  # Skip updating unit
+
+            if unit_choice.isdigit() and 1 <= int(unit_choice) <= len(units_list):
+                selected_unit = units_list[int(unit_choice) - 1]
+                ingredients[ingd_name]['unit'] = selected_unit
+                break
+            else:
+                print(
+                    Style.BRIGHT + Fore.RED +
+                    "Invalid choice. Please enter a number from the list."
+                )
 
         print(Style.BRIGHT + Fore.GREEN + f"Updated '{ingd_name}'")
 
@@ -345,7 +361,13 @@ def edit_existing_ingredient(ingredients, index):
     elif sub_action == 'cancel':
         print(
             Style.BRIGHT + Fore.GREEN +
-            "Invalid action"
+            "Cancelled editing."
+        )
+
+    else:
+        print(
+            Style.BRIGHT + Fore.RED +
+            "Invalid action."
         )
 
 

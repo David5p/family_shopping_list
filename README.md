@@ -417,7 +417,16 @@ The Business Goals of The Capitals and Countries Quiz are:
   .isnumeric() method to resolve this issue.
 
 <p align="center">
-  <img src="assets/images/resolved_number_issue.png"alt="Numbers rejected now" />
+  <img src="assets/images/Bug.png"alt="Edit recipe bug" />
+</p>
+
+- Another bug that was found during testing was the quantity section of the add an ingredient to a recipe. The program allowed the user to type in letters which caused an error.
+
+- This issue was resolve by adding a try and accept ValueError to the edit_existing_ingredient function.
+
+<p align="center">
+  <img src="assets/images/bug_fix.png"alt="Edit recipe bug fix" />
+</p>
 
 - The soley Python based project does not format very well on devices other than desktop. I would explore using other programs to ensure the program usability is improved on mobile devices.
 
