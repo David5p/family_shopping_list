@@ -398,3 +398,17 @@ The Business Goals of The Capitals and Countries Quiz are:
 - The user can edit both the existing stock and recipes and each one will be updated.
 
 - For future development, the user would be able to select meals for each day and could save their weekly meal plan so that it can be reused. Other ideas mentioned previously include a complete family shopping list including items such as toiletries.
+
+## Bugs
+
+### Known and fixed Bugs
+
+<p align="center">
+  <img src="assets/images/number_error.png"alt="Adding stock number error" />
+</p>
+
+- One bug I found related to both stock and recipes was if the user decides to add a new item to stock or a new recipe to recipes they can use a number. This was confusing as the user could call an ingredient 7 and have a quantity of 7. I corrected this bug by only allowing a string to be submitted.
+
+<p align="center">
+  <img src="assets/images/number_error1.png"alt="Adding recipe number error" />
+</p>

@@ -130,6 +130,10 @@ def edit_stock(stock_data):
 
         if item_name == "done":
             break
+        if item_name.isnumeric():
+            print(Style.BRIGHT + Fore.RED +
+                "Invalid name. Please enter a word (not just numbers).")
+            continue
 
         existing_item = get_existing_item_key(item_name, stock_data)
 
@@ -413,10 +417,19 @@ def handle_new_recipe(recipes_data):
     Adds the new recipe to the recipes_data dictionary
     under the selected category.
     """
-    recipe_name = input(
-        Style.BRIGHT + Fore.YELLOW +
-        "Enter new recipe name: "
+    while True: 
+        recipe_name = input(
+            Style.BRIGHT + Fore.YELLOW +
+            "Enter new recipe name: "
         ).strip().title()
+        if not recipe_name:
+            print(Style.BRIGHT + Fore.RED + "Name cannot be empty.")
+        elif recipe_name.isnumeric():
+            print(Style.BRIGHT + Fore.RED +
+            "Recipe name cannot be a number. Please use letters.")
+        else:
+            break
+
     selected_category = category_choices()
     new_ingredients = input_ingredients()
 
