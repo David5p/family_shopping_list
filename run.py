@@ -284,68 +284,69 @@ def edit_existing_ingredient(ingredients, index):
     Allow the user to edit or remove an existing ingredient.
     """
     ingd_name = list(ingredients.keys())[index]
-    print(
-        Fore.LIGHTYELLOW_EX + f"Editing '{ingd_name}'")
+    print(Fore.LIGHTYELLOW_EX + f"Editing '{ingd_name}'")
 
     # Ask user what they want to do with this ingredient
     sub_action = input(
         Style.BRIGHT + Fore.YELLOW +
         "Type 'edit' to change quantity/unit, "
         "'remove' to delete ingredient, or 'cancel' to go back: "
-        ).strip().lower()
+    ).strip().lower()
+
     if sub_action == 'edit':
-        # Get new quantity and unit, if provided, update ingredient details
+        # Get new unit
         while True:
             new_unit = input(
                 Style.BRIGHT + Fore.YELLOW +
                 f"Enter new unit for '{ingd_name}' "
                 f"(current: {ingredients[ingd_name]['unit']}): "
-                ).strip()
+            ).strip()
 
-            # Check if it's a number (not allowed)
             if new_unit.replace('.', '', 1).isdigit():
                 print(
                     Style.BRIGHT + Fore.RED +
-                    "Unit cannot be a number."
+                    "Unit cannot be a number. "
                     "Please enter a valid unit (e.g., grams, packs).")
             elif not new_unit:
-                print(
-                    Style.BRIGHT + Fore.RED + "Unit cannot be empty.")
+                print(Style.BRIGHT + Fore.RED + "Unit cannot be empty.")
             else:
+                ingredients[ingd_name]['unit'] = new_unit
                 break
+
+        # Get new quantity
         while True:
             new_qty = input(
                 Style.BRIGHT + Fore.YELLOW +
                 f"Enter new quantity for '{ingd_name}' "
                 f"(current: {ingredients[ingd_name]['quantity']}): "
             ).strip()
-        if not new_qty:
-            break
-        try:
-            ingredients[ingd_name]['quantity'] = float(new_qty)
-            break
-        except valueError:
-            print(
-                Syle.BRIGHT + Fore.RED +
-                "invalid quantity. Please enter a number"
-            )
-        if new_unit:
-            ingredients[ingd_name]['unit'] = new_unit
-            print(f"Updated '{ingd_name}'")
+
+            if not new_qty:
+                break  # Skip updating quantity
+
+            try:
+                ingredients[ingd_name]['quantity'] = float(new_qty)
+                break
+            except ValueError:
+                print(
+                    Style.BRIGHT + Fore.RED +
+                    "Invalid quantity. Please enter a number."
+                )
+
+        print(Style.BRIGHT + Fore.GREEN + f"Updated '{ingd_name}'")
+
     elif sub_action == 'remove':
-        # Remove the ingredient from the recipe
         del ingredients[ingd_name]
         print(
             Style.BRIGHT + Fore.GREEN +
-            f"Removed '{ingd_name}' from the recipe.")
+            f"Removed '{ingd_name}' from the recipe."
+        )
+
     elif sub_action == 'cancel':
         print(
             Style.BRIGHT + Fore.GREEN +
-            "Cancelled editing")
-    else:
-        print(
-            Style.BRIGHT + Fore.RED +
-            "Invalid action.")
+            "Invalid action"
+        )
 
 
 def add_new_ingredient(ingredients):
