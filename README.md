@@ -412,3 +412,9 @@ The Business Goals of The Capitals and Countries Quiz are:
 <p align="center">
   <img src="assets/images/number_error1.png"alt="Adding recipe number error" />
 </p>
+
+- I found the solution to this in the Python Docs [Python Docs](https://docs.python.org/3/library/stdtypes.html) where I used the
+  .isnumeric() method to resolve this issue.
+
+<p align="center">
+  <img src="assets/images/resolved_number_issue.png"alt="Numbers rejected now" />
