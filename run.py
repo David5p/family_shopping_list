@@ -121,19 +121,26 @@ def edit_stock(stock_data):
     Allow the user to update or add items in the stock list,
     then save the changes.
     """
+    units_list = [
+        'g', 'kg', 'servings', 'packs', 'teaspoons',
+        'tablespoons', 'pieces', 'large', 'ml'
+    ]
+
     while True:
         item_name = input(
             Style.BRIGHT + Fore.YELLOW +
-            "Enter the name of the item to update"
+            "Enter the name of the item to update "
             "(or type 'done' to finish): "
-            ).strip().lower()
+        ).strip().lower()
 
         if item_name == "done":
             break
+
         if item_name.isnumeric():
             print(
                 Style.BRIGHT + Fore.RED +
-                "Invalid name. Please enter a word (not just numbers).")
+                "Invalid name. Please enter a word (not just numbers)."
+            )
             continue
 
         existing_item = get_existing_item_key(item_name, stock_data)
@@ -141,46 +148,70 @@ def edit_stock(stock_data):
         if not existing_item:
             match = get_closest_match(
                 item_name.title(),
-                list(stock_data.keys()))
+                list(stock_data.keys())
+            )
             if match:
                 confirm = input(
                     Fore.LIGHTYELLOW_EX +
-                    f"Did you mean'{match}'? (y/n): "
-                    ).strip().lower()
+                    f"Did you mean '{match}'? (y/n): "
+                ).strip().lower()
                 if confirm == "y":
                     existing_item = match
+
         if existing_item:
             item_name = existing_item
             print(
                 Style.BRIGHT + Fore.GREEN +
-                f"{item_name} found in stock. Updating...")
+                f"{item_name} found in stock. Updating..."
+            )
         else:
             print(
                 Style.BRIGHT + Fore.GREEN +
-                f"{item_name} not found. Adding as a new item.")
+                f"{item_name} not found. Adding as a new item."
+            )
 
         try:
             quantity = float(input(
                 Style.BRIGHT + Fore.YELLOW +
-                f"Enter the quantity for '{item_name}': "))
-            unit = input(
-                Style.BRIGHT + Fore.YELLOW +
-                f"Enter the unit for '{item_name}' "
-                "(e.g., grams, packs, servings or pieces): "
-            ).strip().lower()
-
-            stock_data[item_name.title()] = {
-                "quantity": quantity,
-                "unit": unit
-            }
-            print(
-                Style.BRIGHT + Fore.GREEN +
-                f"Updated '{item_name.title()}' in stock.")
-
+                f"Enter the quantity for '{item_name}': "
+            ))
         except ValueError:
             print(
                 Style.BRIGHT + Fore.RED +
-                "Invalid quantity. Please enter a number.")
+                "Invalid quantity. Please enter a number."
+            )
+            continue
+
+        # Display unit options
+        print(Style.BRIGHT + Fore.YELLOW + "\nSelect a unit:")
+        for idx, unit_option in enumerate(units_list, start=1):
+            print(f"{idx}. {unit_option}")
+
+        # Get unit selection from user
+        while True:
+            unit_choice = input(
+                Style.BRIGHT + Fore.YELLOW +
+                f"Enter number for unit of '{item_name.title()}': "
+            ).strip()
+
+            if unit_choice.isdigit() and 1 <= int(unit_choice) <= len(units_list):
+                unit = units_list[int(unit_choice) - 1]
+                break
+            else:
+                print(
+                    Style.BRIGHT + Fore.RED +
+                    "Invalid choice. Please enter a number from the list."
+                )
+
+        stock_data[item_name.title()] = {
+            "quantity": quantity,
+            "unit": unit
+        }
+
+        print(
+            Style.BRIGHT + Fore.GREEN +
+            f"Updated '{item_name.title()}' in stock."
+        )
 
     # Save the updated stock data
     with open("stock.json", "w") as file:
@@ -188,7 +219,9 @@ def edit_stock(stock_data):
 
     print(
         Style.BRIGHT + Fore.GREEN +
-        "Stock list updated and saved.")
+        "Stock list updated and saved."
+    )
+
 
 
 def get_existing_item_key(user_input, stock_data):
