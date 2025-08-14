@@ -7,7 +7,7 @@
 1. <details open>
      <summary><a href="#about">About</a></summary>
 
-   <a href="https://github.com/David5p/family_shopping_list">Family Shopping List</a> project is a program designed for parents or guardians to create a food shopping list for the family.
+   <a href="https://github.com/David5p/family_shopping_list">Family Shopping List</a> project is a command-line tool designed to help families manage their weekly shopping list based on recipes and available stock.
 
    Users of the program are invited to choose from a list of options. The primary goal leads to the creation of a shopping list for either 2 or 7 days depending on the user's choice.
 
@@ -205,7 +205,7 @@ The Business Goals of Family Shopping List are:
   <img src="assets/images/generate_shopping_list.png" alt="Generate shopping list flowchart">
 </p>
 
-- The generate shopping list function is fundamental to the terminal oreintated program.
+- The Generate Shopping List function is a core feature of this terminal-based program
 - The flowchart helped me understand the logic behind the need to take in the recipes from the user, assess this against existing stock and create a shopping list.
 - This visualization also supports debugging, and helps identify potential improvements or errors in the function. Overall, this flowchart is a valuable tool for documenting the function’s purpose and flow, making future updates or need to refactoring easier and more efficient.
 
@@ -215,7 +215,7 @@ The Business Goals of Family Shopping List are:
   <img src="assets/images/text_color.png" alt="Text color choices">
 </p>
 
-- I chose to use the colorama librart for the text colors to display in the terminal. This helped to provide uniformity and create a differential for the different choices and responses the user recieves.
+- I chose to use the colorama librart for the text colors to display in the terminal. This helped to provide uniformity and create a differential for the different choices and responses the user receives.
 - Originally, I used only Fore.Color but found this alone resulted in the appearance of a dark text. The addition of Style.BRIGHT made the text colors contrast well with the black terminal background.
 - I chose the color red to display error messages, green for success messages, yellow for when the user is asked for an input, white for menu information and for the stock and recipe list. Finally, I chose magenta for the Main Menu. These color choices remain consistent throughout the program and provide a better user experience than all text displayed in white as seen below.
 
@@ -314,7 +314,7 @@ The Business Goals of Family Shopping List are:
   <img src="assets/images/flake8_errors1.png"alt="Flake8 variable errors" />
 </p>
 
-- I also had some errors with trailing variables. I created a number_of_days variable for my meal plan but this was rendered obselete by using a counter so I never used this variable and deleted it. Similarly, I had a categories variable trailing in my edit_recipes function. I had declared the categories variable in my new refactored function category_choices but had neglected to remove it from my edit_recipes function
+- I also had some errors with trailing variables. I created a number_of_days variable for my meal plan but this was rendered obsolete by using a counter so I never used this variable and deleted it. Similarly, I had a categories variable trailing in my edit_recipes function. I had declared the categories variable in my new refactored function category_choices but had neglected to remove it from my edit_recipes function
 
 - The new_qty variable error was creating an issue because I was trying to use the variable without having declared. I went into my code and declared it to fix the problem. After solving all of these issues when I run Flake8 in the terminal I have no errors.
 
@@ -395,7 +395,7 @@ The Business Goals of Family Shopping List are:
   <img src="assets/images/unit_fix.png"alt="Number input of units" />
 </p>
 
-- After having edited my edit_existing_ingredient function and edit_stock function I recognise the need in the future for the code to be refactored as the functions have become more complex. I also recognise that I had to put similar code in both places to change the units to a number choice and it would be more efficient to have to only make the change in one place.
+- After having edited my edit_existing_ingredient function and edit_stock function I recognise the need in the future for the code to be refactored as the functions have become more complex. I also recognise that I had to put similar code in both places to change the units to a number choice and it would be more efficient to have to only make the change in one place. In the future, I plan to refactor the repeated unit selection code into a reusable helper function.”
 
 ### User Story Reflection
 
