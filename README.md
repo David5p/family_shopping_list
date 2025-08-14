@@ -135,7 +135,7 @@ User goals are:
 - View and change stock list.
 - View and change recipes list
 
-The Capitals and Countries quiz fulfills these needs by:
+The Family Shopping List fulfills these needs by:
 
 - Users are prompted of their requirements to generate the shopping list.
 - Users can choose to edit, remove or add stock items.
@@ -143,7 +143,7 @@ The Capitals and Countries quiz fulfills these needs by:
 
 ### Business Goals
 
-The Business Goals of The Capitals and Countries Quiz are:
+The Business Goals of Family Shopping List are:
 
 - To save the user time by generating accurate and personalized shopping lists.
 - To reduce the stress of meal planning and shopping.
@@ -431,3 +431,37 @@ The Business Goals of The Capitals and Countries Quiz are:
 - The soley Python based project does not format very well on devices other than desktop. I would explore using other programs to ensure the program usability is improved on mobile devices.
 
 ### Deployment
+
+The steps below detail how I deployed my live site:
+
+- The site was deployed to Heroku. The steps taken were as follows:
+
+  - I went to Heroku and verified my student status through GitHub
+  - I gave Heroku authentication and accepted their terms and conditions.
+  - I clicked create new app on Heroku and was prompted to give the app a name.
+  - I then went to Settings and to Config Vars and set the KEY to PORT and the VALUE to 8000.
+  - Next in Settings, I went to Buildpacks and added heroku/nodejs and heroku/python.
+  - I clicked on the deploy section next and selected Github as my deployment method.
+  - I confirmed connect to GitHub and then searched for my repository name and connected it.
+  - I then selected automatic deploys and waited for it to load by clicking view.
+
+- To **Fork** the repository:
+
+  - On GitHub.com, navigate to the repository.
+  - In the top-right corner of the page, click **Fork**.
+  - Choose an owner for the forked repository.
+  - Forks are named the same as their parent repositories. You can change the name of the fork.
+  - Add a description of your fork if you wish.
+  - Choose whether to copy the default branch or every branch to the new fork.
+  - Click **Create fork**.
+
+- To **Clone** the repository:
+  - On GitHub.com, navigate to the repository.
+  - Above the list of files, click the **Code** dropdown button which will bring up a list of options.
+  - Where the URL appears in the dropdown, **copy the URL**.
+  - Open **Git Bash**.
+  - Change the current working directory to the location where you want to keep the cloned directory.
+  - Type `git clone` followed by pasting the URL you copied earlier.
+  - Press **Enter**, and your local clone will be created.
+
+The live link to the website can be found here: [Family Shopping List](https://family-shopping-list1-3e187ea09412.herokuapp.com/)
