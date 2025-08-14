@@ -385,6 +385,18 @@ The Business Goals of Family Shopping List are:
   <img src="assets/images/spaghetti.png"alt="Fuzzy matching example of spaghetti" />
 </p>
 
+<p align="center">
+  <img src="assets/images/unit_issue.png"alt="Word input of units" />
+</p>
+
+- When the user wanted to edit an ingredient in a recipe or in the stock, they could create a new unit. This proved to be a problem because if the user edited a recipe to a unit not in listed in the stock then the stock would say the item was out of stock. In the example above I changed peanut butter to scoops. I resolved this issue by allowing the user to choose one of the existing units through number selection. This makes the program smoother for the user and minimises the risk of having conflicting units in stock and recipes.
+
+<p align="center">
+  <img src="assets/images/unit_fix.png"alt="Number input of units" />
+</p>
+
+- After having edited my edit_existing_ingredient function and edit_stock function I recognise the need in the future for the code to be refactored as the functions have become more complex. I also recognise that I had to put similar code in both places to change the units to a number choice and it would be more efficient to have to only make the change in one place.
+
 ### User Story Reflection
 
 - During the testing process and I looked back at my user stories to see if I achieved all of my Must-haves.
