@@ -313,14 +313,22 @@ def edit_existing_ingredient(ingredients, index):
                     Style.BRIGHT + Fore.RED + "Unit cannot be empty.")
             else:
                 break
-
-        new_qty = input(
-            Style.BRIGHT + Fore.YELLOW +
-            f"Enter new quantity for '{ingd_name}' "
-            f"(current: {ingredients[ingd_name]['quantity']}): "
+        while True:
+            new_qty = input(
+                Style.BRIGHT + Fore.YELLOW +
+                f"Enter new quantity for '{ingd_name}' "
+                f"(current: {ingredients[ingd_name]['quantity']}): "
             ).strip()
-        if new_qty:
+        if not new_qty:
+            break
+        try:
             ingredients[ingd_name]['quantity'] = float(new_qty)
+            break
+        except valueError:
+            print(
+                Syle.BRIGHT + Fore.RED +
+                "invalid quantity. Please enter a number"
+            )
         if new_unit:
             ingredients[ingd_name]['unit'] = new_unit
             print(f"Updated '{ingd_name}'")

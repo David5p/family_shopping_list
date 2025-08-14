@@ -419,4 +419,6 @@ The Business Goals of The Capitals and Countries Quiz are:
 <p align="center">
   <img src="assets/images/resolved_number_issue.png"alt="Numbers rejected now" />
 
-- The soley Python based project does not format very well on devices other than desktop. I would explore using other programs to ensure the program usability is improved on mobile devices
+- The soley Python based project does not format very well on devices other than desktop. I would explore using other programs to ensure the program usability is improved on mobile devices.
+
+### Deployment
