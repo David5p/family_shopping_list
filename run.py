@@ -645,7 +645,7 @@ def edit_recipes(recipes_data):
         "Recipes list updated and saved.")
 
 
-def get_closest_match(user_input, recipe_names, cutoff=0.5):
+def get_closest_match(user_input, recipe_names, cutoff=0.6):
     """
     Allow user to make small mistakes when inputting their meal plan
     """
