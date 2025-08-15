@@ -28,6 +28,7 @@ def main_menu():
     use the program
     """
     print(Style.BRIGHT + Fore.CYAN + "\nWelcome to the Family Shopping List")
+    # Introduce the application
     print(
         Style.BRIGHT + Fore.CYAN +
         "\nThis command-line application helps families simplify weekly\n"
@@ -129,6 +130,7 @@ def edit_stock(stock_data):
     Allow the user to update or add items in the stock list,
     then save the changes.
     """
+    # Provide units rather than user types units
     units_list = [
         'g', 'kg', 'servings', 'packs', 'teaspoons',
         'tablespoons', 'pieces', 'large', 'ml'
@@ -152,7 +154,8 @@ def edit_stock(stock_data):
             continue
 
         existing_item = get_existing_item_key(item_name, stock_data)
-
+        
+        # Use fuzzy matching function here for typos
         if not existing_item:
             match = get_closest_match(
                 item_name.title(),
@@ -168,6 +171,7 @@ def edit_stock(stock_data):
 
         if existing_item:
             item_name = existing_item
+            # Provide feeback to the user
             print(
                 Style.BRIGHT + Fore.GREEN +
                 f"{item_name} found in stock. Updating..."
@@ -235,6 +239,10 @@ def edit_stock(stock_data):
 
 
 def get_existing_item_key(user_input, stock_data):
+    """
+    Return the matching stock item key for user_input (case-insensitive),
+    or None if not found.
+    """
     for item in stock_data:
         if item.lower() == user_input.lower():
             return item
@@ -242,6 +250,9 @@ def get_existing_item_key(user_input, stock_data):
 
 
 def flatten_recipes(recipes_data):
+    """
+    Flatten nested recipes into a single list of ingredients.
+    """
     flat_recipes = {}
     for category in recipes_data.values():
         for recipe_name, ingredients in category.items():
@@ -260,12 +271,18 @@ def flatten_recipes(recipes_data):
 
 
 def view_recipes(flat_recipes):
+    """
+    Print a numbered list of available recipes.
+    """
     print("\nAvailable Recipes:")
     for index, recipe_name in enumerate(flat_recipes, 1):
         print(f"{index}. {recipe_name}")
 
 
 def category_choices():
+    """
+    Prompt user to select and return a recipe category from a selection.
+    """
     categories = ["Breakfast", "Meals", "Snacks"]
     while True:
         print(
@@ -286,6 +303,9 @@ def category_choices():
 
 
 def input_ingredients():
+    """
+    Prompt user to input ingredients with quantities and units.
+    """
     ingredients = {}
     while True:
         ingredient = input(
@@ -636,6 +656,10 @@ def get_closest_match(user_input, recipe_names, cutoff=0.5):
 
 
 def get_meal_plan_from_user(flat_recipes):
+    """
+    Prompt user to select recipes for a meal plan.
+    """
+
     recipe_list = list(flat_recipes.keys())
     print("\nAvailable Recipes:")
     for index, recipe in enumerate(flat_recipes, 1):
