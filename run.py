@@ -12,12 +12,15 @@ init(autoreset=True)  # Automatically reset colors after each print
 
 def view_stock(stock_data):
     """
-    When user wants to see current stock
+    When user wants to see current stock and display it alphabetically
     """
     print("\nCurrent Stock:")
     print(f'{"Item":<28} | {"Quantity":<10} | {"Unit":<15}')
     print('-' * 53)
     for item, info in stock_data.items():
+        print(f'{item:<28} | {info["quantity"]:<10} | {info["unit"]:<15}')
+    for item in sorted(stock_data.keys()):
+        info = stock_data[item]
         print(f'{item:<28} | {info["quantity"]:<10} | {info["unit"]:<15}')
 
 
