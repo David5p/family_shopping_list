@@ -559,6 +559,14 @@
             "Apple and raspberry flapjack": {
                 "quantity": 1,
                 "unit": "servings"
+            },
+            "Blueberry": {
+                "quantity": 4.0,
+                "unit": "g"
+            },
+            "Strawberry": {
+                "quantity": 2.0,
+                "unit": "servings"
             }
         }
     }

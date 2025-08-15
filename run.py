@@ -442,27 +442,62 @@ def add_new_ingredient(ingredients):
     """
     Add a new ingredient to the list.
     """
-    new_ingd = input(
-        Style.BRIGHT + Fore.YELLOW +
-        "Enter new ingredient name: "
+    units_list = [
+        'g', 'kg', 'servings', 'packs', 'teaspoons',
+        'tablespoons', 'pieces', 'large', 'ml'
+    ]
+    while True:
+        new_ingd = input(
+            Style.BRIGHT + Fore.YELLOW +
+            "Enter new ingredient name: "
         ).strip()
-    new_qty = input(
-        Style.BRIGHT + Fore.YELLOW +
-        "Enter quantity: "
+        if not new_ingd:
+            print(Style.BRIGHT + Fore.RED + "Ingredient name cannot be empty.")
+            continue
+        if new_ingd.isnumeric():
+            print(Style.BRIGHT + Fore.RED + "Ingredient name must be a word.")
+            continue
+        if new_ingd in ingredients:
+            print(Style.BRIGHT + Fore.RED + "Ingredient already exists.")
+            continue
+        break
+
+    while True: 
+        new_qty = input(
+            Style.BRIGHT + Fore.YELLOW +
+            f"Enter quantity for '{new_ingd}': "
         ).strip()
-    new_unit = input(
-        Style.BRIGHT + Fore.YELLOW +
-        "Enter unit: "
+        try:
+            quantity = float(new_qty)
+            break
+        except ValueError:
+            print(
+                Style.BRIGHT + Fore.RED +
+                "Invalid quantity. Must be a number.")
+
+          # Display unit options
+    print(Style.BRIGHT + Fore.YELLOW + "\nSelect a unit:")
+    for idx, unit in enumerate(units_list, 1):
+        print(f"{idx}. {unit}")
+
+    while True:
+        unit_choice = input(
+            Style.BRIGHT + Fore.YELLOW +
+            f"Enter number for unit of '{new_ingd}': "
         ).strip()
-    if new_ingd:
-        ingredients[new_ingd] = {"quantity": new_qty, "unit": new_unit}
-        print(
-            Style.BRIGHT + Fore.GREEN +
-            f"Added '{new_ingd}'.")
-    else:
-        print(
-            Style.BRIGHT + Fore.RED +
-            "Ingredient name cannot be empty.")
+
+        if unit_choice.isdigit() and 1 <= int(unit_choice) <= len(units_list):
+            unit = units_list[int(unit_choice) - 1]
+            break
+        else:
+            print(Style.BRIGHT + Fore.RED + "Invalid choice. Enter a valid number.")
+
+    ingredients[new_ingd] = {
+        "quantity": quantity,
+        "unit": unit
+    }
+
+    print(Style.BRIGHT + Fore.GREEN + f"Added '{new_ingd}' to recipe.")
 
 
 def edit_ingredients(ingredients):
