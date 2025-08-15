@@ -304,8 +304,13 @@ def category_choices():
 
 def input_ingredients():
     """
-    Prompt user to input ingredients with quantities and units.
+     Prompt user to input ingredients with validated names,
+     quantities, and units.
     """
+    units_list = [
+        'g', 'kg', 'servings', 'packs', 'teaspoons',
+        'tablespoons', 'pieces', 'large', 'ml'
+    ]
     ingredients = {}
     while True:
         ingredient = input(
@@ -314,20 +319,59 @@ def input_ingredients():
             ).strip().lower()
         if ingredient == "done":
             break
-        try:
-            quantity = float(input(
-                Style.BRIGHT + Fore.YELLOW +
-                f"Enter the quantity for '{ingredient}': "))
-            unit = input(
-                Style.BRIGHT + Fore.YELLOW +
-                f"Enter the unit for '{ingredient}' "
-                "(e.g., grams, packs, servings or pieces): "
-                ).strip().lower()
-            ingredients[ingredient] = {"quantity": quantity, "unit": unit}
-        except ValueError:
+        if not ingredient or ingredient.isnumeric():
             print(
-                Style.BRIGHT + Fore.RED +
-                "Invalid quantity. Please enter a number.")
+                Style.BRIGHT + Fore.RED
+                + "Ingredient name must be a valid word.")
+            continue
+        if ingredient in ingredients:
+            print(Style.BRIGHT + Fore.RED + "Ingredient already added.")
+            continue
+        # Quantity input
+        while True:
+            qty_input = input(
+                Style.BRIGHT + Fore.YELLOW +
+                f"Enter the quantity for '{ingredient}': "
+             ).strip()
+            try:
+                quantity = float(qty_input)
+                break
+            except ValueError:
+                print(
+                    Style.BRIGHT + Fore.RED +
+                    "invalid quantity. Enter a number.")
+
+        # Unit selection
+        print(Style.BRIGHT + Fore.YELLOW + "\nSelect a unit:")
+        for idx, unit in enumerate(units_list, 1):
+            print(f"{idx}. {unit}")
+
+        while True:
+            unit_choice = input(
+                Style.BRIGHT + Fore.YELLOW +
+                f"Enter number for unit of '{ingredient}': "
+            ).strip()
+
+            if (
+                unit_choice.isdigit()
+                and 1 <= int(unit_choice) <= len(units_list)
+            ):
+                unit = units_list[int(unit_choice) - 1]
+                break
+            else:
+                print(
+                    Style.BRIGHT + Fore.RED +
+                    "Invalid unit choice. Try again.")
+
+        ingredients[ingredient] = {
+            "quantity": quantity,
+            "unit": unit
+        }
+
+        print(
+            Style.BRIGHT + Fore.GREEN +
+            f"Added '{ingredient}' to recipe.")
+
     return ingredients
 
 
