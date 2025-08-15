@@ -154,7 +154,7 @@ def edit_stock(stock_data):
             continue
 
         existing_item = get_existing_item_key(item_name, stock_data)
-        
+
         # Use fuzzy matching function here for typos
         if not existing_item:
             match = get_closest_match(
@@ -462,7 +462,7 @@ def add_new_ingredient(ingredients):
             continue
         break
 
-    while True: 
+    while True:
         new_qty = input(
             Style.BRIGHT + Fore.YELLOW +
             f"Enter quantity for '{new_ingd}': "
@@ -475,7 +475,7 @@ def add_new_ingredient(ingredients):
                 Style.BRIGHT + Fore.RED +
                 "Invalid quantity. Must be a number.")
 
-          # Display unit options
+    # Display unit options
     print(Style.BRIGHT + Fore.YELLOW + "\nSelect a unit:")
     for idx, unit in enumerate(units_list, 1):
         print(f"{idx}. {unit}")
@@ -490,7 +490,9 @@ def add_new_ingredient(ingredients):
             unit = units_list[int(unit_choice) - 1]
             break
         else:
-            print(Style.BRIGHT + Fore.RED + "Invalid choice. Enter a valid number.")
+            print(
+                Style.BRIGHT + Fore.RED +
+                "Invalid choice. Enter a valid number.")
 
     ingredients[new_ingd] = {
         "quantity": quantity,
