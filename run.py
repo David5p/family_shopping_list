@@ -17,8 +17,6 @@ def view_stock(stock_data):
     print("\nCurrent Stock:")
     print(f'{"Item":<28} | {"Quantity":<10} | {"Unit":<15}')
     print('-' * 53)
-    for item, info in stock_data.items():
-        print(f'{item:<28} | {info["quantity"]:<10} | {info["unit"]:<15}')
     for item in sorted(stock_data.keys()):
         info = stock_data[item]
         print(f'{item:<28} | {info["quantity"]:<10} | {info["unit"]:<15}')
@@ -278,7 +276,7 @@ def view_recipes(flat_recipes):
     Print a numbered list of available recipes.
     """
     print("\nAvailable Recipes:")
-    for index, recipe_name in enumerate(flat_recipes, 1):
+    for index, recipe_name in enumerate(sorted(flat_recipes.keys()), 1):
         print(f"{index}. {recipe_name}")
 
 
@@ -584,9 +582,10 @@ def edit_ingredients(ingredients):
 
 def list_recipes(flat_recipes):
     """
-    Refresh the recipe list each time in case it changes
+    Refresh the recipe list each time in case it changes and
+    sort alphabetically.
     """
-    recipe_list = list(flat_recipes.keys())
+    recipe_list = sorted(flat_recipes.keys())
     print("\nAvailable Recipes:")
     for index, recipe in enumerate(recipe_list, 1):
         print(f"{index}. {recipe}")
