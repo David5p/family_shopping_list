@@ -6,6 +6,7 @@ import difflib
 from collections import Counter
 from colorama import init, Fore, Style
 
+
 init(autoreset=True)  # Automatically reset colors after each print
 
 
@@ -29,10 +30,10 @@ def main_menu():
     print(Style.BRIGHT + Fore.CYAN + "\nWelcome to the Family Shopping List")
     print(
         Style.BRIGHT + Fore.CYAN +
-        "\nThis command-line application helps families simplify weekly meal "
-        "planning. It allows users to plan meals for up to 7 days, generate "
-        "a shopping list based on recipes and available stock, and view or "
-        "edit both recipes and pantry stock."
+        "\nThis command-line application helps families simplify weekly\n"
+        "meal planning. It allows users to plan meals for up to 7 days,\n"
+        "generate a shopping list based on recipes and available stock,\n"
+        "and view or edit both recipes and pantry stock."
     )
     stock_data = load_stock()
     recipes_data = load_recipes()
