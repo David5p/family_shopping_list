@@ -395,7 +395,7 @@ The Business Goals of Family Shopping List are:
   <img src="assets/images/unit_fix.png"alt="Number input of units" />
 </p>
 
-- After having edited my edit_existing_ingredient function and edit_stock function I recognise the need in the future for the code to be refactored as the functions have become more complex. I also recognise that I had to put similar code in both places to change the units to a number choice and it would be more efficient to have to only make the change in one place. In the future, I plan to refactor the repeated unit selection code into a reusable helper function.”
+- After having edited my edit_existing_ingredient function and edit_stock function I recognise the need in the future for the code to be refactored as the functions have become more complex. I also added listing my stock and recipes in alphabetically order and did similiar changes to functions to ensure compatibility across the application. I also recognise that I had to put similar code in both places to change the units too to a number choice and it would be more efficient to have to only make the change in one place. In the future, I plan to refactor the repeated unit selection code and alphabetical order code into a reusable helper function.”
 
 ### User Story Reflection
 
