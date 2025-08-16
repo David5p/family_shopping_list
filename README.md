@@ -15,7 +15,7 @@
         <img src="assets/images/shopping_list_choice.png" alt="Options for shopping list">
     </p>
     
-    Other avenues the user can change include the respective stock and recipes list.
+   Users can also manage the stock and recipe lists.
 
    </details>
 
@@ -52,12 +52,12 @@
          <details>
            <summary>Page Elements</summary>
            <ul>
-             <li><a href="#View Recipes">View Recipes</a></li>
-             <li><a href="#Edit Recipes">Edit Recipes</a></li>
-             <li><a href="#Generate Shopping List">Generate Shopping List</a></li>
-             <li><a href="#View Stock">View Stock</a></li>
-             <li><a href="#Edit Stock">Edit Stock</a></li>
-             <li><a href="#Exit">Exit</a></li>
+             <li><a href="#view-recipes">View Recipes</a></li>
+             <li><a href="#edit-recipes">Edit Recipes</a></li>
+             <li><a href="#generate-shopping-list">Generate Shopping List</a></li>
+             <li><a href="#view-stock">View Stock</a></li>
+             <li><a href="#edit-stock">Edit Stock</a></li>
+             <li><a href="#exit">Exit</a></li>
            </ul>
          </details>
        </li>
@@ -85,8 +85,8 @@
            <ul>
              <li><a href="#validation">Validation</a></li>
              <li><a href="#general-testing">General Testing</a></li>
-             <li><a href="#Refactoring">Refactoring</a></li>
-             <li><a href="#User Story reflection">User Story Reflection</a></li>
+             <li><a href="#refactoring">Refactoring</a></li>
+             <li><a href="#user-story-reflection">User Story Reflection</a></li>
            </ul>
          </details>
        </li>
@@ -127,7 +127,7 @@ The target audience for the program:
 
 - Parents or guardians looking to plan meals.
 - Any adult wanting to plan their meals.
-- Students or educators looking to develop an understaning of Python concepts
+- Students or educators looking to develop an understanding of Python concepts
 
 User goals are:
 
@@ -137,7 +137,7 @@ User goals are:
 
 The Family Shopping List fulfills these needs by:
 
-- Users are prompted of their requirements to generate the shopping list.
+- Users are prompted to enter the requiremed information to generate the shopping list.
 - Users can choose to edit, remove or add stock items.
 - Users can choose to edit, remove or add recipes.
 
@@ -215,34 +215,34 @@ The Business Goals of Family Shopping List are:
   <img src="assets/images/text_color.png" alt="Text color choices">
 </p>
 
-- I chose to use the colorama librart for the text colors to display in the terminal. This helped to provide uniformity and create a differential for the different choices and responses the user receives.
-- Originally, I used only Fore.Color but found this alone resulted in the appearance of a dark text. The addition of Style.BRIGHT made the text colors contrast well with the black terminal background.
+- I chose to use the colorama library for the text colors to display in the terminal. This helped to provide uniformity and create a differential for the different choices and responses the user receives.
+- Originally, I used only Fore.Color but found this alone resulted in the appearance of a dark text. The addition of Style.BRIGHT made the text colors stand out clearly against the black terminal background.
 - I chose the color red to display error messages, green for success messages, yellow for when the user is asked for an input, white for menu information and for the stock and recipe list. Finally, I chose magenta for the Main Menu. These color choices remain consistent throughout the program and provide a better user experience than all text displayed in white as seen below.
 
 # Features
 
 ## Page Elements
 
-#### View Recipes
+### View Recipes
 
 - When the user comes to the terminal interface Main Menu they can choose View Recipes by selecting number 1.
 - This option allows the user to view the recipes before deciding which meals they want to plan for to create the shopping list.
 
-#### Edit Recipes
+### Edit Recipes
 
 - Option 2 gives the user greater control over the recipe list. They can edit, add or delete recipes by following the clear instructions in the terminal.
-- This option is very useful and gives the user the opportunity to engage with the recipes and make the program individualised to them.
+- This option is very useful and gives the user the opportunity to engage with the recipes and make the program individualized to them.
 
 <p align="center">
   <img src="assets/images/edit_ingredient_option.png" alt="Edit ingredients option" />
 </p>
 
-#### Generate Shopping List
+### Generate Shopping List
 
 - The Generate Shopping List option is the primary purpose of the program.
 - I encountered a number of issues creating this function which I will detail fully in the testing section but changing the function to allow the user to select numbers next to each recipe rather than typing out each recipe made the program user friendly.
 
-#### View Stock
+### View Stock
 
 <p align="center">
   <img src="assets/images/stock_table2.png"alt="Current stock list" />
@@ -251,7 +251,7 @@ The Business Goals of Family Shopping List are:
 - When the user comes to the terminal interface Main Menu they can choose View Stock by selecting number 4.
 - This option allows the user to check what existing items they have and make informed decisions when editing stock or generating a shopping list.
 
-#### Edit Stock
+### Edit Stock
 
 - This option provides engagement with the user where they can update the stock list through the terminal.
 
@@ -261,9 +261,9 @@ The Business Goals of Family Shopping List are:
   <img src="assets/images/stock_no_table.png"alt=" Stock list as a list" />
 </p>
 
-- I created the stock as a stand alone list but I recognise that the table format is user friendly. It allows the user to clearly see the item name, quantity and units of each product in stock.
+- I created the stock as a stand alone list but I recognize that the table format is user friendly. It allows the user to clearly see the item name, quantity and units of each product in stock.
 
-#### Exit
+### Exit
 
 - The last option lets the user exit the program when they are finished.
 
@@ -277,10 +277,11 @@ The Business Goals of Family Shopping List are:
 ## Libraries
 
 - [Colorama](https://pypi.org/project/colorama/)  
-  Text color.
+  Add text color to improve the user experience.
 - [Difflib](https://docs.python.org/3/library/difflib.html)  
-   To handle fuzzy matching for the user's input -[Collections] (https://docs.python.org/3/library/collections.html)
-  To allow recipes to be counted
+  To handle fuzzy matching for the user's input if they make an error.
+- [Collections](https://docs.python.org/3/library/collections.html)  
+  Used counter to efficiently count and aggregate ingredients in recipes.
 
 ## Platforms
 
@@ -306,9 +307,9 @@ The Business Goals of Family Shopping List are:
   <img src="assets/images/flake8_errors.png"alt="Flake8 errors" />
 </p>
 
-- I used Flake8 to check my code. As you can see from the above image, I had many errors of a similar type. Flake8 helped me realise indentatation errors and trailing white space on lines.
+- I used Flake8 to check my code. As you can see from the above image, I had many errors of a similar type. Flake8 helped me realise indentation errors and trailing white space on lines.
 
-- The errors about lines being too long were discussed at my second mentor meeting and I recieved guidance on how separate into 2 lines through either additional quotation marks or starting a new line when I opened brackets.
+- The errors about lines being too long were discussed at my second mentor meeting and I received guidance on how to separate into 2 lines using additional quotation marks or by starting a new line after opening brackets.
 
 <p align="center">
   <img src="assets/images/flake8_errors1.png"alt="Flake8 variable errors" />
@@ -316,19 +317,19 @@ The Business Goals of Family Shopping List are:
 
 - I also had some errors with trailing variables. I created a number_of_days variable for my meal plan but this was rendered obsolete by using a counter so I never used this variable and deleted it. Similarly, I had a categories variable trailing in my edit_recipes function. I had declared the categories variable in my new refactored function category_choices but had neglected to remove it from my edit_recipes function
 
-- The new_qty variable error was creating an issue because I was trying to use the variable without having declared. I went into my code and declared it to fix the problem. After solving all of these issues when I run Flake8 in the terminal I have no errors.
+- The new_qty variable error was creating an issue because I was trying to use the variable without having declared it. I went into my code and declared it to fix the problem. After solving all of these issues when I run Flake8 in the terminal I have no errors.
 
 <p align="center">
   <img src="assets/images/flake8_clear.png"alt="Flake8 all clear" />
 </p>
 
-- I used pip install mypy to validate the types used in my python code.
+- I used pip install mypy to validate the types used in my Python code.
 
 <p align="center">
   <img src="assets/images/mypy_error.png"alt="Mypy error" />
 </p>
 
--It threw 1 error related to Colorama which does not include type hints. I found a [GitHub](https://github.com/pantsbuild/pants/issues/20259) comments section which raised a similar issue. The problem was resolved by installing colorama types. I have no erros in mypy now.
+-It threw 1 error related to Colorama which does not include type hints. I found a [GitHub](https://github.com/pantsbuild/pants/issues/20259) comments section which raised a similar issue. The problem was resolved by installing type stubs for Colorama. I have no erros in mypy now.
 
 <p align="center">
   <img src="assets/images/mypy_clear.png"alt="Mypy all clear" />
@@ -339,45 +340,45 @@ The Business Goals of Family Shopping List are:
 - The website was tested across Google Chrome, Safari, Mozilla Firefox and the mobile test was done on an Asus Zenfone 9 and no issues were found.
 
 <p align="center">
-  <img src="assets/images/mobile_app.jpg"alt="Application on mobile device" />
+  <img src="assets/images/mobile_app.jpg"alt="Program on mobile device" />
 </p>
 
 - Each time new features and behaviors were added the preview and the deployed site were checked for functionality.
 
-- The terminal interface was tested by friends on both mobile and desktop devices. I and my friends recognise the the program functions better on desktop screens.
+- The terminal interface was tested by friends on both mobile and desktop devices. I and my friends recognize that the program works better on desktop screens.
 
 <p align="center">
   <img src="assets/images/invalid_input.png"alt="Invalid entry" />
 </p>
 
-- I tried to input different things to get the program to break such as spaces, question mark, empty input but found my program either remained in the loop or recognised the error and asked the user to try again.
+- I tried to input different things to get the program to break such as spaces, question mark, empty input but found my program either remained in the loop or recognized the error and asked the user to try again.
 
 - The user stories provided a noteworthy reference point and I was allowed to ensure and test that all of the must haves were achieved for the website.
 
-- I recognise that if I were to develop this project, I would add more functionality. I would add in an option of what can I make from my current stock if I do not intend to go to the shop. I would also like to add more categories to the stock section such as toiletries, drinks and baby/toddler food to make it a complete family shopping list and not just limited to food.
+- I recognize that if I were to develop this project, I would add more functionality. I would add in an option of what can I make from my current stock if I do not intend to go to the shop. I would also like to add more categories to the stock section such as toiletries, drinks and baby/toddler food to make it a complete family shopping list and not just limited to food.
 
 ### Refactoring and User input
 
-- My code was not following best practice of the single responsibility function. My edit_recipes function contained functions within functions and the code needed to be refactored.
+- My code did not follow the single responsibility principle. My edit_recipes function contained functions within functions and the code needed to be refactored.
 
 <p align="center">
   <img src="assets/images/refactor_edit_recipes_function.png"alt="Code before refactoring" />
 </p>
 
-- My edit_recipes function was overloaded so from the image above, I created functions which I then called in the edit_recipes function. Namely I created a Category and a handle_new_recipe function. These two helper functions helped my code adhere to best practice.
+- My edit_recipes function was overloaded so from the image above, I created functions which I then called from within the edit_recipes function. Namely I created a Category and a handle_new_recipe function. These two helper functions helped my code adhere to best practice.
 
 <p align="center">
   <img src="assets/images/refactor_edit_recipes_function1.png"alt="Code before refactoring" />
 </p>
 
 - In my first draft of the project the user was required to input each recipe they wanted to make rather than the number selection in this finished version.
-- The user inputting each recipe this was a problem if they made spelling mistakes or didn't use capital letters. For instance, when the user typed lasagne it didn't come up because the user did not use a capital L.
+- The user inputting each recipe this was a problem if they made spelling mistakes or didn't capitalize. For instance, when the user typed lasagne it didn't come up because the user did not use a capital L.
 
 <p align="center">
   <img src="assets/images/lasagne.png"alt="lasagne error" />
 </p>
 
-- This issue was fixed using fuzzy matching. However my mentor pointed out if a user has to write 14 recipes for a weekly shopping list it makes the program quite cumbersome which is why I switched to numbers for the recipes.
+- This issue was fixed using fuzzy matching. However, my mentor pointed out having the user input 14 recipes manually for a weekly shopping list made the program cumbersome; therefore, I switched to number-based selection for recipes.
 
 - I then transferred the fuzzy matching to be called in my edit_stock function as it is a more appropriate match with the user editing one item at a time.
 
@@ -395,11 +396,11 @@ The Business Goals of Family Shopping List are:
   <img src="assets/images/unit_fix.png"alt="Number input of units" />
 </p>
 
-- After having edited my edit_existing_ingredient function and edit_stock function I recognise the need in the future for the code to be refactored as the functions have become more complex. I also added listing my stock and recipes in alphabetically order and did similiar changes to functions to ensure compatibility across the application. I also recognise that I had to put similar code in both places to change the units too to a number choice and it would be more efficient to have to only make the change in one place. In the future, I plan to refactor the repeated unit selection code and alphabetical order code into a reusable helper function.”
+- After having edited my edit_existing_ingredient function and edit_stock function I recognize the need in the future for the code to be refactored as the functions have become more complex. I also added listing my stock and recipes in alphabetically order and did similiar changes to functions to ensure compatibility across the program. I also recognize that I had to put similar code in both places to change the units too to a number choice and it would be more efficient to have to only make the change in one place. In the future, I plan to refactor the repeated unit selection code and alphabetical order code into a reusable helper function.
 
 ### User Story Reflection
 
-- During the testing process and I looked back at my user stories to see if I achieved all of my Must-haves.
+- During the testing process, I looked back at my user stories to see if I achieved all of my Must-haves.
 
 - The command line navigation works well and I have not got the program to fail in testing.
 
@@ -413,7 +414,7 @@ The Business Goals of Family Shopping List are:
 
 ## Bugs
 
-### Known and fixed Bugs
+### Known and Fixed Bugs
 
 <p align="center">
   <img src="assets/images/number_error.png"alt="Adding stock number error" />
@@ -434,13 +435,13 @@ The Business Goals of Family Shopping List are:
 
 - Another bug that was found during testing was the quantity section of the add an ingredient to a recipe. The program allowed the user to type in letters which caused an error.
 
-- This issue was resolve by adding a try and accept ValueError to the edit_existing_ingredient function.
+- This issue was resolved by adding a try and except ValueError to the edit_existing_ingredient function.
 
 <p align="center">
   <img src="assets/images/bug_fix.png"alt="Edit recipe bug fix" />
 </p>
 
-- The soley Python based project does not format very well on devices other than desktop. I would explore using other programs to ensure the program usability is improved on mobile devices.
+- The solely Python based project does not format very well on devices other than desktop. I would explore using other programs to ensure the program usability is improved on mobile devices.
 
 ### Deployment
 
@@ -452,7 +453,7 @@ The steps below detail how I deployed my live site:
   - I gave Heroku authentication and accepted their terms and conditions.
   - I clicked create new app on Heroku and was prompted to give the app a name.
   - I then went to Settings and to Config Vars and set the KEY to PORT and the VALUE to 8000.
-  - Next in Settings, I went to Buildpacks and added heroku/nodejs and heroku/python.
+  - Next in Settings, I went to Buildpacks and added heroku/nodejs and Heroku/Python.
   - I clicked on the deploy section next and selected Github as my deployment method.
   - I confirmed connect to GitHub and then searched for my repository name and connected it.
   - I then selected automatic deploys and waited for it to load by clicking view.
